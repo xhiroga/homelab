@@ -1,0 +1,38 @@
+#!/bin/sh ansible-playbook
+---
+- hosts: RTX1210
+  connection: network_cli
+
+  tasks:
+    - name: get configuration
+      yamaha_network.rtx.rtx_command:
+        commands:
+          - show config
+      register: result
+
+    - name: debug
+      debug:
+        msg: "{{ result.stdout_lines[0] }}"
+
+    - name: set description
+      yamaha_network.rtx.rtx_config:
+        lines:
+          - description 1 yamaha
+          - console character en.ascii # [YAMAHAルーターにmacのTerminalから接続したら文字化けしたので、ASCIIで出力してもらう](https://zenn.dev/hiroga/scraps/36d95ee4cb3634)
+          - ip stealth lan2 # Nuro光のONUはブリッジモードにできないので、インターネットからのPING応答には関係ない設定となってしまうが...念のため。
+          - security class 2 off off on # 初期値は `security class 1 on off`
+          - sshd auth method publickey
+          - sshd host lan
+          - sshd hide openssh version on
+          # [telnet 無効化](https://iroiro-memo.hatenablog.com/entry/2020/06/03/003000)
+          - telnetd service off
+          - telnetd host none # 初期値は `telnetd host lan`
+
+  vars:
+    ansible_network_os: yamaha_network.rtx.rtx
+    ansible_become: true
+
+  vars_prompt:
+    - name: ansible_user
+      prompt: What is login user for RTX1210?
+      private: no
