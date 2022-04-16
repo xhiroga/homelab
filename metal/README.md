@@ -1,6 +1,10 @@
-# RTX1210
+# Metal
 
-## Configuration
+Configuration for bare-metal machines.
+
+## RTX1210
+
+### Configuration
 
 ```
 login password
@@ -10,8 +14,7 @@ sshd host key generate
 sshd service on
 ```
 
-
-## References and Inspirations
+### References and Inspirations
 
 - [コマンドリファレンス](http://www.rtpro.yamaha.co.jp/RT/manual/rt-common/index.html)
 - [Ansibleによる運用自動化について](http://www.rtpro.yamaha.co.jp/RT/docs/ansible/index.html)

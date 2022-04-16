@@ -1,6 +1,6 @@
 #!/bin/sh ansible-playbook
 ---
-- hosts: RTX1210
+- hosts: rtx1210
   connection: network_cli
 
   tasks:
