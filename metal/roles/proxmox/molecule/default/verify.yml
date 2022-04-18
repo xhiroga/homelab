@@ -1,0 +1,30 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Show file
+      command: grep '{{ ignore_no_valid_subscription }}' '/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js'
+      register: result
+    - name: Assert output
+      assert:
+        that: "'{{ ignore_no_valid_subscription }}' in result.stdout"
+    - name: Show interface file
+      command: grep '{{ interfaces_address }}/{{ interfaces_subnet_mask }}' '/etc/network/interfaces'
+      register: interface_result
+    - name: Assert interface output
+      assert:
+        that: "'{{ interfaces_address }}/{{ interfaces_subnet_mask }}' in interface_result.stdout"
+    - name: Show hosts file
+      command: grep '{{ interfaces_address }} {{ pve_hostname }}.{{ pve_domain }} {{ pve_hostname }}' '{{ etc_hosts_path }}'
+      register: hosts_result
+    - name: Assert hosts output
+      assert:
+        that: "'{{ interfaces_address }} {{ pve_hostname }}.{{ pve_domain }} {{ pve_hostname }}' in hosts_result.stdout"
+  vars:
+    ignore_no_valid_subscription: "orig_cmd();return;let res = response.result;"
+    interfaces_address: 192.168.100.11
+    interfaces_subnet_mask: 24
+    etc_hosts_path: /etc/hosts.test
+    pve_hostname: pve1
+    pve_domain: local

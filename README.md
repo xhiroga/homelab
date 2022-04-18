@@ -1,5 +1,17 @@
 # homelab
 
+[@xhiroga](https://github.com/xhiroga)'s homelab.
+
+
+## Prerequisites
+
+Install Ansible and [Poetory](https://python-poetry.org/).
+
+```shell
+brew install ansible poetry
+poetry install
+```
+
 
 ## References and Inspirations
 

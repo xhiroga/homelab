@@ -2,6 +2,16 @@
 
 Configuration for bare-metal machines.
 
+## Role Development
+
+### Scaffolding
+
+```shell
+cd roles
+poetry run molecule init role xhiroga.proxmox -d docker
+```
+
+
 ## RTX1210
 
 ### Configuration

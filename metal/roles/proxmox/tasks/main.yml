@@ -1,0 +1,30 @@
+---
+# tasks file for proxmox
+- name: Disable subscription dialog
+  replace:
+    path: /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
+    regexp: '^\s*let res = response\.result;$'
+    replace: "                    orig_cmd();return;let res = response.result;"
+
+- name: Set vmbr0 address
+  community.general.interfaces_file:
+    dest: /etc/network/interfaces
+    iface: vmbr0
+    option: address
+    value: "{{ interfaces_address }}/{{ interfaces_subnet_mask }}"
+    backup: yes
+    state: present
+  register: etc_network_interfaces
+
+- name: Configure hosts
+  ansible.builtin.replace:
+    dest: "{{ etc_hosts_path }}"
+    regexp: '^(?:[0-9]{1,3}\.){3}[0-9]{1,3} {{ pve_hostname }}.{{ pve_domain }} {{ pve_hostname }}$'
+    replace: "{{ interfaces_address }} {{ pve_hostname }}.{{ pve_domain }} {{ pve_hostname }}"
+  register: etc_hosts
+
+- name: Reboot if network configuration changed
+  ansible.builtin.reboot:
+  when: etc_network_interfaces.changed or etc_hosts.changed
+  tags:
+    - molecule-notest

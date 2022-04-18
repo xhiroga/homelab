@@ -1,0 +1,13 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include xhiroga.proxmox"
+      include_role:
+        name: "xhiroga.proxmox"
+  vars:
+    interfaces_address: 192.168.100.11
+    interfaces_subnet_mask: 24
+    etc_hosts_path: /etc/hosts.test
+    pve_hostname: pve1
+    pve_domain: local

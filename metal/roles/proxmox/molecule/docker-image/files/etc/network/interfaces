@@ -1,0 +1,14 @@
+auto lo
+iface lo inet loopback
+
+iface wlp41s0 inet manual
+
+auto vmbr0
+iface vmbr0 inet static
+        address 192.168.1.10/24
+        gateway 192.168.1.1
+        bridge-ports enp42s0
+        bridge-stp off
+        bridge-fd 0
+
+iface enp42s0 inet manual
