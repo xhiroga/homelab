@@ -1,0 +1,3 @@
+---
+ip: "192.168.100.13" # means LAN1-3 of RTX1210.
+mask: "255.255.255.0" # http://192.168.100.1/easy/basic/lan.html
