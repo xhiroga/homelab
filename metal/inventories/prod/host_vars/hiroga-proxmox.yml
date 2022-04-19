@@ -1,4 +1,4 @@
-interfaces_address: 192.168.100.11
+interfaces_address: 192.168.100.12
 interfaces_subnet_mask: 24
 pve_hostname: pve
 pve_domain: home.arpa
