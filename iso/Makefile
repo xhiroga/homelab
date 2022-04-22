@@ -1,4 +1,4 @@
-PVE_VERSION = 7.0-2
+PVE_VERSION = 7.1-2
 UBUNTU_VERSION = 20.04.4
 
 proxmox-ve_$(PVE_VERSION).iso:
