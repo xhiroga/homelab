@@ -2,7 +2,7 @@
 ---
 - name: Configure Diskstation
   hosts: diskstation
-  become: true # only root has permission to `/usr/bin/capsh`
+  become: true # only root has permission to exec `/usr/bin/capsh`
   tasks:
     - name: Configure IP address manually
       ansible.builtin.shell: /usr/syno/sbin/synonet --manual eth0 {{ ip }} {{ mask }}
