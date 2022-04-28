@@ -11,4 +11,4 @@ proxmox:
 	ansible-playbook playbooks/proxmox.yml -i inventories/$${ENV:-prod} -K
 
 diskstation:
-	ansible-playbook playbooks/diskstation.yml -i inventories/$${ENV:-prod}
+	ansible-playbook playbooks/diskstation.yml -i inventories/$${ENV:-prod} -K
