@@ -1,4 +1,4 @@
-all: install rtx1210;
+all: install;
 
 install:
 	ansible-galaxy role install -r requirement.yml
