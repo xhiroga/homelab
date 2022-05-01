@@ -1,0 +1,6 @@
+apt_packages:
+  - arp-scan
+  - arping
+  - curl
+  - git
+  - vim

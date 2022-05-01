@@ -1,0 +1,17 @@
+---
+- name: Configure static ip
+  ansible.builtin.template:
+    src: ./templates/etc/netplan/99_config.yaml.j2
+    dest: /etc/netplan/99_config.yaml
+  become: true
+
+- name: Apply netplan
+  ansible.builtin.shell: netplan apply
+  become: true
+
+- name: Install a list of packages
+  ansible.builtin.apt:
+    pkg: "{{ apt_packages }}"
+    state: present
+    update_cache: yes
+  become: true

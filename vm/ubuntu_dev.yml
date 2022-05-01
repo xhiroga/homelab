@@ -1,0 +1,15 @@
+#!/bin/sh ansible-playbook
+---
+- name: Configure ubuntu dev
+  hosts: ubuntu_dev
+  roles:
+    - qemu_guest_agent
+    - ubuntu_dev
+    - homebrew
+    - onepassword
+    - { role: ngetchell.vscode, become: yes }
+    - {
+        role: pddg.ghq,
+        become: yes,
+        vars: { ghq_install_dir: /usr/local/bin, ghq_version: 1.2.1 },
+      }
