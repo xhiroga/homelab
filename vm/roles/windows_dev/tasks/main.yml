@@ -1,0 +1,24 @@
+---
+# tasks file for xhiroga.windows_dev
+- name: Modify Registry
+  ansible.windows.win_regedit:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    data: "{{ item.data }}"
+    datatype: '{{ item.datatype | default("dword") }}'
+  with_items:
+    # エクスプローラーの「登録されている拡張子は表示しない」の無効化
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+      value: HideFileExt
+      data: 0
+
+- name: List winget packages
+  ansible.windows.win_shell: winget list
+  register: winget_list
+
+# アプリケーション実行時にインストールするとエラーになることが多いので、初回に限る。
+- name: Install packages
+  # In the first time, manually put [Y] Yes to agreements terms.
+  ansible.windows.win_shell: winget install {{ item }}
+  loop: "{{ winget_packages }}"
+  when: item not in winget_list.stdout

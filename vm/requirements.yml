@@ -1,0 +1,6 @@
+collections:
+  - name: community.windows
+
+roles:
+  - src: "git+https://github.com/andif888/ansible-role-win10-languagepack.git"
+  - src: "git+https://github.com/xhiroga/ansible-roles.git"
