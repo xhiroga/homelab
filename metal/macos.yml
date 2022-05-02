@@ -11,4 +11,3 @@
     - role: macos
     - role: defaults
     - role: dev
-    - role: nvm
