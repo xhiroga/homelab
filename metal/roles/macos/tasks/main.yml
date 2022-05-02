@@ -1,4 +1,16 @@
 ---
+- name: Ensure dotfiles repository is cloned locally.
+  ansible.builtin.git:
+    repo: "{{ dotfiles_repo }}"
+    dest: "{{ dotfiles_repo_local_destination }}"
+    version: "{{ dotfiles_repo_version }}"
+
+- name: Install dotfiles
+  ansible.builtin.make:
+    chdir: "{{ dotfiles_repo_local_destination }}"
+    target: install
+    params: "{{ dotfiles_make_install_params }}"
+
 - name: Alfred Configuration
   shell: defaults write "com.runningwithcrayons.Alfred-Preferences" syncfolder {{ alfred_sync_folder }}
 #   - name: Write com.apple.space.plist
