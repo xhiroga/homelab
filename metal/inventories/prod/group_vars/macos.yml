@@ -1,0 +1,22 @@
+---
+dotfiles_repo: "https://github.com/xhiroga/dotfiles.git"
+dotfiles_repo_version: main
+dotfiles_repo_accept_hostkey: false
+dotfiles_repo_local_destination: "~/.ghq/github.com/xhiroga/dotfiles"
+
+homebrew_brewfile_dir: "files"
+nvm_node_versions:
+  - "8 --lts"
+  - "12 --lts"
+  - "14 --lts"
+  - "16 --lts"
+pnpm_global_packages:
+  - "@nestjs/cli"
+com_apple_dock_plist: /Users/hiroga/Library/Preferences/com.apple.dock.plist
+com_apple_dock_autohide: false
+com_apple_dock_orientation: "bottom"
+com_apple_screencapture_location: "~/OneDrive/users/hiroga/files/screencapture/hiroga-jict-MBP"
+com_apple_finder_apple_show_all_files: 1
+com_apple_finder_fx_enable_extension_change_warning: 0
+com_apple_AppleMultitouchTrackpad_Dragging: 1
+alfred_sync_folder: "~/OneDrive/users/hiroga/files/applications/Alfred"

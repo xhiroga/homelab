@@ -1,0 +1,14 @@
+#!/bin/sh ansible-playbook
+---
+- name: Configure macOS
+  hosts: macos
+  pre_tasks:
+    - name: Check kernel type
+      command: "uname -m"
+  roles:
+    - role: dotfiles
+    - role: geerlingguy.mac.homebrew
+      become: true
+    - role: defaults
+    - role: dev
+    - role: nvm

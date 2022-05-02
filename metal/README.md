@@ -11,6 +11,12 @@ cd roles
 poetry run molecule init role xhiroga.proxmox -d docker
 ```
 
+## macOS
+
+### References and Inspirations
+
+- [geerlingguy/mac\-dev\-playbook: Mac setup and configuration via Ansible\.](https://github.com/geerlingguy/mac-dev-playbook)
+
 
 ## YAMAHA RTX1210
 
