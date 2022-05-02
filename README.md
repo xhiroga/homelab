@@ -5,10 +5,9 @@
 
 ## Prerequisites
 
-Install Ansible and [Poetory](https://python-poetry.org/).
+Install [Poetory](https://python-poetry.org/).
 
 ```shell
-brew install ansible poetry
 poetry install
 ```
 
