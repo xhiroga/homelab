@@ -1,5 +1,6 @@
 ---
 dotfiles_repo_local_destination: ~/.ghq/github.com/xhiroga/dotfiles
+dotfiles_repo_version: main
 homebrew_brewfile_dir: "files"
 nvm_node_versions:
   - "8 --lts"
