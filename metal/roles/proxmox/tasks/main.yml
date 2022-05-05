@@ -6,6 +6,12 @@
     regexp: '^\s*let res = response\.result;$'
     replace: "                    orig_cmd();return;let res = response.result;"
 
+- name: Configure directory.
+  ansible.builtin.shell: pvesm set {{ pve_dir_storage }} --content {{ pve_dir_storage_content }}
+  # [pelican@ainoniwa\.net – Proxmox VEのcloudinitでuserdataを自由に調整する](https://www.ainoniwa.net/pelican/2021-08-10a.html)
+  # [pvesm\(1\)](https://pve.proxmox.com/pve-docs/pvesm.1.html)
+  tags: molecule-idempotence-notest
+
 - name: Set vmbr0 address
   community.general.interfaces_file:
     dest: /etc/network/interfaces
