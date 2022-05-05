@@ -1,9 +1,9 @@
 #!/bin/sh ansible-playbook
 ---
-- name: Configure ubuntu dev
-  hosts: ubuntu_dev
+- hosts: ubuntu_dev
   roles:
     - qemu_guest_agent
+    - netplan
     - ubuntu_dev
     - homebrew
     - onepassword
