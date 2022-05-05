@@ -6,5 +6,7 @@ COPY ./files/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js /usr/shar
 COPY ./files/etc/network/interfaces /etc/network/interfaces
 COPY ./files/etc/hosts.test /etc/hosts.test
 
+RUN ln -s /usr/bin/true /usr/sbin/pvesm
+
 # debug
 RUN apt update && apt install vim -y

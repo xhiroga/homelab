@@ -1,3 +1,5 @@
 ---
 # defaults file for proxmox
 etc_hosts_path: /etc/hosts
+pve_dir_storage: local
+pve_dir_storage_content: iso,backup,snippets,vztmpl
