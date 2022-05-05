@@ -1,0 +1,9 @@
+. {
+    whoami
+    errors
+    log
+}
+home.arpa {
+    file zones/db.home.arpa
+    log
+}

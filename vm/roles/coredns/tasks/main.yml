@@ -1,0 +1,14 @@
+# sudo systemctl status coredns
+---
+- ansible.builtin.service_facts:
+- ansible.builtin.assert:
+    that: ansible_facts.services['coredns.service'].state == 'running'
+- ansible.builtin.stat:
+    path: /usr/local/bin/coredns
+- ansible.builtin.stat:
+    path: /etc/coredns/Corefile
+- ansible.builtin.shell: dig -p {{ coredns_dns_port }} @localhost +noall +additional
+  changed_when: False
+  register: dig
+- ansible.builtin.assert:
+    that: "'127.0.0.1' in dig.stdout"
