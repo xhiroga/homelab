@@ -1,16 +1,6 @@
 #!/bin/sh ansible-playbook
 ---
 - hosts: windows_dev
-  vars:
-    winget_packages:
-      - "AgileBits.1Password"
-      - "Git.Git"
-      - "Microsoft.VisualStudioCode"
-      - "SoftwareFreedomConservancy.QEMUGuestAgent"
-      - "WinSCP.WinSCP"
-    language_experience_pack_download_dir: "C:\\Temp"
-    language_experience_packs:
-      - ja-jp
   roles:
     - windows
     # - ansible-role-win10-languagepack # works well, but should skip downloading iso files.
