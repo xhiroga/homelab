@@ -19,6 +19,7 @@ win_mapped_drives:
 winget_packages:
   - "AgileBits.1Password"
   - "Git.Git"
+  - "LINE.LINE"
   - "Microsoft.VisualStudioCode"
   - "SoftwareFreedomConservancy.QEMUGuestAgent"
   - "WinSCP.WinSCP"
