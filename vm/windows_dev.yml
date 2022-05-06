@@ -13,4 +13,4 @@
       - ja-jp
   roles:
     - windows
-    - ansible-role-win10-languagepack # works well, but should skip downloading iso files.
+    # - ansible-role-win10-languagepack # works well, but should skip downloading iso files.
