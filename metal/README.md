@@ -8,7 +8,7 @@ Configuration for bare-metal machines.
 
 ```shell
 cd roles
-poetry run molecule init role xhiroga.proxmox -d docker
+poetry run molecule init role proxmox -d docker
 ```
 
 ## macOS

@@ -3,4 +3,4 @@
 - name: Configure proxmox server
   hosts: proxmox
   roles:
-    - xhiroga.proxmox
+    - proxmox

@@ -2,9 +2,9 @@
 - name: Converge
   hosts: all
   tasks:
-    - name: "Include xhiroga.proxmox"
+    - name: "Include proxmox"
       include_role:
-        name: "xhiroga.proxmox"
+        name: "proxmox"
   vars:
     interfaces_address: 192.168.100.11
     interfaces_subnet_mask: 24
