@@ -1,4 +1,4 @@
-ansible_host: 192.168.100.151
+ansible_host: 192.168.100.150
 ansible_user: hiroga
 ansible_password: !vault |
   $ANSIBLE_VAULT;1.1;AES256
