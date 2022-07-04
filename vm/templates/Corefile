@@ -1,0 +1,9 @@
+. {
+    forward . 1.1.1.1:53 1.0.0.1:53
+    errors
+    log
+}
+home.arpa {
+    file zones/db.home.arpa
+    log
+}

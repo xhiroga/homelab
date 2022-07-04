@@ -1,0 +1,2 @@
+coredns_config_file: Corefile
+coredns_dns_port: 1053 # In my case, port 53 is conflicted with systemd-resolve.

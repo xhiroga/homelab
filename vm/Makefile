@@ -4,6 +4,10 @@ requirements:
 	poetry run ansible-galaxy collection install -p ~/.ansible/roles -r requirements.yml
 	poetry run ansible-galaxy role install -p ~/.ansible/roles -r requirements.yml
 
+coredns:
+	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook coredns.yml -i inventories/$${ENV:-prod} -K
+	# Avoid "ERROR! A worker was found in a dead state" in the TASK [cloudalchemy.coredns : Get checksum for amd64 architecture].
+
 ubuntu_dev:
 	poetry run ansible-playbook ubuntu_dev.yml -i inventories/$${ENV:-prod} -K
 

@@ -1,0 +1,17 @@
+$ORIGIN home.arpa.
+@	3600	IN	SOA	prisoner.iana.org. hostmaster.root-servers.org. (
+				1			; serial
+				604800		; refresh (2 hours)
+				60			; retry (1 hour)
+				604800		; expire (2 weeks)
+				604800		; minimum (1 hour)
+				)
+
+	3043	IN	NS	blackhole-1.iana.org.
+	3043	IN	NS	blackhole-2.iana.org.
+
+rtx	IN	A	192.168.100.1
+
+pve	IN	A	192.168.100.12
+
+diskstation	IN	A	192.168.100.13

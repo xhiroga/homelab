@@ -1,0 +1,9 @@
+#!/bin/sh ansible-playbook
+---
+- hosts: coredns
+  roles:
+    - qemu_guest_agent
+    - netplan
+    - cloudalchemy.coredns
+    # NOTE: coredns_zone_files_paths should be under `./files`. See [Ansible の template モジュールで with\_fileglob を使う \| 備忘録](https://onair.jp/archives/4722.html)
+    - coredns
