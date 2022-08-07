@@ -16,3 +16,9 @@ virtio-win.iso:
 
 android-x86_64-$(ANDROID_X86_VERSION).iso:
 	wget https://ftp.halifax.rwth-aachen.de/osdn/android-x86/69704/$@ -O $@
+
+chromeos_14516.0.0_reven_recovery_dev-channel_mp-v2.bin.zip:
+	wget https://dl.google.com/dl/edgedl/chromeos/recovery/$@ -O $@
+
+chromeos_14516.0.0_reven_recovery_dev-channel_mp-v2.bin: chromeos_14516.0.0_reven_recovery_dev-channel_mp-v2.bin.zip;
+	unzip chromeos_14516.0.0_reven_recovery_dev-channel_mp-v2.bin.zip
