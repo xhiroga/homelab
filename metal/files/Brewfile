@@ -53,10 +53,8 @@ brew "helm"
 brew "helmfile"  # helm plugin install https://github.com/databus23/helm-diff needed
 brew "heroku"
 brew "jq"
-brew "kubernetes-cli"
 brew "kubetail"
 brew "lazydocker"
-brew "mas"
 brew "mecab"
 brew "mecab-ipadic"
 brew "mongodb-community"
@@ -83,7 +81,6 @@ brew "tldr"
 brew "tmux"
 brew "tree"
 brew "watchman" # for React Native
-brew "weaveworks/tap/eksctl"
 brew "wget"
 brew "xz"
 brew "yarn"
@@ -133,13 +130,3 @@ cask "vagrant"
 cask "wireshark"
 cask "xquartz"
 cask "zoom"
-
-mas "Cyberduck", id: 409222199
-mas "Hex Fiend", id: 1342896380
-mas "Microsoft Excel", id: 462058435
-mas "Microsoft PowerPoint", id: 462062816
-mas "Microsoft Word", id: 462054704
-mas "Microsoft Remote Desktop 4+", id: 1295203466
-mas "The Unarchiver", id: 425424353
-mas "Transporter", id: 1450874784
-mas "Xcode", id: 497799835
