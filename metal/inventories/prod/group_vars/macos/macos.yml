@@ -2,11 +2,6 @@
 dotfiles_repo_local_destination: ~/.ghq/github.com/xhiroga/dotfiles
 dotfiles_repo_version: main
 homebrew_brewfile_dir: "files"
-nvm_node_versions:
-  - "8 --lts"
-  - "12 --lts"
-  - "14 --lts"
-  - "16 --lts"
 pnpm_global_packages:
   - "@nestjs/cli"
 com_apple_dock_plist: /Users/hiroga/Library/Preferences/com.apple.dock.plist
