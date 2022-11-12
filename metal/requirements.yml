@@ -1,4 +1,5 @@
 roles:
 
 collections:
+  - name: geerlingguy.mac
   - name: yamaha_network.rtx
