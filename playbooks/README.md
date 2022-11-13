@@ -15,9 +15,32 @@ poetry run molecule init role proxmox -d docker
 
 ### Prerequisites
 
+```shell
+# Set environment variables
+export GIT_USER_NAME=xhiroga
+export GIT_USER_EMAIL=13391129+xhiroga@users.noreply.github.com
+export ANSIBLE_VALUE_PASSWORD_FILE~/.ssh/id_ed25519
+```
+
+### from collection
+
+```shell
+ansible-galaxy collection install git@github.com:xhiroga/homelab.git,feat/homelab-as-a-ansible-collection
+# Role dependencies looks not installed automatically. [How to install ansible galaxy a collection's role dependencies? \- Stack Overflow](https://stackoverflow.com/questions/60829595/how-to-install-ansible-galaxy-a-collections-role-dependencies)
+tmp=$(mktemp); curl -fsSL https://raw.githubusercontent.com/xhiroga/homelab/feat/homelab-as-a-ansible-collection/requirements.yml > ${tmp}.yml; ansible-galaxy role install -r ${tmp}.yml; rm ${tmp}.yml
+
+ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -e "dotfiles_make_install_params={\"GIT_USER_NAME\":\"${GIT_USER_NAME}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL}\",\"ANSIBLE_VALUE_PASSWORD_FILE\":\"${ANSIBLE_VALUE_PASSWORD_FILE}\"}" -c local -i localhost, -K
+```
+
+## from local
+
+```shell
+ansible-playbook macos.yml -i inventories/${ENV:-prod} -K
+```
+
 ### References and Inspirations
 
-- [geerlingguy/mac\-dev\-playbook: Mac setup and configuration via Ansible\.](https://github.com/geerlingguy/mac-dev-playbook)
+- [geerlingguy/mac-dev-playbook: Mac setup and configuration via Ansible.](https://github.com/geerlingguy/mac-dev-playbook)
 
 
 ## YAMAHA RTX1210
