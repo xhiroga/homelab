@@ -1,0 +1,13 @@
+---
+- name: Ensure dotfiles repository is cloned locally.
+  ansible.builtin.git:
+    repo: https://github.com/xhiroga/dotfiles
+    dest: "{{ dotfiles_repo_local_destination }}"
+    version: "{{ dotfiles_repo_version }}"
+  failed_when: false # because if local modification exist, it fails.
+
+- name: Install dotfiles
+  ansible.builtin.make:
+    chdir: "{{ dotfiles_repo_local_destination }}"
+    target: install
+    params: "{{ dotfiles_make_install_params }}"

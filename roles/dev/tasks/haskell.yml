@@ -1,0 +1,16 @@
+## References
+# [おすすめHaskellプロジェクト作成方法\(ほぼ\)2021年版](https://zenn.dev/autotaker/articles/haskell-setup-2021)
+---
+- name: Install GHCup
+  ansible.builtin.shell: curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh
+  args:
+    creates: ${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env
+
+- name: Install Haskell tools
+  ansible.builtin.shell: |
+    [ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
+    ghcup install ghc {{ ghcup_ghc_version }}
+    ghcup install cabal {{ ghcup_cabal_version }}
+    ghcup install hls {{ ghcup_hsl_version }}
+  args: { executable: /bin/bash }
+  changed_when: false

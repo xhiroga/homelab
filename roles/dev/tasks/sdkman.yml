@@ -1,0 +1,40 @@
+---
+- name: Install SDKMAN!
+  ansible.builtin.shell: curl -s https://get.sdkman.io | bash
+  args:
+    creates: ~/.sdkman/bin/sdkman-init.sh
+
+- name: Install Gradle
+  ansible.builtin.shell: |
+    source ~/.sdkman/bin/sdkman-init.sh
+    sdk install gradle {{ item }}
+  args: { executable: /bin/bash }
+  loop: "{{ sdk_gradle_versions }}"
+
+- name: Install Java
+  ansible.builtin.shell: |
+    source ~/.sdkman/bin/sdkman-init.sh
+    sdk install java {{ item }}
+  args: { executable: /bin/bash }
+  loop: "{{ sdk_java_versions }}"
+
+- name: Install Kotlin
+  ansible.builtin.shell: |
+    source ~/.sdkman/bin/sdkman-init.sh
+    sdk install kotlin {{ item }}
+  args: { executable: /bin/bash }
+  loop: "{{ sdk_kotlin_versions }}"
+
+- name: Install Maven
+  ansible.builtin.shell: |
+    source ~/.sdkman/bin/sdkman-init.sh
+    sdk install maven {{ item }}
+  args: { executable: /bin/bash }
+  loop: "{{ sdk_maven_versions }}"
+
+- name: Install Scala
+  ansible.builtin.shell: |
+    source ~/.sdkman/bin/sdkman-init.sh
+    sdk install scala {{ item }}
+  args: { executable: /bin/bash }
+  loop: "{{ sdk_scala_versions }}"

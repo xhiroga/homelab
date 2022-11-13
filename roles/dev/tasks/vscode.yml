@@ -1,0 +1,33 @@
+---
+- name: Check VSCode installed.
+  ansible.builtin.stat:
+    path: "/Applications/Visual Studio Code.app"
+  register: visual_studio_code_app
+
+- name: Install VSCode.
+  block:
+    - name: Temporary directory.
+      ansible.builtin.tempfile:
+        state: directory
+      register: temp_dir
+
+    - name: Install VSCode.
+      ansible.builtin.shell: |
+        VSCODE_ZIP={{ temp_dir.path }}/VSCode-darwin-stable.zip
+        code -h >/dev/null 2>&1 || wget 'https://go.microsoft.com/fwlink/?LinkID=620882' -O "$VSCODE_ZIP" && unzip "$VSCODE_ZIP" && rm -f "$VSCODE_ZIP" && mv "Visual Studio Code.app" /Applications
+      when: ansible_os_family == 'Darwin'
+
+  when: visual_studio_code_app.stat.exists == False
+
+- name: Check code installed.
+  ansible.builtin.stat:
+    path: "/usr/local/bin/code"
+  register: code
+
+- name: Link code
+  ansible.builtin.file:
+    src: "/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code"
+    dest: "/usr/local/bin/code"
+    state: link
+  become: true
+  when: code.stat.exists == false

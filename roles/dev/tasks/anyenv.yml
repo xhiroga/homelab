@@ -1,0 +1,63 @@
+---
+- name: Check anyenv installed
+  ansible.builtin.shell: |
+    export PATH=$HOME/.anyenv/bin:$PATH
+    anyenv --version
+  args: { executable: /bin/bash }
+  changed_when: false
+  ignore_errors: true
+  register: anyenv_versions
+
+- name: Install anyenv by brew
+  ansible.builtin.shell: brew install anyenv
+  when: anyenv_versions.rc == 127 and has_brew_version.rc != 127
+
+- name: Install anyenv
+  ansible.builtin.shell: |
+    git clone https://github.com/anyenv/anyenv ~/.anyenv
+    echo 'export PATH="$HOME/.anyenv/bin:$PATH"' >> ~/.bashrc
+  when: anyenv_versions.rc == 127 and has_brew_version.rc == 127
+
+- name: Install or update manifest
+  ansible.builtin.shell: |
+    export PATH=$HOME/.anyenv/bin:$PATH
+    yes | anyenv install --init || anyenv install --update
+  args: { executable: /bin/bash }
+  tags: molecule-idempotence-notest
+
+- name: Install or update anyenv-update plugin
+  ansible.builtin.shell: |
+    export PATH=$HOME/.anyenv/bin:$PATH
+    mkdir -p $(anyenv root)/plugins
+    git clone https://github.com/znz/anyenv-update.git $(anyenv root)/plugins/anyenv-update || git -C $(anyenv root)/plugins/anyenv-update pull
+  args: { executable: /bin/bash }
+  tags: molecule-idempotence-notest
+
+- name: Install pyenv
+  ansible.builtin.shell: |
+    export PATH=$HOME/.anyenv/bin:$PATH
+    anyenv install -s pyenv
+  args: { executable: /bin/bash }
+  changed_when: false
+
+- name: Update all **env and all plugins
+  ansible.builtin.shell: |
+    export PATH=$HOME/.anyenv/bin:$PATH
+    anyenv update
+  args: { executable: /bin/bash }
+  changed_when: false
+
+- name: Install python versions
+  ansible.builtin.shell: |
+    export PATH=$HOME/.anyenv/bin:$PATH
+    eval "$(anyenv init -)"
+    pyenv install -s {{ item }}
+  loop: "{{ pyenv_versions }}"
+  changed_when: false
+
+- name: Configure pyenv global version
+  ansible.builtin.shell: |
+    export PATH=$HOME/.anyenv/bin:$PATH
+    eval "$(anyenv init -)"
+    pyenv global {{ pyenv_global_version }}
+  changed_when: false

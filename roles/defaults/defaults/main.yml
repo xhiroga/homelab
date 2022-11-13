@@ -1,0 +1,56 @@
+---
+com_apple_controlcenter_nsstatusitem_visible_battery: 1
+com_apple_controlcenter_nsstatusitem_visible_bentobox: 1
+com_apple_controlcenter_nsstatusitem_visible_bluetooth: 1
+com_apple_controlcenter_nsstatusitem_visible_clock: 1
+com_apple_controlcenter_nsstatusitem_visible_donotdisturb: 1
+com_apple_controlcenter_nsstatusitem_visible_wifi: 1
+
+com_apple_dock_autohide: false # 0: false, 1: true
+com_apple_dock_mru_spaces: false
+com_apple_dock_orientation: bottom # bottom, left, right
+com_apple_dock_plist: ~/Library/Preferences/com.apple.dock.plist
+com_apple_dock_show_recents: false
+com_apple_dock_tilesize: 36
+
+com_apple_finder_apple_show_all_files: 0
+com_apple_finder_fx_enable_extension_change_warning: 1
+
+com_apple_menuextra_clock_DataFormat: "EEE d MMM HH:mm:ss"
+
+com_apple_mouse_tapBehavior: 1
+
+com_apple_screencapture_location: ~/screencapture
+
+com_apple_symbolichotkeys_AppleSymbolicHotKeys:
+  # Change "Move focus to next window" shortcut to Alt + Tab
+  27: "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>48</integer><integer>524288</integer></array><key>type</key><string>standard</string></dict></dict>"
+
+  # Enable selecting input source by shortcut (Ctrl + Space (+Shift))
+  60: "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>262144</integer></array><key>type</key><string>standard</string></dict></dict>"
+  61: "<dict><key>enabled</key><true/><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>786432</integer></array><key>type</key><string>standard</string></dict></dict>"
+
+  # Disable "Open man page in terminal"
+  123: "<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>22</integer><integer>262144</integer></array><key>type</key><string>standard</string></dict></dict>"
+
+  # Disable "Search word in terminal man page index"
+  124: "<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>26</integer><integer>262144</integer></array><key>type</key><string>standard</string></dict></dict>"
+
+com_apple_driver_AppleBluetoothMultitouch_trackpad_Clicking: true
+
+com_apple_driver_AppleBluetoothMultitouch_trackpad_Dragging: true
+
+# Double tap to drag
+com_apple_AppleMultitouchTrackpad_Dragging: 1
+
+com_apple_HIToolbox_AppleDictationAutoEnable: 0
+
+com_apple_Safari_ShowDevelopMenu: 1 # 0: Hide, 1: Show
+
+NSGlobalDomain_com_apple_trackpad_scaling: 6
+
+NSGlobalDomain_InitialKeyRepeat: 10
+
+NSGlobalDomain_KeyRepeat: 1
+
+NSGlobalDomain_NSAutomaticSpellingCorrectionEnabled: false

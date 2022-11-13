@@ -1,0 +1,11 @@
+---
+- name: Converge
+  hosts: all
+  tasks:
+    - name: "Include dev"
+      include_role:
+        name: "dev"
+  vars:
+    pyenv_versions:
+      - 3.6.15
+    pyenv_global_version: 3.6.15

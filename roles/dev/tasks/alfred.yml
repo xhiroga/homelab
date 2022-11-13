@@ -1,0 +1,5 @@
+---
+- name: Alfred Configuration
+  shell: defaults write "com.runningwithcrayons.Alfred-Preferences" syncfolder {{ alfred_sync_folder }}
+#   - name: Write com.apple.space.plist
+#     shell: defaults write -dict com.agilebits.onepassword7 AllSpaces -dict com.apple.spaces app-bindings -dict com.apple.finder AllSpaces -dict com.apple.systempreferences AllSpaces -dict com.apple.terminal AllSpaces

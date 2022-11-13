@@ -1,0 +1,11 @@
+---
+homebrew_brewfile_dir: "files"
+go_packages:
+  - github.com/spf13/cobra-cli@latest
+pnpm_global_packages:
+  - "@nestjs/cli"
+com_apple_dock_autohide: false
+com_apple_dock_orientation: "bottom"
+com_apple_finder_apple_show_all_files: 1
+com_apple_finder_fx_enable_extension_change_warning: 0
+com_apple_AppleMultitouchTrackpad_Dragging: 1

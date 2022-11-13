@@ -1,0 +1,31 @@
+---
+ghcup_ghc_version: 9.2.2 # [Download — The Glasgow Haskell Compiler](https://www.haskell.org/ghc/download.html)
+ghcup_cabal_version: 3.6.2.0 # [Releases · haskell/cabal](https://github.com/haskell/cabal/releases)
+ghcup_hsl_version: 1.7.0.0 # [Releases · haskell/haskell\-language\-server](https://github.com/haskell/haskell-language-server/releases)
+
+go_packages:
+  - github.com/spf13/cobra-cli@latest
+
+pyenv_versions:
+  - 3.6.15 # https://peps.python.org/pep-0494/
+  - 3.7.13 # https://peps.python.org/pep-0537/
+  - 3.8.13 # https://peps.python.org/pep-0569/
+  - 3.9.12 # https://peps.python.org/pep-0596/
+  - 3.10.4 # https://peps.python.org/pep-0619/
+pyenv_global_version: 3.9.12
+
+rbenv_versions: # https://www.ruby-lang.org/en/downloads/releases/
+  - 2.6.10
+rbenv_global_version: 2.6.10
+
+sdk_gradle_versions:
+  - 7.4.2
+sdk_java_versions:
+  - 8.332.08.1-amzn
+  - 22.1.0.r17-grl
+sdk_kotlin_versions:
+  - 1.6.21
+sdk_maven_versions:
+  - 3.8.5
+sdk_scala_versions:
+  - 3.1.2

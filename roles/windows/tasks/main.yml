@@ -1,0 +1,103 @@
+---
+# tasks file for windows
+- name: Modify Registry
+  ansible.windows.win_regedit:
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    data: "{{ item.data }}"
+    datatype: '{{ item.datatype | default("dword") }}'
+  with_items:
+    # エクスプローラーの「登録されている拡張子は表示しない」の無効化
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+      value: HideFileExt
+      data: 0
+    # [How to toggle Show/Hide hidden files in Windows through command line? \- Super User](https://superuser.com/questions/1151844/how-to-toggle-show-hide-hidden-files-in-windows-through-command-line)
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+      value: Hidden
+      data: 1
+      type: dword
+    # Shift + SpaceでIMEのOn/Offを切り替える
+    - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
+      value: KeyAssignmentShiftSpace
+      data: 2 # 2: IME-on/off, 3: Alt Width Space, 4: None
+      type: dword
+
+- name: Language for non-Unicode programs / Unicode 対応ではないプログラムの言語
+  ansible.windows.win_shell: Set-WinSystemLocale ja-JP
+  # Require `Restart-Computer`
+
+# [Enable WSL and SSH into Windows with Bash \| SimpleBackups Docs](https://simplebackups.com/docs/knowledge-base/tutorials/enable-wsl-and-ssh-into-windows-with-bash.html)
+- name: Enable ssh
+  ansible.windows.win_shell: Add-WindowsCapability -Online -Name OpenSSH.Server~~~~0.0.1.0
+
+- name: Enable ssh agent
+  ansible.windows.win_service:
+    name: ssh-agent
+    state: started
+    start_mode: auto
+
+- name: Enable ssh server
+  ansible.windows.win_service:
+    name: sshd
+    state: started
+    start_mode: auto
+
+- name: Copy ssh key
+  ansible.windows.win_get_url:
+    url: "{{ administrators_authorized_keys_url }}"
+    dest: C:\ProgramData\ssh\administrators_authorized_keys
+
+- name: Disable inheritance
+  ansible.windows.win_acl_inheritance:
+    path: C:\ProgramData\ssh\administrators_authorized_keys
+    state: absent
+
+- name: Appropriately ACL the authorized_keys file on your server for Administrators
+  ansible.windows.win_acl:
+    user: Administrators
+    path: C:\ProgramData\ssh\administrators_authorized_keys
+    rights: FullControl
+    type: allow
+    state: present
+
+- name: Appropriately ACL the authorized_keys file on your server for SYSTEM
+  ansible.windows.win_acl:
+    user: SYSTEM
+    path: C:\ProgramData\ssh\administrators_authorized_keys
+    rights: FullControl
+    type: allow
+    state: present
+
+- name: List winget packages
+  # ansible.windows.win_shell: win-get list
+  ansible.windows.win_shell: Invoke-Expression "& '$(Join-Path (Get-AppxPackage Microsoft.DesktopAppInstaller).InstallLocation "winget.exe")' list" # https://github.com/microsoft/winget-cli/issues/1474#issuecomment-1249701447
+  register: winget_list
+
+# アプリケーション実行時にインストールするとエラーになることが多いので、初回に限る。
+- name: Install packages
+  # In the first time, manually put [Y] Yes to agreements terms.
+  # ansible.windows.win_shell: winget install {{ item }}
+  ansible.windows.win_shell: Invoke-Expression "& '$(Join-Path (Get-AppxPackage Microsoft.DesktopAppInstaller).InstallLocation "winget.exe")' install {{ item }}" # https://github.com/microsoft/winget-cli/issues/1474#issuecomment-1249701447
+  loop: "{{ winget_packages }}"
+  when: item not in winget_list.stdout
+
+- name: Enable File and Printer Sharing
+  ansible.windows.win_command: netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+
+- name: Enable Network Discovery
+  ansible.windows.win_command: netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes
+
+# [Windows PCからローカルネットワーク内のSynology NASにファイルを保存する方法は？ \- Synology ナレッジセンター](https://kb.synology.com/ja-jp/DSM/tutorial/How_to_map_shared_folder_Windows_PC)
+- name: Create mapped drive with credentials that do not persist on the next logon
+  community.windows.win_mapped_drive:
+    letter: "{{ item.letter }}"
+    path: \\{{ item.nas_name }}\{{ item.nas_shared_folder_name }}
+    state: present
+    username: "{{ item.nas_username }}"
+    password: "{{ item.nas_password }}"
+  loop: "{{ win_mapped_drives }}"
+  no_log: true # to prevent to show `item.nas_password`
+  register: win_mapped_drives
+
+- name: Restart Explorer
+  ansible.windows.win_shell: stop-process -name explorer –force
