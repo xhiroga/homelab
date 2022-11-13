@@ -1,6 +1,7 @@
 inventories/prod/group_vars/macos/local.yml:
-	echo "com_apple_screencapture_location: $${COM_APPLE_SCREENCAPTHRE_LOCATION}" > ./inventories/prod/group_vars/macos/local.yml
-	echo "dotfiles_make_install_params:\n  GIT_USER_NAME: \"$${GIT_USER_NAME}\"\n  GIT_USER_EMAIL: \"$${GIT_USER_EMAIL}\"\n  ANSIBLE_VALUE_PASSWORD_FILE: \"$${ANSIBLE_VALUE_PASSWORD_FILE}\"" >> ./inventories/prod/group_vars/macos/local.yml
+	echo "com_apple_screencapture_location: $${COM_APPLE_SCREENCAPTHRE_LOCATION}" > $@
+	echo "alfred_sync_folder: $${ALFRED_SYNC_FOLDER}" >> $@
+	echo "dotfiles_make_install_params:\n  GIT_USER_NAME: \"$${GIT_USER_NAME}\"\n  GIT_USER_EMAIL: \"$${GIT_USER_EMAIL}\"\n  ANSIBLE_VALUE_PASSWORD_FILE: \"$${ANSIBLE_VALUE_PASSWORD_FILE}\"" >> $@
 
 macos: inventories/prod/group_vars/macos/local.yml;
 	poetry run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K
