@@ -16,17 +16,19 @@ export ANSIBLE_VALUE_PASSWORD_FILE~/.ssh/id_ed25519
 ### from collection
 
 ```shell
-ansible-galaxy collection install git@github.com:xhiroga/homelab.git,feat/homelab-as-a-ansible-collection
-# Role dependencies looks not installed automatically. [How to install ansible galaxy a collection's role dependencies? \- Stack Overflow](https://stackoverflow.com/questions/60829595/how-to-install-ansible-galaxy-a-collections-role-dependencies)
+ansible-galaxy collection install git@github.com:xhiroga/homelab.git,make
 tmp=$(mktemp); curl -fsSL https://raw.githubusercontent.com/xhiroga/homelab/feat/homelab-as-a-ansible-collection/requirements.yml > ${tmp}.yml; ansible-galaxy role install -r ${tmp}.yml; rm ${tmp}.yml
 
 ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -e "dotfiles_make_install_params={\"GIT_USER_NAME\":\"${GIT_USER_NAME}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL}\",\"ANSIBLE_VALUE_PASSWORD_FILE\":\"${ANSIBLE_VALUE_PASSWORD_FILE}\"}" -c local -i localhost, -K
 ```
 
+Role dependencies are not installed automatically. See [How to install ansible galaxy a collection's role dependencies? - Stack Overflow](https://stackoverflow.com/questions/60829595/how-to-install-ansible-galaxy-a-collections-role-dependencies)
+
 ## from local
 
 ```shell
-ansible-playbook macos.yml -i inventories/${ENV:-prod} -K
+make -C .. install
+make macos
 ```
 
 ### References and Inspirations
