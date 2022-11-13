@@ -1,12 +1,9 @@
 ---
-dotfiles_repo_local_destination: ~/.ghq/github.com/xhiroga/dotfiles
-dotfiles_repo_version: main
 homebrew_brewfile_dir: "files"
 go_packages:
   - github.com/spf13/cobra-cli@latest
 pnpm_global_packages:
   - "@nestjs/cli"
-com_apple_dock_plist: /Users/hiroga/Library/Preferences/com.apple.dock.plist
 com_apple_dock_autohide: false
 com_apple_dock_orientation: "bottom"
 com_apple_screencapture_location: "~/OneDrive/users/hiroga/files/screencapture/hiroga-jict-MBP"
