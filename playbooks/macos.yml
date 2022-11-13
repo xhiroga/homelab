@@ -8,6 +8,6 @@
   roles:
     - role: geerlingguy.mac.homebrew
       become: true
-    - role: macos
     - role: defaults
+    - role: dotfiles
     - role: dev
