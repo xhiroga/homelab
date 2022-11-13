@@ -16,10 +16,6 @@ proxmox:
 diskstation:
 	poetry run ansible-playbook diskstation.yml -i inventories/$${ENV:-prod} -K
 
-requirements:
-	poetry run ansible-galaxy collection install -p ~/.ansible/roles -r requirements.yml
-	poetry run ansible-galaxy role install -p ~/.ansible/roles -r requirements.yml
-
 ubuntu_dev:
 	poetry run ansible-playbook ubuntu_dev.yml -i inventories/$${ENV:-prod} -K
 
