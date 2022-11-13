@@ -1,0 +1,16 @@
+---
+onepassword_app_name: 1password
+onepassword_pre_reqs_debian:
+  - gnupg2 # apt-key uses gpg-agent
+onepassword_repo_debian_gpg_key_url: https://downloads.1password.com/linux/keys/1password.asc
+onepassword_repo_debian_gpg_key_keyring: /usr/share/keyrings/1password-archive-keyring.gpg
+onepassword_repo_debian: "deb [arch=amd64 signed-by={{ onepassword_repo_debian_gpg_key_keyring }}] https://downloads.1password.com/linux/debian/amd64 stable main"
+
+onepassword_cli_pre_reqs_debian: 
+  - unzip
+
+# Should change by version and OS
+onepassword_cli_url: https://cache.agilebits.com/dist/1P/op/pkg/v1.12.3/op_linux_amd64_v1.12.3.zip
+
+# https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x3fef9748469adbe15da7ca80ac2d62742012ea22
+onepassword_key_id: 3FEF9748469ADBE15DA7CA80AC2D62742012EA22

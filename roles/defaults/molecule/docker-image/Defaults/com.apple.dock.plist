@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>loc</key>
+	<string>ja_JP:JP</string>
+	<key>persistent-apps</key>
+	<array/>
+	<key>persistent-others</key>
+	<array/>
+	<key>recent-apps</key>
+	<array/>
+	<key>region</key>
+	<string>JP</string>
+	<key>version</key>
+	<integer>1</integer>
+</dict>
+</plist>

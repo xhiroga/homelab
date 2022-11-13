@@ -1,0 +1,26 @@
+---
+- name: Configure authorized keys
+  ansible.posix.authorized_key:
+    user: "{{ ssh_user }}"
+    state: present
+    key: "{{ ssh_authorized_key }}"
+
+- name: Configure .ssh permission
+  ansible.builtin.file:
+    path: ~/.ssh
+    owner: "{{ ssh_user }}"
+    mode: "0700"
+
+- name: Configure .ssh/authorized_keys permission
+  ansible.builtin.file:
+    path: ~/.ssh/authorized_keys
+    owner: "{{ ssh_user }}"
+    mode: "0600"
+
+- name: Disable password authenticated ssh
+  ansible.builtin.lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "^PasswordAuthentication"
+    insertafter: "^#PasswordAuthentication"
+    line: "PasswordAuthentication no"
+  become: true

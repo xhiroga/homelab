@@ -1,0 +1,88 @@
+---
+- name: NSGlobalDomain, Trackpad, mouse, keyboard, Bluetooth accessories, and input
+  ansible.builtin.shell: |
+    # Tracking speed
+    defaults write NSGlobalDomain com.apple.trackpad.scaling {{ NSGlobalDomain_com_apple_trackpad_scaling }}
+
+    defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool {{ NSGlobalDomain_NSAutomaticSpellingCorrectionEnabled }}
+
+    # Trackpad: enable tap to click for this user and for the login screen
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool {{ com_apple_driver_AppleBluetoothMultitouch_trackpad_Clicking }}
+    defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int {{ com_apple_mouse_tapBehavior }}
+    defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int {{ com_apple_mouse_tapBehavior }}
+
+    # Trackpad: enable dragging
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -bool {{ com_apple_driver_AppleBluetoothMultitouch_trackpad_Dragging }}
+    defaults write com.apple.AppleMultitouchTrackpad Dragging -bool {{ com_apple_driver_AppleBluetoothMultitouch_trackpad_Dragging }}
+
+    # Set a blazingly fast keyboard repeat rate
+    defaults write NSGlobalDomain InitialKeyRepeat -int {{ NSGlobalDomain_InitialKeyRepeat }}
+    defaults write NSGlobalDomain KeyRepeat -int {{ NSGlobalDomain_KeyRepeat }}
+
+    # Touch bar show Control Strip
+    defaults write com.apple.touchbar.agent PresentationModeGlobal -string fullControlStrip
+
+    # No Siri in touch bar
+    defaults write com.apple.controlstrip FullCustomized '("com.apple.system.group.brightness","com.apple.system.mission-control","com.apple.system.launchpad","com.apple.system.group.keyboard-brightness","com.apple.system.group.media","com.apple.system.group.volume")'
+
+- name: com.apple.controlcenter
+  ansible.builtin.shell: |
+    defaults write com.apple.controlcenter "NSStatusItem Visible Battery" {{ com_apple_controlcenter_nsstatusitem_visible_battery }}
+    defaults write com.apple.controlcenter "NSStatusItem Visible BentoBox" {{ com_apple_controlcenter_nsstatusitem_visible_bentobox }}
+    defaults write com.apple.controlcenter "NSStatusItem Visible Bluetooth" {{ com_apple_controlcenter_nsstatusitem_visible_bluetooth }}
+    defaults write com.apple.controlcenter "NSStatusItem Visible Clock" {{ com_apple_controlcenter_nsstatusitem_visible_clock }}
+    defaults write com.apple.controlcenter "NSStatusItem Visible DoNotDisturb" {{ com_apple_controlcenter_nsstatusitem_visible_donotdisturb }}
+    defaults write com.apple.controlcenter "NSStatusItem Visible WiFi" {{ com_apple_controlcenter_nsstatusitem_visible_wifi }}
+
+- name: com.apple.dock
+  ansible.builtin.shell: |
+    defaults write com.apple.dock autohide - bool {{ com_apple_dock_autohide }}
+
+    # Don’t automatically rearrange Spaces based on most recent use
+    defaults write com.apple.dock mru-spaces -bool {{ com_apple_dock_mru_spaces }}
+
+    defaults write com.apple.dock orientation {{ com_apple_dock_orientation }}
+
+    # Don’t show recent applications in Dock
+    defaults write com.apple.dock show-recents -bool {{ com_apple_dock_show_recents }}
+
+    # Set dock icon size to 36
+    defaults write com.apple.dock tilesize -int {{ com_apple_dock_tilesize }}
+
+    killall Dock
+
+- name: com.apple.finder
+  ansible.builtin.shell: |
+    defaults write com.apple.finder AppleShowAllFiles {{ com_apple_finder_apple_show_all_files }}
+    defaults write com.apple.finder FXEnableExtensionChangeWarning {{ com_apple_finder_fx_enable_extension_change_warning }}
+    killall Finder
+
+- name: com.apple.menuextra
+  ansible.builtin.shell: |
+    defaults write com.apple.menuextra.clock DateFormat -string "{{ com_apple_menuextra_clock_DataFormat }}"
+
+- name: com.apple.screencapture
+  ansible.builtin.shell: |
+    mkdir -p {{ com_apple_screencapture_location }}
+    defaults write com.apple.screencapture location {{ com_apple_screencapture_location }}
+
+- name: com.apple.symbolichotkeys
+  ansible.builtin.shell: defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add {{ item.key }} "{{ item.value }}"
+  loop: "{{ com_apple_symbolichotkeys_AppleSymbolicHotKeys | dict2items }}"
+
+- name: Enable keyboard shortcut
+  # https://apple.stackexchange.com/questions/405937/how-can-i-enable-keyboard-shortcut-preference-after-modifying-it-through-defaul
+  ansible.builtin.shell: /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
+
+- name: com.apple.AppleMultitouchTrackpad
+  ansible.builtin.shell: |
+    defaults write com.apple.AppleMultitouchTrackpad Dragging {{ com_apple_AppleMultitouchTrackpad_Dragging }}
+    defaults write com.apple.AppleBluetoothMultitouch Dragging {{ com_apple_AppleMultitouchTrackpad_Dragging }}
+
+- name: com.apple.HIToolbox
+  ansible.builtin.shell: |
+    defaults write com.apple.HIToolbox AppleDictationAutoEnable {{ com_apple_HIToolbox_AppleDictationAutoEnable }}
+
+- name: com.apple.Safari
+  ansible.builtin.shell: |
+    defaults write com.apple.Safari ShowDevelopMenu {{ com_apple_Safari_ShowDevelopMenu }}

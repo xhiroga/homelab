@@ -1,0 +1,10 @@
+---
+# tasks file for qemu_guest_agent
+# [Proxmox VE Full Course: Class 5 \- Launching a Virtual Machine \- YouTube](https://www.youtube.com/watch?v=xBUnV2rQ7do)
+- name: Install qemu-guest-agent
+  apt:
+    name: qemu-guest-agent
+  become: true
+  when: ansible_system_vendor == 'QEMU'
+  notify:
+    - Start qemu-guest-agent

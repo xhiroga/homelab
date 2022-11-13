@@ -1,0 +1,7 @@
+---
+# handlers file for qemu_guest_agent
+- name: Start qemu-guest-agent
+  ansible.builtin.systemd:
+    name: qemu-guest-agent.service
+    state: started
+    enabled: true

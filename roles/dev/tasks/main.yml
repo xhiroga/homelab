@@ -1,0 +1,16 @@
+---
+- name: Check brew installed
+  ansible.builtin.shell: brew --version
+  changed_when: false
+  ignore_errors: true
+  register: has_brew_version
+
+- import_tasks: anyenv.yml
+- import_tasks: bun.yml
+- import_tasks: haskell.yml
+  tags: never
+- import_tasks: go-packages.yml
+- import_tasks: rbenv.yml
+- import_tasks: rust.yml
+- import_tasks: sdkman.yml
+- import_tasks: vscode.yml

@@ -1,0 +1,4 @@
+---
+# [gsettings set org.gnome.nautilus.preferences always-use-location-entry true](https://ubuntuhandbook.org/index.php/2020/05/textual-path-ubuntu-20-04-files/)
+- name: Enable textual file path entry
+  ansible.builtin.shell: gsettings set org.gnome.nautilus.preferences always-use-location-entry true
