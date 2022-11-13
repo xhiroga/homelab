@@ -15,18 +15,15 @@ poetry install
 
 ```shell
 ansible-galaxy collection install git@github.com:xhiroga/homelab.git,feat/homelab-as-a-ansible-collection
-ansible-playbook -c local -i localhost, xhiroga.homelab.debug
+ansible-playbook -e 'target=localhost' -c local xhiroga.homelab.macos
 ```
+
 
 ## Debug
 
 ```shell
 ansible-playbook -c local -i localhost, playbooks/debug.yml
 ```
-
-
-
-
 
 ## References and Inspirations
 

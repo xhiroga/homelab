@@ -1,7 +1,7 @@
 #!/bin/sh ansible-playbook
 ---
 - name: Configure macOS
-  hosts: macos
+  hosts: '{{target|default("macos")}}'
   pre_tasks:
     - name: Check kernel type
       command: "uname -m"
