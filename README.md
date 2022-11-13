@@ -14,7 +14,7 @@ poetry install
 ## Run
 
 ```shell
-ansible-galaxy collection install git@github.com:xhiroga/homelab.git,9d805c9e02b4bce66fc1f389bc4183e28e772b03
+ansible-galaxy collection install git@github.com:xhiroga/homelab.git,feat/homelab-as-a-ansible-collection
 ansible-playbook -c local -i localhost, xhiroga.homelab.debug
 ```
 
