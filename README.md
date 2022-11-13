@@ -1,4 +1,4 @@
-# homelab
+# Homelab
 
 [@xhiroga](https://github.com/xhiroga)'s homelab.
 
@@ -10,6 +10,22 @@ Install [Poetory](https://python-poetry.org/).
 ```shell
 poetry install
 ```
+
+## Run
+
+```shell
+ansible-galaxy collection install git@github.com:xhiroga/homelab.git
+ansible-playbook run xhiroga.homelab.macos
+```
+
+## Debug
+
+```shell
+ansible-playbook -c local -i localhost, playbooks/debug.yml
+```
+
+
+
 
 
 ## References and Inspirations
