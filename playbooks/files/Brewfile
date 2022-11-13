@@ -107,7 +107,7 @@ cask "github"
 cask "grammarly"
 cask "google-cloud-sdk"
 cask "google-drive-file-stream"
-cask "google-japanese-ime"
+# cask "google-japanese-ime"    # When using, "Cannot start conversaion engine." error occurs.
 cask "imageoptim"
 cask "jetbrains-toolbox"
 cask "karabiner-elements"
