@@ -38,7 +38,7 @@ tags: []
 dependencies: {
   "community.windows": "1.11.1",  # https://galaxy.ansible.com/community/windows
   "geerlingguy.mac": "2.1.1", # https://galaxy.ansible.com/geerlingguy/mac
-  "ngetchell.vscode": "1.0.3",  # https://galaxy.ansible.com/ngetchell/vscode
+  "ngetchell.vscode": "v1.0.3",  # https://galaxy.ansible.com/ngetchell/vscode
   "pddg.ghq": "1.2.0",   # https://galaxy.ansible.com/pddg/ghq
   "yamaha_network.rtx": "1.0.1", # https://galaxy.ansible.com/yamaha_network/rtx
   "git+https://github.com/andif888/ansible-role-win10-languagepack.git": "master"
