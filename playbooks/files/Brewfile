@@ -66,7 +66,7 @@ brew "peco"
 brew "pipenv"
 brew "pnpm"
 brew "poetry"
-brew "postgresql"
+brew "postgresql@14"
 brew "pre-commit"
 # Linux ps command can not be imported to OSX, https://apple.stackexchange.com/questions/187783/can-i-use-gnu-ps-on-os-x
 brew "psgrep"
