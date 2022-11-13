@@ -24,6 +24,8 @@ echo "dotfiles_make_install_params:\n  GIT_USER_NAME: \"$GIT_USER_NAME\"\n  GIT_
 
 ```shell
 ansible-galaxy collection install git@github.com:xhiroga/homelab.git,feat/homelab-as-a-ansible-collection
+# Role dependencies looks not installed automatically. [How to install ansible galaxy a collection's role dependencies? \- Stack Overflow](https://stackoverflow.com/questions/60829595/how-to-install-ansible-galaxy-a-collections-role-dependencies)
+ansible-galaxy role install -r https://raw.githubusercontent.com/xhiroga/homelab/feat/homelab-as-a-ansible-collection/requirements.yml
 ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -c local -i localhost, -K
 ```
 
