@@ -36,12 +36,12 @@ tags: []
 # L(specifiers,https://python-semanticversion.readthedocs.io/en/latest/#requirement-specification). Multiple version
 # range specifiers can be set and are separated by ','
 dependencies: {
-  "community.windows": "",
-  "geerlingguy.mac": "", # for geerlingguy.mac.homebrew
-  "ngetchell.vscode": "",
-  "pddg.ghq": "",
-  "yamaha_network.rtx": "",
-  "git+https://github.com/andif888/ansible-role-win10-languagepack.git": ""
+  "community.windows": "1.11.1",  # https://galaxy.ansible.com/community/windows
+  "geerlingguy.mac": "2.1.1", # https://galaxy.ansible.com/geerlingguy/mac
+  "ngetchell.vscode": "1.0.3",  # https://galaxy.ansible.com/ngetchell/vscode
+  "pddg.ghq": "1.2.0",   # https://galaxy.ansible.com/pddg/ghq
+  "yamaha_network.rtx": "1.0.1", # https://galaxy.ansible.com/yamaha_network/rtx
+  "git+https://github.com/andif888/ansible-role-win10-languagepack.git": "master"
 }
 
 # The URL of the originating SCM repository
