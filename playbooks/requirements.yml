@@ -1,8 +1,10 @@
 collections:
+  - name: geerlingguy.mac
+  - name: yamaha_network.rtx
+  - name: git@github.com:xhiroga/ansible-roles.git
   - name: community.windows
 
 roles:
   - name: ngetchell.vscode
   - name: pddg.ghq
   - src: "git+https://github.com/andif888/ansible-role-win10-languagepack.git"
-  - src: "git+https://github.com/xhiroga/ansible-roles.git"
