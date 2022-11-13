@@ -32,7 +32,7 @@ ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -c local -i localho
 ## from local
 
 ```shell
-ansible-playbook -c local -i localhost, playbooks/debug.yml
+ansible-playbook playbooks/macos.yml -i inventories/${ENV:-prod} -K
 ```
 
 ## References and Inspirations
