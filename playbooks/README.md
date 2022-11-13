@@ -6,8 +6,17 @@ Configuration for bare-metal machines.
 
 ### Prerequisites
 
+[Install Homebrew](https://docs.brew.sh/Installation).
+
+[Connecting to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
+
 ```shell
-# Set environment variables
+ssh -T git@github.com
+```
+
+Set environment variables.
+
+```shell
 export GIT_USER_NAME=xhiroga
 export GIT_USER_EMAIL=13391129+xhiroga@users.noreply.github.com
 export ANSIBLE_VALUE_PASSWORD_FILE~/.ssh/id_ed25519
@@ -16,8 +25,10 @@ export ANSIBLE_VALUE_PASSWORD_FILE~/.ssh/id_ed25519
 ### from collection
 
 ```shell
+brew install ansible
+
 ansible-galaxy collection install git@github.com:xhiroga/homelab.git,make
-tmp=$(mktemp); curl -fsSL https://raw.githubusercontent.com/xhiroga/homelab/feat/homelab-as-a-ansible-collection/requirements.yml > ${tmp}.yml; ansible-galaxy role install -r ${tmp}.yml; rm ${tmp}.yml
+tmp=$(mktemp); curl -fsSL https://raw.githubusercontent.com/xhiroga/homelab/main/requirements.yml > ${tmp}.yml; ansible-galaxy role install -r ${tmp}.yml; rm ${tmp}.yml
 
 ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -e "dotfiles_make_install_params={\"GIT_USER_NAME\":\"${GIT_USER_NAME}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL}\",\"ANSIBLE_VALUE_PASSWORD_FILE\":\"${ANSIBLE_VALUE_PASSWORD_FILE}\"}" -c local -i localhost, -K
 ```
