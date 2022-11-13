@@ -1,15 +1,6 @@
-# Metal
+# Playbooks
 
 Configuration for bare-metal machines.
-
-## Role Development
-
-### Scaffolding
-
-```shell
-cd roles
-poetry run molecule init role proxmox -d docker
-```
 
 ## macOS
 
@@ -68,6 +59,12 @@ sshd service on
 - コントロールパネル > 端末とSNMP > 端末 > SSHサービスを有効化する。
 - AdministratorグループのユーザーでSSH接続した後、公開鍵を登録する。
 
+### References and Inspiration
+
+- [Synology DiskStation で SSH 接続を公開鍵認証方式にする - Qiita](https://qiita.com/shimizumasaru/items/56474d98e723ea1b5ae3)
+- [CLI Administrator Guide for Synology NAS](https://global.download.synology.com/download/Document/Software/DeveloperGuide/Firmware/DSM/All/enu/Synology_DiskStation_Administration_CLI_Guide.pdf)
+
+
 ## Windows
 
 - `Get-NetIPAddress` in PowerShell
@@ -81,8 +78,3 @@ sshd service on
 - [Windows ホストのセットアップ — Ansible Documentation](https://docs.ansible.com/ansible/2.9_ja/user_guide/windows_setup.html#id3)
 - Microsoft Store > App Installer(Winget)
 
-
-### References and Inspiration
-
-- [Synology DiskStation で SSH 接続を公開鍵認証方式にする \- Qiita](https://qiita.com/shimizumasaru/items/56474d98e723ea1b5ae3)
-- [CLI Administrator Guide for Synology NAS](https://global.download.synology.com/download/Document/Software/DeveloperGuide/Firmware/DSM/All/enu/Synology_DiskStation_Administration_CLI_Guide.pdf)
