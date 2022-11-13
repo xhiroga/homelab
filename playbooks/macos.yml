@@ -9,5 +9,5 @@
     - role: geerlingguy.mac.homebrew
       become: true
     - role: macos
-    - role: xhiroga.roles.defaults
-    - role: xhiroga.roles.dev
+    - role: defaults
+    - role: dev

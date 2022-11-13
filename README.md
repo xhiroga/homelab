@@ -11,15 +11,23 @@ Install [Poetory](https://python-poetry.org/).
 poetry install
 ```
 
-## Run
+## macOS
+
+### Prerequisites
+
+```shell
+# Set environment variables
+echo "dotfiles_make_install_params:\n  GIT_USER_NAME: \"$GIT_USER_NAME\"\n  GIT_USER_EMAIL: \"$GIT_USER_EMAIL\"\n  ANSIBLE_PRIORITY_ROLES_PATH: \"$ANSIBLE_PRIORITY_ROLES_PATH\"\n  ANSIBLE_VALUE_PASSWORD_FILE: \"$ANSIBLE_VALUE_PASSWORD_FILE\"" > ./inventories/prod/group_vars/macos/local.yml
+```
+
+### from collection
 
 ```shell
 ansible-galaxy collection install git@github.com:xhiroga/homelab.git,feat/homelab-as-a-ansible-collection
-ansible-playbook -e 'target=localhost' -c local -i localhost, xhiroga.homelab.macos
+ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -c local -i localhost, -K
 ```
 
-
-## Debug
+## from local
 
 ```shell
 ansible-playbook -c local -i localhost, playbooks/debug.yml
