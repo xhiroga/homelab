@@ -65,6 +65,7 @@
   ansible.builtin.shell: |
     mkdir -p {{ com_apple_screencapture_location }}
     defaults write com.apple.screencapture location {{ com_apple_screencapture_location }}
+  when: com_apple_screencapture_location is defined
 
 - name: com.apple.symbolichotkeys
   ansible.builtin.shell: defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add {{ item.key }} "{{ item.value }}"

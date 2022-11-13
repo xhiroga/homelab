@@ -20,6 +20,7 @@ Set environment variables.
 export GIT_USER_NAME=xhiroga
 export GIT_USER_EMAIL=13391129+xhiroga@users.noreply.github.com
 export ANSIBLE_VALUE_PASSWORD_FILE~/.ssh/id_ed25519
+export COM_APPLE_SCREENCAPTHRE_LOCATION=~/OneDrive/users/hiroga/files/screencapture/hiroga-jict-MBP
 ```
 
 ### from collection
