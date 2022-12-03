@@ -6,3 +6,15 @@
   tasks:
     - name: Configure IP address manually
       ansible.builtin.shell: /usr/syno/sbin/synonet --manual eth0 {{ ip }} {{ mask }}
+
+    - name: ~/.ssh should be 700
+      ansible.builtin.file:
+        path: ~/.ssh
+        state: directory
+        mode: '0700'
+
+    - name: ~/.ssh/authorized_keys should be 644
+      ansible.builtin.file:
+        path: ~/.ssh/authorized_keys
+        state: directory
+        mode: '644'
