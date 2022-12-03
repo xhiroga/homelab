@@ -67,6 +67,10 @@
     defaults write com.apple.screencapture location {{ com_apple_screencapture_location }}
   when: com_apple_screencapture_location is defined
 
+- name: com.apple.space
+  ansible.builtin.shell: defaults write com.apple.space app-bindings -dict-add {{ item.key }} "{{ item.value }}"
+  loop: "{{ com_apple_space_app_binding | dict2items }}"
+
 - name: com.apple.symbolichotkeys
   ansible.builtin.shell: defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add {{ item.key }} "{{ item.value }}"
   loop: "{{ com_apple_symbolichotkeys_AppleSymbolicHotKeys | dict2items }}"
