@@ -11,10 +11,20 @@
         state: directory
       register: temp_dir
 
+    - name: Architecture
+      ansible.builtin.shell: |
+        if [[ "${UNAME_MACHINE}" == "arm64" ]]
+        then
+          echo "https://code.visualstudio.com/sha/download?build=stable&os=darwin-arm64"
+        else
+          echo "https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal"
+        fi
+      register: vscode_download_url
+
     - name: Install VSCode.
       ansible.builtin.shell: |
         VSCODE_ZIP={{ temp_dir.path }}/VSCode-darwin-stable.zip
-        code -h >/dev/null 2>&1 || wget 'https://go.microsoft.com/fwlink/?LinkID=620882' -O "$VSCODE_ZIP" && unzip "$VSCODE_ZIP" && rm -f "$VSCODE_ZIP" && mv "Visual Studio Code.app" /Applications
+        code -h >/dev/null 2>&1 || wget "{{ vscode_download_url.stdout }}" -O "$VSCODE_ZIP" && unzip "$VSCODE_ZIP" && rm -f "$VSCODE_ZIP" && mv "Visual Studio Code.app" /Applications
       when: ansible_os_family == 'Darwin'
 
   when: visual_studio_code_app.stat.exists == False
