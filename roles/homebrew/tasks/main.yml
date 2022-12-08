@@ -32,3 +32,7 @@
     line: 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
     path: ~/.profile
     state: present
+
+- name: Autoupdate
+  ansible.builtin.shell: brew autoupdate start
+  ignore_errors: true # Avoid "Error: The command already appears to have been started."

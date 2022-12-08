@@ -1,4 +1,5 @@
 cask_args appdir: "/Applications"
+tap "homebrew/autoupdate"
 tap "homebrew/cask"
 tap "aws/tap"
 tap "cloudquery/tap"
