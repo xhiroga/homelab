@@ -50,6 +50,7 @@ brew "gomplate"
 brew "graphviz"
 brew "gnupg"
 brew "hadolint"
+brew "hdf5" # tensorflow dependency
 brew "helm"
 brew "helmfile"  # helm plugin install https://github.com/databus23/helm-diff needed
 brew "jq"
@@ -61,6 +62,7 @@ brew "mongodb-community"
 brew "mongodb-database-tools"
 brew "node"
 brew "openblas"
+brew "openssl"  # tensorflow dependency
 brew "peco"
 brew "pipenv"
 brew "pnpm"
@@ -83,6 +85,7 @@ brew "tree"
 brew "wget"
 brew "xz"
 brew "yarn"
+brew "zlib" # tensorflow dependency
 brew "zsh-syntax-highlighting"
 
 cask "1password-cli"
