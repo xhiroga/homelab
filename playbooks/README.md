@@ -92,5 +92,5 @@ sshd service on
         - Preferred DNS server: `192.168.100.1`
 - [Windows ホストのセットアップ — Ansible Documentation](https://docs.ansible.com/ansible/2.9_ja/user_guide/windows_setup.html#id3)
     - Microsoft Store > App Installer(Winget)
-    - [Configure OpenSSH Server](./scripts/setup.ps1)
+    - Configure OpenSSH Server with [setup.ps1](./scripts/setup.ps1) and [setup.sh](./scripts/setup.sh)
 
