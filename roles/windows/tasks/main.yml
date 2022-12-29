@@ -100,4 +100,4 @@
   register: win_mapped_drives
 
 - name: Restart Explorer
-  ansible.windows.win_shell: stop-process -name explorer –force
+  ansible.windows.win_shell: stop-process -name explorer -force
