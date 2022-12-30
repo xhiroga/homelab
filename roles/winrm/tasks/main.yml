@@ -40,3 +40,10 @@
     rights: FullControl
     type: allow
     state: present
+
+- name: Make PowerShell to default
+  ansible.windows.win_regedit:
+    key: HKLM:\SOFTWARE\OpenSSH
+    value: DefaultShell
+    data: 'C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe'
+    type: String

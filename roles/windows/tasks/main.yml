@@ -7,19 +7,28 @@
     data: "{{ item.data }}"
     datatype: '{{ item.datatype | default("dword") }}'
   with_items:
-    # エクスプローラーの「登録されている拡張子は表示しない」の無効化
-    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
-      value: HideFileExt
-      data: 0
+    # Shift + SpaceでIMEのOn/Offを切り替える
+    - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
+      value: KeyAssignmentShiftSpace
+      data: 2 # 2: IME-on/off, 3: Alt Width Space, 4: None
+      type: dword
     # [How to toggle Show/Hide hidden files in Windows through command line? \- Super User](https://superuser.com/questions/1151844/how-to-toggle-show-hide-hidden-files-in-windows-through-command-line)
     - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
       value: Hidden
       data: 1
       type: dword
-    # Shift + SpaceでIMEのOn/Offを切り替える
-    - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
-      value: KeyAssignmentShiftSpace
-      data: 2 # 2: IME-on/off, 3: Alt Width Space, 4: None
+    # エクスプローラーの「登録されている拡張子は表示しない」の無効化
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
+      value: HideFileExt
+      data: 0
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PrecisionTouchPad
+      value: CursorSpeed
+      data: 20
+      type: dword
+    # [Turn On or Off Tap Twice and Drag on Touchpad to Multi-Select in Windows 11 Tutorial | Windows 11 Forum](https://www.elevenforum.com/t/turn-on-or-off-tap-twice-and-drag-on-touchpad-to-multi-select-in-windows-11.7490/)
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PrecisionTouchPad
+      value: TapAndDrag
+      data: 4294967295
       type: dword
 
 - name: List winget packages
