@@ -9,5 +9,6 @@ winget_packages:
   - "LINE.LINE"
   - "Microsoft.PowerToys"
   - "Microsoft.VisualStudioCode"
+  - "Sysinternals Suite"
   - "WinSCP.WinSCP"
   - "Zotero.Zotero"
