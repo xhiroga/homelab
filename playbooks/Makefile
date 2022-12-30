@@ -24,6 +24,3 @@ windows_dev_ping:
 
 windows_dev: windows_dev_ping;
 	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook windows_dev.yml -i inventories/$${ENV:-prod}
-
-windows_metal_ping:
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible windows_metal -i inventories/windows_supervisor -m win_ping

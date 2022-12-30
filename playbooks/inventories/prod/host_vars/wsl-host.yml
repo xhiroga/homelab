@@ -1,0 +1,13 @@
+ansible_connection: ssh
+ansible_shell_type: powershell
+
+win_mapped_drives: []
+winget_packages:
+  - "Adobe.Acrobat.Reader.64-bit"
+  - "AgileBits.1Password"
+  - "Git.Git"
+  - "LINE.LINE"
+  - "Microsoft.PowerToys"
+  - "Microsoft.VisualStudioCode"
+  - "WinSCP.WinSCP"
+  - "Zotero.Zotero"
