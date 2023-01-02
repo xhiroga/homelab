@@ -10,4 +10,5 @@ clean-macos-prerequisites:
 	rm -rf ~/.ansible/collections/ansible_collections
 
 install_ssh_config:
+	mkdir -p ~/.ssh/config.d
 	ln -f ssh_config ~/.ssh/config.d/homelab_ssh_config
