@@ -34,3 +34,52 @@
   when: etc_network_interfaces.changed or etc_hosts.changed
   tags:
     - molecule-notest
+
+# [The Ultimate Beginner's Guide to GPU Passthrough (Proxmox, Windows 10) : homelab](https://www.reddit.com/r/homelab/comments/b5xpua/the_ultimate_beginners_guide_to_gpu_passthrough/)
+- name: Configuring the Grub
+  ansible.builtin.replace:
+    path: /etc/default/grub
+    regexp: '^GRUB_CMDLINE_LINUX_DEFAULT="quiet"$'
+    replace: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on"'
+
+- name: Update /boot/grub/grub.cfg
+  ansible.builtin.shell: update-grub
+
+- name: VFIO Modules
+  ansible.builtin.blockinfile:
+    block: |
+      vfio
+      vfio_iommu_type1
+      vfio_pci
+      vfio_virqfd
+    path: /etc/modules
+
+- name: IOMMU interrupt remapping iommu_unsafe_interrupts
+  ansible.builtin.blockinfile:
+    block: options vfio_iommu_type1 allow_unsafe_interrupts=1
+    create: true
+    path: /etc/modprobe.d/iommu_unsafe_interrupts.conf
+
+- name: IOMMU interrupt remapping iommu_unsafe_interrupts
+  ansible.builtin.blockinfile:
+    block: options kvm ignore_msrs=1
+    create: true
+    path: /etc/modprobe.d/kvm.conf
+
+- name: Blacklisting Drivers
+  ansible.builtin.blockinfile:
+    block: |
+      blacklist radeon
+      blacklist nouveau
+      blacklist nvidia
+    create: true
+    path: /etc/modprobe.d/blacklist.conf
+
+- name: Blacklisting Drivers
+  ansible.builtin.blockinfile:
+    block: options vfio-pci ids=10de:2503,10de:228e
+    create: true
+    path: /etc/modprobe.d/vfio.conf
+
+- name: Update initramfs
+  ansible.builtin.shell: update-initramfs -u
