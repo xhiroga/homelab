@@ -68,6 +68,7 @@
 
 - name: Blacklisting Drivers
   ansible.builtin.blockinfile:
+    # APU内蔵のRadeonは使ってほしいので、`blacklist radeon`のみ自信がない。
     block: |
       blacklist radeon
       blacklist nouveau
