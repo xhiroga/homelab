@@ -43,7 +43,12 @@
     replace: 'GRUB_CMDLINE_LINUX_DEFAULT="quiet amd_iommu=on"'
 
 - name: Update /boot/grub/grub.cfg
-  ansible.builtin.shell: update-grub
+  ansible.builtin.shell: proxmox-boot-tool refresh
+  failed_when: false 
+# Fails with below error. Instead of this command, I reboot proxmox...
+# Copying and configuring kernels on /dev/disk/by-uuid/CD11-9452
+#         Copying kernel and creating boot-entry for 5.13.19-2-pve
+# cp: error reading '/boot/initrd.img-5.13.19-2-pve': No data available
 
 - name: VFIO Modules
   ansible.builtin.blockinfile:
