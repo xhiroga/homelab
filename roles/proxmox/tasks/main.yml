@@ -81,7 +81,7 @@
     create: true
     path: /etc/modprobe.d/blacklist.conf
 
-- name: Blacklisting Drivers
+- name: Adding GPU to VFIO
   ansible.builtin.blockinfile:
     block: options vfio-pci ids=10de:2503,10de:228e
     create: true
