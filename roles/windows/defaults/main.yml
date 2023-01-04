@@ -1,2 +1,3 @@
 ---
 win_mapped_drives: []
+shell_feeds_taskbar_view_mode: 2 # 0: Show icon and text, 1: Show icon only, 2: Turn Off
