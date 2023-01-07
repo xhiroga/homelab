@@ -7,6 +7,10 @@
     data: "{{ item.data }}"
     datatype: '{{ item.datatype | default("dword") }}'
   with_items:
+    - key: HKCU:\SOFTWARE\Microsoft\Clipboard
+      value: EnableClipboardHistory
+      data: 1
+      type: dword
     # Shift + SpaceでIMEのOn/Offを切り替える
     - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
       value: KeyAssignmentShiftSpace
