@@ -6,4 +6,3 @@ collections:
 roles:
   - name: ngetchell.vscode
   - name: pddg.ghq
-  - src: "git+https://github.com/andif888/ansible-role-win10-languagepack.git"
