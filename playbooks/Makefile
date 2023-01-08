@@ -18,9 +18,15 @@ diskstation:
 ubuntu_dev:
 	poetry run ansible-playbook ubuntu_dev.yml -i inventories/$${ENV:-prod} -K
 
-windows_dev_ping:
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible windows_dev -i inventories/$${ENV:-prod} -m win_ping
+windows_home_ping:
+	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible windows_home -i inventories/$${ENV:-prod} -m win_ping
 	# [Preforking issue on OSX \(10\.13\) when attempting to connect to windows server via WinRM · Issue \#34056 · ansible/ansible](https://github.com/ansible/ansible/issues/34056)
 
-windows_dev: windows_dev_ping;
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook windows_dev.yml -i inventories/$${ENV:-prod}
+windows_home: windows_home_ping;
+	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook windows_home.yml -i inventories/$${ENV:-prod}
+
+windows_gpu:
+	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook windows_gpu.yml -i inventories/$${ENV:-prod}
+
+wsl:
+	poetry run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K

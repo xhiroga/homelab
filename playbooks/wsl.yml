@@ -1,0 +1,9 @@
+#!/bin/sh ansible-playbook
+---
+- name: Configure WSL
+  hosts: 'wsl'
+  pre_tasks:
+    - name: Check kernel type
+      command: "uname -m"
+  # roles:
+  #   - role: dotfiles

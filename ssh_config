@@ -8,7 +8,12 @@ Host diskstation
     User hiroga
     IdentityFile ~/.ssh/id_ed25519
 
-Host wsl-host
+Host surface-go
     User hiroga
     IdentityFile ~/.ssh/id_ed25519
     ProxyCommand sh -c "nc $(ip route | grep 'default via' | grep -Eo '[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}') %p"
+
+Host wasabi
+    HostName 192.168.100.151
+    User hiroga
+    IdentityFile ~/.ssh/id_ed25519
