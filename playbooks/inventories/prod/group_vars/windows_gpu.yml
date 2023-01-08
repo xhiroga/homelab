@@ -17,4 +17,5 @@ win_mapped_drives: []
   #     356362396466333834623631313230663136
 winget_packages:
   - "Anaconda.Anaconda3"
+  - "BlenderFoundation.Blender"
   - "SoftwareFreedomConservancy.QEMUGuestAgent"
