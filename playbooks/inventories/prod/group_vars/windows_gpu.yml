@@ -19,3 +19,4 @@ winget_packages:
   - "Anaconda.Anaconda3"
   - "BlenderFoundation.Blender"
   - "SoftwareFreedomConservancy.QEMUGuestAgent"
+  - "Valve.Steam"
