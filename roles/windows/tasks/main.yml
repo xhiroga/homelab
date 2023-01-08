@@ -11,10 +11,15 @@
       value: EnableClipboardHistory
       data: 1
       type: dword
-    # Shift + SpaceでIMEのOn/Offを切り替える
+    # Ctrl + SpaceでIMEのOn/Offを切り替える
+    - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
+      value: KeyAssignmentCtrlSpace
+      data: 2 # 2: IME-on/off, 4: None
+      type: dword
+    # Shift + Spaceは何もしない
     - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
       value: KeyAssignmentShiftSpace
-      data: 2 # 2: IME-on/off, 3: Alt Width Space, 4: None
+      data: 4 # 2: IME-on/off, 3: Alt Width Space, 4: None
       type: dword
     - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion
       value: Feeds
