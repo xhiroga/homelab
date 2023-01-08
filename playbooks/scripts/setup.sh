@@ -6,6 +6,7 @@ ssh $WINDOWS_HOST $REMOTE_POWER_SHELL
 
 ## Administrative user
 AUTHORIZED_KEY=$(cat ~/.ssh/id_ed25519.pub)
+## なぜか '$AUTHORIZED_KEY' のシングルクォートが解釈されず失敗する。
 REMOTE_POWER_SHELL="powershell Add-Content -Force -Path \$env:ProgramData\ssh\administrators_authorized_keys -Value '$AUTHORIZED_KEY';icacls.exe \"\$env:ProgramData\ssh\administrators_authorized_keys\" /inheritance:r /grant \"Administrators:F\" /grant \"SYSTEM:F\""
 ssh $WINDOWS_HOST $REMOTE_POWER_SHELL
 
