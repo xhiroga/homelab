@@ -1,5 +1,5 @@
 ---
-homebrew_brewfile_dir: "files"
+homebrew_brewfile_dir: "files/macos"
 go_packages:
   - github.com/spf13/cobra-cli@latest
 pnpm_global_packages:

@@ -5,5 +5,6 @@
   pre_tasks:
     - name: Check kernel type
       command: "uname -m"
-  # roles:
+  roles:
+    - role: geerlingguy.mac.homebrew
   #   - role: dotfiles
