@@ -11,6 +11,11 @@
       value: EnableClipboardHistory
       data: 1
       type: dword
+    # Choose a preferred function for each key/key combination
+    - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
+      value: IsKeyAssignmentEnabled
+      data: 1 # 0: Off, 1: On
+      type: dword
     # Ctrl + SpaceでIMEのOn/Offを切り替える
     - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
       value: KeyAssignmentCtrlSpace
