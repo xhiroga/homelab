@@ -6,5 +6,7 @@
     - name: Check kernel type
       command: "uname -m"
   roles:
+    - role: wsl
     - role: geerlingguy.mac.homebrew
+      becore: true
   #   - role: dotfiles
