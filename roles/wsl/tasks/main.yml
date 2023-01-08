@@ -1,0 +1,16 @@
+---
+# Avoiding this Error.
+# Error: The following directories are not writable by your user:
+# /usr/local/share/man
+
+# You should change the ownership of these directories to your user.
+#   sudo chown -R $(whoami) /usr/local/share/man
+
+# And make sure that your user has write permission.
+#   chmod u+w /usr/local/share/man
+
+- name: Change the ownership of these directories to your user.
+  ansible.builtin.shell: sudo chown -R $(whoami) /usr/local/share/man
+
+- name: Make sure that your user has write permission
+  ansible.builtin.shell: chmod u+w /usr/local/share/man
