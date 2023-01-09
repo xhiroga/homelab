@@ -1,10 +1,8 @@
-inventories/prod/group_vars/macos/local.yml:
-	echo "com_apple_screencapture_location: $${COM_APPLE_SCREENCAPTHRE_LOCATION}" > $@
-	echo "alfred_sync_folder: $${ALFRED_SYNC_FOLDER}" >> $@
-	echo "dotfiles_make_install_params:\n  GIT_USER_NAME: \"$${GIT_USER_NAME}\"\n  GIT_USER_EMAIL: \"$${GIT_USER_EMAIL}\"" >> $@
-
-macos: inventories/prod/group_vars/macos/local.yml;
-	poetry run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K
+macos:
+	poetry run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K\
+		-e "alfred_sync_folder=$${ALFRED_SYNC_FOLDER}"\
+		-e "com_apple_screencapture_location=$${COM_APPLE_SCREENCAPTHRE_LOCATION}"\
+		-e "dotfiles_make_install_params=$${DOTFILES_MAKE_INSTALL_PARAMS}"
 
 rtx1210:
 	poetry run ansible-playbook rtx1210.yml -i inventories/$${ENV:-prod} -K
@@ -29,4 +27,5 @@ windows_gpu:
 	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook windows_gpu.yml -i inventories/$${ENV:-prod}
 
 wsl:
-	poetry run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K
+	poetry run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K\
+		-e "dotfiles_make_install_params=$${DOTFILES_MAKE_INSTALL_PARAMS}"

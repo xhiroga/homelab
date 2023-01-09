@@ -1,4 +1,2 @@
 brew "gh"
 brew "ghq"
-brew "node"
-brew "poetry"

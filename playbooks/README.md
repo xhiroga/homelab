@@ -24,6 +24,7 @@ export ALFRED_SYNC_FOLDER=~/OneDrive/users/hiroga/files/applications/Alfred
 
 ```shell
 ssh -T git@github.com
+export DOTFILES_MAKE_INSTALL_PARAMS="{\"GIT_USER_NAME\":\"${GIT_USER_NAME}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL}\",\"GIT_GHQ_ROOT\":\"${GIT_GHQ_ROOT}\"}"
 ```
 
 ### from collection
@@ -34,7 +35,7 @@ brew install ansible
 ansible-galaxy collection install git@github.com:xhiroga/homelab.git
 tmp=$(mktemp); curl -fsSL https://raw.githubusercontent.com/xhiroga/homelab/main/requirements.yml > ${tmp}.yml; ansible-galaxy role install -r ${tmp}.yml; rm ${tmp}.yml
 
-ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -e "dotfiles_make_install_params={\"GIT_USER_NAME\":\"${GIT_USER_NAME}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL}\"}" -c local -i localhost, -K
+ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -e "dotfiles_make_install_params=${DOTFILES_MAKE_INSTALL_PARAMS}" -c local -i localhost, -K
 ```
 
 Role dependencies are not installed automatically. See [How to install ansible galaxy a collection's role dependencies? - Stack Overflow](https://stackoverflow.com/questions/60829595/how-to-install-ansible-galaxy-a-collections-role-dependencies)
@@ -81,14 +82,15 @@ sshd service on
 - [Synology DiskStation で SSH 接続を公開鍵認証方式にする - Qiita](https://qiita.com/shimizumasaru/items/56474d98e723ea1b5ae3)
 - [CLI Administrator Guide for Synology NAS](https://global.download.synology.com/download/Document/Software/DeveloperGuide/Firmware/DSM/All/enu/Synology_DiskStation_Administration_CLI_Guide.pdf)
 
-
-## Windows
+## WSL
 
 ### from local
 
 ```shell
+export DOTFILES_MAKE_INSTALL_PARAMS="{\"GIT_USER_NAME\":\"${GIT_USER_NAME}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL}\",\"GIT_GHQ_ROOT\":\"${GIT_GHQ_ROOT}\",\"GOMPLATE_OPTIONS\":\"--include .ssh/*,.gitconfig,.gitignore_global\"}"
+
 make -C .. install
-make win
+make wsl
 ```
 
 ## Windows VM
