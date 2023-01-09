@@ -83,7 +83,7 @@
 
 - name: Adding GPU to VFIO
   ansible.builtin.blockinfile:
-    block: options vfio-pci ids=10de:2503,10de:228e
+    block: options vfio-pci ids={{nvidia_device_ids}} disable_vga=1
     create: true
     path: /etc/modprobe.d/vfio.conf
 
