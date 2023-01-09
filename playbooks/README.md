@@ -2,6 +2,18 @@
 
 Configuration for bare-metal machines.
 
+## Environment varialbes
+
+Set environment variables.
+
+```shell
+export GIT_USER_NAME=xhiroga
+export GIT_USER_EMAIL=xhiroga@users.noreply.github.com
+export GIT_GHQ_ROOT=~/src
+export COM_APPLE_SCREENCAPTHRE_LOCATION=~/OneDrive/users/hiroga/files/screencapture/hiroga-jict-MBP
+export ALFRED_SYNC_FOLDER=~/OneDrive/users/hiroga/files/applications/Alfred
+```
+
 ## macOS
 
 ### Prerequisites
@@ -14,16 +26,6 @@ Configuration for bare-metal machines.
 ssh -T git@github.com
 ```
 
-Set environment variables.
-
-```shell
-export GIT_USER_NAME=xhiroga
-export GIT_USER_EMAIL=13391129+xhiroga@users.noreply.github.com
-export ANSIBLE_VALUE_PASSWORD_FILE~/.ssh/id_ed25519
-export COM_APPLE_SCREENCAPTHRE_LOCATION=~/OneDrive/users/hiroga/files/screencapture/hiroga-jict-MBP
-export ALFRED_SYNC_FOLDER=~/OneDrive/users/hiroga/files/applications/Alfred
-```
-
 ### from collection
 
 ```shell
@@ -32,7 +34,7 @@ brew install ansible
 ansible-galaxy collection install git@github.com:xhiroga/homelab.git,make
 tmp=$(mktemp); curl -fsSL https://raw.githubusercontent.com/xhiroga/homelab/main/requirements.yml > ${tmp}.yml; ansible-galaxy role install -r ${tmp}.yml; rm ${tmp}.yml
 
-ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -e "dotfiles_make_install_params={\"GIT_USER_NAME\":\"${GIT_USER_NAME}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL}\",\"ANSIBLE_VALUE_PASSWORD_FILE\":\"${ANSIBLE_VALUE_PASSWORD_FILE}\"}" -c local -i localhost, -K
+ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -e "dotfiles_make_install_params={\"GIT_USER_NAME\":\"${GIT_USER_NAME}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL}\"}" -c local -i localhost, -K
 ```
 
 Role dependencies are not installed automatically. See [How to install ansible galaxy a collection's role dependencies? - Stack Overflow](https://stackoverflow.com/questions/60829595/how-to-install-ansible-galaxy-a-collections-role-dependencies)
@@ -81,6 +83,15 @@ sshd service on
 
 
 ## Windows
+
+### from local
+
+```shell
+make -C .. install
+make win
+```
+
+## Windows VM
 
 - `Get-NetIPAddress` in PowerShell
 - Set TCP/IPv4 Properties as

@@ -3,7 +3,7 @@ Host pve
     User root
     IdentityFile ~/.ssh/id_ed25519
 
-Host diskstation
+Host ds218play
     HostName 192.168.100.13
     User hiroga
     IdentityFile ~/.ssh/id_ed25519

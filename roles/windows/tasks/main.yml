@@ -28,7 +28,7 @@
       type: dword
     - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion
       value: Feeds
-      data: "{{shell_feeds_taskbar_view_mode}}"
+      data: "{{shell_feeds_taskbar_view_mode}}" # 0: Show icon and text, 1: Show icon only, 2: Turn Off
       type: dword
     # [How to toggle Show/Hide hidden files in Windows through command line? \- Super User](https://superuser.com/questions/1151844/how-to-toggle-show-hide-hidden-files-in-windows-through-command-line)
     - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
@@ -73,18 +73,6 @@
 
 - name: Enable Network Discovery
   ansible.windows.win_command: netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes
-
-# [Windows PCからローカルネットワーク内のSynology NASにファイルを保存する方法は？ \- Synology ナレッジセンター](https://kb.synology.com/ja-jp/DSM/tutorial/How_to_map_shared_folder_Windows_PC)
-- name: Create mapped drive with credentials that do not persist on the next logon
-  community.windows.win_mapped_drive:
-    letter: "{{ item.letter }}"
-    path: \\{{ item.nas_name }}\{{ item.nas_shared_folder_name }}
-    state: present
-    username: "{{ item.nas_username }}"
-    password: "{{ item.nas_password }}"
-  loop: "{{ win_mapped_drives }}"
-  no_log: true # to prevent to show `item.nas_password`
-  register: win_mapped_drives
 
 - name: Restart Explorer
   ansible.windows.win_shell: stop-process -name explorer -force

@@ -1,7 +1,7 @@
 inventories/prod/group_vars/macos/local.yml:
 	echo "com_apple_screencapture_location: $${COM_APPLE_SCREENCAPTHRE_LOCATION}" > $@
 	echo "alfred_sync_folder: $${ALFRED_SYNC_FOLDER}" >> $@
-	echo "dotfiles_make_install_params:\n  GIT_USER_NAME: \"$${GIT_USER_NAME}\"\n  GIT_USER_EMAIL: \"$${GIT_USER_EMAIL}\"\n  ANSIBLE_VALUE_PASSWORD_FILE: \"$${ANSIBLE_VALUE_PASSWORD_FILE}\"" >> $@
+	echo "dotfiles_make_install_params:\n  GIT_USER_NAME: \"$${GIT_USER_NAME}\"\n  GIT_USER_EMAIL: \"$${GIT_USER_EMAIL}\"" >> $@
 
 macos: inventories/prod/group_vars/macos/local.yml;
 	poetry run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K
@@ -18,12 +18,12 @@ diskstation:
 ubuntu_dev:
 	poetry run ansible-playbook ubuntu_dev.yml -i inventories/$${ENV:-prod} -K
 
-windows_home_ping:
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible windows_home -i inventories/$${ENV:-prod} -m win_ping
-	# [Preforking issue on OSX \(10\.13\) when attempting to connect to windows server via WinRM · Issue \#34056 · ansible/ansible](https://github.com/ansible/ansible/issues/34056)
+win_ping:
+	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible win -i inventories/$${ENV:-prod} -m win_ping
+	# [Preforking issue on OSX (10.13) when attempting to connect to windows server via WinRM · Issue #34056 · ansible/ansible](https://github.com/ansible/ansible/issues/34056)
 
-windows_home: windows_home_ping;
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook windows_home.yml -i inventories/$${ENV:-prod}
+win: win_ping;
+	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook win.yml -i inventories/$${ENV:-prod}
 
 windows_gpu:
 	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook windows_gpu.yml -i inventories/$${ENV:-prod}

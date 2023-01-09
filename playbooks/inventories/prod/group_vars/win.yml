@@ -1,7 +1,6 @@
 ansible_connection: ssh
 ansible_shell_type: powershell
 
-win_mapped_drives: []
 winget_packages:
   - "AgileBits.1Password"
   - "Discord.Discord"
