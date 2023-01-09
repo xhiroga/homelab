@@ -23,8 +23,8 @@ win_ping:
 win: win_ping;
 	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook win.yml -i inventories/$${ENV:-prod}
 
-windows_gpu:
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook windows_gpu.yml -i inventories/$${ENV:-prod}
+win_gpu:
+	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES poetry run ansible-playbook win_gpu.yml -i inventories/$${ENV:-prod}
 
 wsl:
 	poetry run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K\
