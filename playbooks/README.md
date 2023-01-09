@@ -31,7 +31,7 @@ ssh -T git@github.com
 ```shell
 brew install ansible
 
-ansible-galaxy collection install git@github.com:xhiroga/homelab.git,make
+ansible-galaxy collection install git@github.com:xhiroga/homelab.git
 tmp=$(mktemp); curl -fsSL https://raw.githubusercontent.com/xhiroga/homelab/main/requirements.yml > ${tmp}.yml; ansible-galaxy role install -r ${tmp}.yml; rm ${tmp}.yml
 
 ansible-playbook xhiroga.homelab.macos -e 'target=localhost' -e "dotfiles_make_install_params={\"GIT_USER_NAME\":\"${GIT_USER_NAME}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL}\"}" -c local -i localhost, -K
