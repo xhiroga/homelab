@@ -9,5 +9,6 @@ winget_packages:
   - "LINE.LINE"
   - "Microsoft.PowerToys"
   - "Microsoft.VisualStudioCode"
+  - "Obsidian.Obsidian"
   - "Sysinternals Suite"
   - "Zotero.Zotero"
