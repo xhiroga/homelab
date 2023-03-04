@@ -26,8 +26,8 @@
       value: KeyAssignmentShiftSpace
       data: 4 # 2: IME-on/off, 3: Alt Width Space, 4: None
       type: dword
-    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion
-      value: Feeds
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds
+      value: ShellFeedsTaskbarViewMode
       data: "{{shell_feeds_taskbar_view_mode}}" # 0: Show icon and text, 1: Show icon only, 2: Turn Off
       type: dword
     # [How to toggle Show/Hide hidden files in Windows through command line? \- Super User](https://superuser.com/questions/1151844/how-to-toggle-show-hide-hidden-files-in-windows-through-command-line)
