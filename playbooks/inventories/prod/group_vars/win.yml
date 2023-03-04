@@ -2,8 +2,7 @@ ansible_connection: ssh
 ansible_shell_type: powershell
 
 winget_packages:
-  - "AgileBits.1Password"
-  - "ArduinoSA.IDE.stable"
+  # - "AgileBits.1Password" # winget installed 1Password not works @ 2023-01-30
   - "Discord.Discord"
   - "Git.Git"
   - "LINE.LINE"
