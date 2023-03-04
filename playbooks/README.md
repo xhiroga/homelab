@@ -138,3 +138,10 @@ Notes
 - [Windows でディープラーニング環境を整える | 金子邦彦研究室](https://www.kkaneko.jp/tools/win/tfstack.html)
 - [Windows10で深層学習の環境を整える](http://hara-jp.com/_default/ja/Memo/Cuda_Win10.html)
 
+### Resize Windows VM storage
+
+- Select VM > Hardware > Select HDD > Resize disk > Input size (ex. 32GB)
+- Boot VM
+- Run `diskmgmt.msc`
+- (For the first time only) See [Fix: Can’t Extend Volume in Windows](https://woshub.com/extend-volume-blocked-by-windows-recovery-partition/)
+- Select `C:`, click `Extend volume...`
