@@ -107,6 +107,21 @@ make wsl
     - Microsoft Store > App Installer(Winget)
     - Configure OpenSSH Server with [setup.ps1](./scripts/setup.ps1) and [setup.sh](./scripts/setup.sh)
 
+### Detect RegEdit Key/Value
+
+1. Install `Sysinternals Suite`, like `winget install Sysinternals Suite`
+2. Run `Procmon.exe`
+3. (Depends on usecase) On Process Monitor Filter, only includes `Process Name is SystemSettings.exe`
+4. Configure system settings and detect it!
+
+### Resize Windows VM storage
+
+- Select VM > Hardware > Select HDD > Resize disk > Input size (ex. 32GB)
+- Boot VM
+- Run `diskmgmt.msc`
+- (For the first time only) See [Fix: Can’t Extend Volume in Windows](https://woshub.com/extend-volume-blocked-by-windows-recovery-partition/)
+- Select `C:`, click `Extend volume...`
+
 ### Run PyTorch with NVIDIA GeForce Passthrough
 
 - Install PyTorch
@@ -131,17 +146,10 @@ Notes
 - Check PyTorch deps first. Some new CUDA versions are not supported by PyTorch.
 - NVIDIA provides CUDA Driver and GPU Driver.
 
-
 #### Reference
 - [CUDA&cuDNN環境構築のためのバージョン確認方法（Windows）](https://shift101.hatenablog.com/entry/2022/02/27/200953)
 - [Setting up and Configuring CUDA, CUDNN and PYTorch for Python Machine Learning.](https://jayanthkurup.com/setting-up-and-configuring-cuda-cudnn-and-pytorch-for-python-machine-learning/)
 - [Windows でディープラーニング環境を整える | 金子邦彦研究室](https://www.kkaneko.jp/tools/win/tfstack.html)
 - [Windows10で深層学習の環境を整える](http://hara-jp.com/_default/ja/Memo/Cuda_Win10.html)
 
-### Resize Windows VM storage
 
-- Select VM > Hardware > Select HDD > Resize disk > Input size (ex. 32GB)
-- Boot VM
-- Run `diskmgmt.msc`
-- (For the first time only) See [Fix: Can’t Extend Volume in Windows](https://woshub.com/extend-volume-blocked-by-windows-recovery-partition/)
-- Select `C:`, click `Extend volume...`

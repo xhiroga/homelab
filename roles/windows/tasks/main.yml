@@ -26,6 +26,8 @@
       value: KeyAssignmentShiftSpace
       data: 4 # 2: IME-on/off, 3: Alt Width Space, 4: None
       type: dword
+    # 併せて、日本語IMEの英数モードをブロックすると使いやすい（レジストリエディタでの設定方法は不明）
+    # [IMEで全角が勝手に半角に切り替わるときの対処法【Windows10】](https://fukappa.work/ime-input/#:~:text=%E3%80%8CMicrosoft%20IME%20%E3%81%AE%E8%A9%B3%E7%B4%B0%E8%A8%AD%E5%AE%9A
     - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds
       value: ShellFeedsTaskbarViewMode
       data: "{{shell_feeds_taskbar_view_mode}}" # 0: Show icon and text, 1: Show icon only, 2: Turn Off
