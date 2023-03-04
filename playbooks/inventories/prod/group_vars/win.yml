@@ -9,5 +9,7 @@ winget_packages:
   - "Microsoft.PowerToys"
   - "Microsoft.VisualStudioCode"
   - "Obsidian.Obsidian"
+  - "OBSProject.OBSStudio"
   - "Sysinternals Suite"
   - "Zotero.Zotero"
+  - "Zoom.Zoom"
