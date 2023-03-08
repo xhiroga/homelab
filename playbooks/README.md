@@ -107,6 +107,13 @@ make wsl
     - Microsoft Store > App Installer(Winget)
     - Configure OpenSSH Server with [setup.ps1](./scripts/setup.ps1) and [setup.sh](./scripts/setup.sh)
 
+### Debug SSH connection
+
+1. Check sshd status
+    1. `Commnad + R`, type `services.msc` and see `OpenSSH SSH Server`
+    1. In Powershell, run `Get-Service --name sshd`
+1. TODO
+
 ### Detect RegEdit Key/Value
 
 1. Install `Sysinternals Suite`, like `winget install Sysinternals Suite`
