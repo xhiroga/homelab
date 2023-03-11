@@ -59,7 +59,8 @@
 
 - name: Update /boot/grub/grub.cfg
   ansible.builtin.shell: proxmox-boot-tool refresh
-  failed_when: false 
+  failed_when: false
+  tags: molecule-idempotence-notest
 # Fails with below error. Instead of this command, I reboot proxmox...
 # Copying and configuring kernels on /dev/disk/by-uuid/CD11-9452
 #         Copying kernel and creating boot-entry for 5.13.19-2-pve
@@ -101,6 +102,8 @@
     block: options vfio-pci ids={{nvidia_device_ids}} disable_vga=1
     create: true
     path: /etc/modprobe.d/vfio.conf
+  when: nvidia_device_ids is defined
 
 - name: Update initramfs
   ansible.builtin.shell: update-initramfs -u
+  tags: molecule-idempotence-notest
