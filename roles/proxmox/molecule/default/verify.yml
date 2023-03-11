@@ -4,6 +4,18 @@
   gather_facts: false
   tasks:
     - name: Show file
+      command: grep '{{ no_subscription_repository }}' '/etc/apt/sources.list'
+      register: result
+    - name: Assert output
+      assert:
+        that: "'{{ no_subscription_repository }}' in result.stdout"
+    - name: Show file
+      command: grep '{{ no_subscription_repository }}' '/etc/apt/sources.list.d/pve-enterprise.list'
+      register: result
+    - name: Assert output
+      assert:
+        that: "'{{ no_subscription_repository }}' in result.stdout"
+    - name: Show file
       command: grep '{{ ignore_no_valid_subscription }}' '/usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js'
       register: result
     - name: Assert output
@@ -22,6 +34,8 @@
       assert:
         that: "'{{ interfaces_address }} {{ pve_hostname }}.{{ pve_domain }} {{ pve_hostname }}' in hosts_result.stdout"
   vars:
+    no_subscription_repository: "deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription"
+    commented_out_enterprise_repository: "# deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise"
     ignore_no_valid_subscription: "orig_cmd();return;let res = response.result;"
     interfaces_address: 192.168.100.11
     interfaces_subnet_mask: 24

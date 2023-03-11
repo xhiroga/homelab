@@ -1,5 +1,20 @@
 ---
-# tasks file for proxmox
+# [Package Repositories - Proxmox VE](https://pve.proxmox.com/wiki/Package_Repositories#sysadmin_no_subscription_repo)
+- name: Add no-subscription repository
+  ansible.builtin.blockinfile:
+    block: |
+      # PVE pve-no-subscription repository provided by proxmox.com,
+      # NOT recommended for production use
+      deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription
+    insertafter: "deb http://ftp.debian.org/debian bullseye-updates main contrib"
+    path: /etc/apt/sources.list
+
+- name: Remove enterprise repository
+  replace:
+    path: /etc/apt/sources.list.d/pve-enterprise.list
+    regexp: '^deb https://enterprise\.proxmox\.com/debian/pve bullseye pve-enterprise$'
+    replace: "# deb https://enterprise.proxmox.com/debian/pve bullseye pve-enterprise"
+
 - name: Disable subscription dialog
   replace:
     path: /usr/share/javascript/proxmox-widget-toolkit/proxmoxlib.js
