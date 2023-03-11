@@ -8,6 +8,7 @@
       deb http://download.proxmox.com/debian/pve bullseye pve-no-subscription
     path: /etc/apt/sources.list
 
+# [[SOLVED] - Update Unauthorized, after latest update. | Proxmox Support Forum](https://forum.proxmox.com/threads/update-unauthorized-after-latest-update.61584/)
 - name: Remove enterprise repository
   replace:
     path: /etc/apt/sources.list.d/pve-enterprise.list
