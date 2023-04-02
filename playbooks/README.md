@@ -9,7 +9,7 @@ Set environment variables.
 ```shell
 export GIT_USER_NAME=xhiroga
 export GIT_USER_EMAIL=xhiroga@users.noreply.github.com
-export GIT_GHQ_ROOT=~/src
+export GIT_GHQ_ROOT=~/.ghq
 ```
 
 ## macOS

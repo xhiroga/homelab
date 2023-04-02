@@ -1,4 +1,4 @@
 ---
 dotfiles_repo: "https://github.com/xrhioga/dotfiles.git"
-dotfiles_repo_local_destination: "~/src/github.com/xhiroga/dotfiles"
+dotfiles_repo_local_destination: "~/.ghq/github.com/xhiroga/dotfiles"
 dotfiles_repo_version: main
