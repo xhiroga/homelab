@@ -12,6 +12,7 @@ pyenv_versions:
   - 3.8.13 # https://peps.python.org/pep-0569/
   - 3.9.12 # https://peps.python.org/pep-0596/
   - 3.10.4 # https://peps.python.org/pep-0619/
+  - 3.11.2
 pyenv_global_version: 3.9.12
 
 rbenv_versions: # https://www.ruby-lang.org/en/downloads/releases/

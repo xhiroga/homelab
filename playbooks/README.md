@@ -2,7 +2,7 @@
 
 Configuration for bare-metal machines.
 
-## Environment varialbes
+## Environment variables
 
 Set environment variables.
 
@@ -10,8 +10,6 @@ Set environment variables.
 export GIT_USER_NAME=xhiroga
 export GIT_USER_EMAIL=xhiroga@users.noreply.github.com
 export GIT_GHQ_ROOT=~/src
-export COM_APPLE_SCREENCAPTHRE_LOCATION=~/OneDrive/users/hiroga/files/screencapture/hiroga-jict-MBP
-export ALFRED_SYNC_FOLDER=~/OneDrive/users/hiroga/files/applications/Alfred
 ```
 
 ## macOS

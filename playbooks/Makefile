@@ -1,7 +1,5 @@
 macos:
 	poetry run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K\
-		-e "alfred_sync_folder=$${ALFRED_SYNC_FOLDER}"\
-		-e "com_apple_screencapture_location=$${COM_APPLE_SCREENCAPTHRE_LOCATION}"\
 		-e "dotfiles_make_install_params=$${DOTFILES_MAKE_INSTALL_PARAMS}"
 
 rtx1210:
