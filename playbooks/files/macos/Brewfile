@@ -62,12 +62,11 @@ brew "mecab-ipadic"
 brew "mongodb-community"
 brew "mongodb-database-tools"
 brew "node"
-brew "nvm"
 brew "openblas"
 brew "openssl"  # tensorflow dependency
 brew "peco"
 brew "pipenv"
-# brew "pnpm"   # On 2023-06-11, the latest version is v8.6.1, but homebrew installed 7.15.0. It causes error(ERR_INVALID_THIS). So, run `npx pnpm i -g pnpm@latest`.
+brew "pnpm"
 brew "poetry"
 brew "pre-commit"
 # Linux ps command can not be imported to OSX, https://apple.stackexchange.com/questions/187783/can-i-use-gnu-ps-on-os-x
