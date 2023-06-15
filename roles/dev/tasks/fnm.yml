@@ -1,0 +1,12 @@
+---
+- name: Ensure fnm installed
+  ansible.builtin.shell: fnm --version
+  args: { executable: /bin/bash }
+  changed_when: false
+  ignore_errors: true
+  register: has_fnm
+
+- name: Install node versions
+  ansible.builtin.shell: fnm install {{ item }}
+  loop: "{{ node_versions }}"
+  changed_when: false

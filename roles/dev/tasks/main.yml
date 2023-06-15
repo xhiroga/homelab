@@ -11,6 +11,7 @@
   tags: never
 - import_tasks: go-packages.yml
 - import_tasks: rbenv.yml
+- import_tasks: rye.yml
 - import_tasks: rust.yml
 - import_tasks: sdkman.yml
 - import_tasks: vscode.yml

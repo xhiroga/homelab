@@ -6,6 +6,9 @@ ghcup_hsl_version: 1.7.0.0 # [Releases · haskell/haskell\-language\-server](htt
 go_packages:
   - github.com/spf13/cobra-cli@latest
 
+node_versions:
+  - 18.16.0
+
 pyenv_versions:
   - 3.6.15 # https://peps.python.org/pep-0494/
   - 3.7.13 # https://peps.python.org/pep-0537/
@@ -21,9 +24,10 @@ rbenv_global_version: 2.6.10
 
 sdk_gradle_versions:
   - 7.4.2
-sdk_java_versions:
+sdk_java_versions:  # sdk list java
   - 8.332.08.1-amzn
   - 22.1.0.r17-grl
+  - 17.0.7-amzn
 sdk_kotlin_versions:
   - 1.6.21
 sdk_maven_versions:

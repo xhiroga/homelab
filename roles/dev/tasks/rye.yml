@@ -1,0 +1,8 @@
+- name: Check rye stats
+  ansible.builtin.stat:
+    path: $HOME/.rye/env
+  register: rye
+
+- name: Install rye
+  ansible.builtin.shell: curl -sSf https://rye-up.com/get | bash
+  when: not rye.stat.exists
