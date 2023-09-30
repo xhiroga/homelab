@@ -95,21 +95,21 @@ make wsl
 
 - `Get-NetIPAddress` in PowerShell
 - Set TCP/IPv4 Properties as
-    - Use the following IP addresses
-        - IP address: `192.168.100.XXX`
-        - Subnet mask: `255.255.255.0`
-        - Default gateway: `192.168.100.1`
-    - Use the following DNS server address
-        - Preferred DNS server: `192.168.100.1`
+  - Use the following IP addresses
+    - IP address: `192.168.100.XXX`
+    - Subnet mask: `255.255.255.0`
+    - Default gateway: `192.168.100.1`
+  - Use the following DNS server address
+    - Preferred DNS server: `192.168.100.1`
 - [Windows ホストのセットアップ — Ansible Documentation](https://docs.ansible.com/ansible/2.9_ja/user_guide/windows_setup.html#id3)
-    - Microsoft Store > App Installer(Winget)
-    - Configure OpenSSH Server with [setup.ps1](./scripts/setup.ps1) and [setup.sh](./scripts/setup.sh)
+  - Microsoft Store > App Installer(Winget)
+  - Configure OpenSSH Server with [setup.ps1](./scripts/setup.ps1) and [setup.sh](./scripts/setup.sh)
 
 ### Debug SSH connection
 
 1. Check sshd status
-    1. `Commnad + R`, type `services.msc` and see `OpenSSH SSH Server`
-    1. In Powershell, run `Get-Service --name sshd`
+  1. `Commnad + R`, type `services.msc` and see `OpenSSH SSH Server`
+  1. In Powershell, run `Get-Service --name sshd`
 1. TODO
 
 ### Detect RegEdit Key/Value
@@ -130,31 +130,31 @@ make wsl
 ### Run PyTorch with NVIDIA GeForce Passthrough
 
 - Install PyTorch
-    - `conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia`
+  - `conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia`
 - Install GPU Driver.
 - Check GPU Driver version.
-    - Open `NVIDIA Control Panel` > `Desktop` > `System Information`. See Driver version (ex: `472.88`).
-    - Run `nvidia-smi` on Command Prompt or PowerShell.
+  - Open `NVIDIA Control Panel` > `Desktop` > `System Information`. See Driver version (ex: `472.88`).
+  - Run `nvidia-smi` on Command Prompt or PowerShell.
 - Install CUDA Toolkit. See [required driver version](https://docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html#cuda-major-component-versions__table-cuda-toolkit-driver-versions).
 - Check CUDA Driver version. Run `nvcc -V` on Command Propmt or Powershell. (ex. `Cuda compilation tools, release 11.7, V11.7.64`)
 - Install Zlib. As this says, copy it into CUDA dll folder, instead of `C:\Windows\System32`
-    - CUDAのアンインストール時に一緒に消せるメリットがある。一方で、CUDAのバージョンアップの都度インストールが必要な点は考慮すべき。
+  - CUDAのアンインストール時に一緒に消せるメリットがある。一方で、CUDAのバージョンアップの都度インストールが必要な点は考慮すべき。
 - Install cuDNN.
-    - Refer cuDNN package version which supports installed CUDA Toolkit version. See [Support Matrix](https://docs.nvidia.com/deeplearning/cudnn/support-matrix/index.html).
-    - See [Installing cuDNN on Windows | NVIDIA Developer](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
-    - インストーラーがない場合、解凍したフォルダを手動で`C:\Program Files\NVIDIA\CUDNN\v8.X(バージョンに依存)`に配置する。
-        - 基本的にパスは自由だが、あまりに自由だとあとで困るのでv8.3以前のインストーラーの挙動に倣う。
-    - `C:\Program Files\NVIDIA\CUDNN\v8.X(バージョンに依存)\bin`にPATHを通す。
-        - Check cuDNN PATH. Run `where cudnn64_*.dll` on **Command Prompt** (not PowerShell).
+  - Refer cuDNN package version which supports installed CUDA Toolkit version. See [Support Matrix](https://docs.nvidia.com/deeplearning/cudnn/support-matrix/index.html).
+  - See [Installing cuDNN on Windows | NVIDIA Developer](https://docs.nvidia.com/deeplearning/cudnn/install-guide/index.html).
+  - インストーラーがない場合、解凍したフォルダを手動で`C:\Program Files\NVIDIA\CUDNN\v8.X(バージョンに依存)`に配置する。
+    - 基本的にパスは自由だが、あまりに自由だとあとで困るのでv8.3以前のインストーラーの挙動に倣う。
+  - `C:\Program Files\NVIDIA\CUDNN\v8.X(バージョンに依存)\bin`にPATHを通す。
+    - Check cuDNN PATH. Run `where cudnn64_*.dll` on **Command Prompt** (not PowerShell).
 
 Notes
+
 - Check PyTorch deps first. Some new CUDA versions are not supported by PyTorch.
 - NVIDIA provides CUDA Driver and GPU Driver.
 
 #### Reference
+
 - [CUDA&cuDNN環境構築のためのバージョン確認方法（Windows）](https://shift101.hatenablog.com/entry/2022/02/27/200953)
 - [Setting up and Configuring CUDA, CUDNN and PYTorch for Python Machine Learning.](https://jayanthkurup.com/setting-up-and-configuring-cuda-cudnn-and-pytorch-for-python-machine-learning/)
 - [Windows でディープラーニング環境を整える | 金子邦彦研究室](https://www.kkaneko.jp/tools/win/tfstack.html)
 - [Windows10で深層学習の環境を整える](http://hara-jp.com/_default/ja/Memo/Cuda_Win10.html)
-
-
