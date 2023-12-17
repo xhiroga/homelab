@@ -1,0 +1,8 @@
+collections:
+  - name: geerlingguy.mac
+  - name: yamaha_network.rtx
+  - name: community.windows
+
+roles:
+  - name: ngetchell.vscode
+  - name: pddg.ghq
