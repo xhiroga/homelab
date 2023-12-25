@@ -4,5 +4,6 @@ ansible_shell_type: powershell
 winget_packages:
   - "AgileBits.1Password"
   - "GitHub.GitHubDesktop"
+  - "Git.Git"
   - "Microsoft.VisualStudioCode"
   - "Valve.Steam"

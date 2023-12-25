@@ -11,27 +11,6 @@
       value: EnableClipboardHistory
       data: 1
       type: dword
-    # # Choose a preferred function for each key/key combination
-    # - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
-    #   value: IsKeyAssignmentEnabled
-    #   data: 1 # 0: Off, 1: On
-    #   type: dword
-    # # Ctrl + SpaceでIMEのOn/Offを切り替える
-    # - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
-    #   value: KeyAssignmentCtrlSpace
-    #   data: 2 # 2: IME-on/off, 4: None
-    #   type: dword
-    # # Shift + Spaceは何もしない
-    # - key: HKCU:\SOFTWARE\Microsoft\IME\15.0\IMEJP\MSIME
-    #   value: KeyAssignmentShiftSpace
-    #   data: 4 # 2: IME-on/off, 3: Alt Width Space, 4: None
-    #   type: dword
-    # # 併せて、日本語IMEの英数モードをブロックすると使いやすい（レジストリエディタでの設定方法は不明）
-    # # [IMEで全角が勝手に半角に切り替わるときの対処法【Windows10】](https://fukappa.work/ime-input/#:~:text=%E3%80%8CMicrosoft%20IME%20%E3%81%AE%E8%A9%B3%E7%B4%B0%E8%A8%AD%E5%AE%9A
-    # - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Feeds
-    #   value: ShellFeedsTaskbarViewMode
-    #   data: "{{shell_feeds_taskbar_view_mode}}" # 0: Show icon and text, 1: Show icon only, 2: Turn Off
-    #   type: dword
     # [How to toggle Show/Hide hidden files in Windows through command line? \- Super User](https://superuser.com/questions/1151844/how-to-toggle-show-hide-hidden-files-in-windows-through-command-line)
     - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
       value: Hidden
@@ -41,15 +20,6 @@
     - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\Advanced
       value: HideFileExt
       data: 0
-    # - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PrecisionTouchPad
-    #   value: CursorSpeed
-    #   data: 20
-    #   type: dword
-    # # [Turn On or Off Tap Twice and Drag on Touchpad to Multi-Select in Windows 11 Tutorial | Windows 11 Forum](https://www.elevenforum.com/t/turn-on-or-off-tap-twice-and-drag-on-touchpad-to-multi-select-in-windows-11.7490/)
-    # - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PrecisionTouchPad
-    #   value: TapAndDrag
-    #   data: 4294967295
-    #   type: dword
     # [powershell - Enable Windows 10 Developer Mode programmatically - Stack Overflow](https://stackoverflow.com/questions/40033608/enable-windows-10-developer-mode-programmatically)
     # [Support portable packages in user mode without Developer Mode enabled · Issue #2368 · microsoft/winget-cli](https://github.com/microsoft/winget-cli/issues/2368)
     - key: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\AppModelUnlock
@@ -62,13 +32,13 @@
   ansible.windows.win_shell: Invoke-Expression "& '$(Join-Path (Get-AppxPackage Microsoft.DesktopAppInstaller).InstallLocation "winget.exe")' list" # https://github.com/microsoft/winget-cli/issues/1474#issuecomment-1249701447
   register: winget_list
 
-# # アプリケーション実行時にインストールするとエラーになることが多いので、初回に限る。
-# - name: Install packages
-#   # In the first time, manually put [Y] Yes to agreements terms.
-#   # ansible.windows.win_shell: winget install {{ item }}
-#   ansible.windows.win_shell: Invoke-Expression "& '$(Join-Path (Get-AppxPackage Microsoft.DesktopAppInstaller).InstallLocation "winget.exe")' install {{ item }}" # https://github.com/microsoft/winget-cli/issues/1474#issuecomment-1249701447
-#   loop: "{{ winget_packages }}"
-#   when: item not in winget_list.stdout
+# アプリケーション実行時にインストールするとエラーになることが多いので、初回に限る。
+- name: Install packages
+  # In the first time, manually put [Y] Yes to agreements terms.
+  # ansible.windows.win_shell: winget install {{ item }}
+  ansible.windows.win_shell: Invoke-Expression "& '$(Join-Path (Get-AppxPackage Microsoft.DesktopAppInstaller).InstallLocation "winget.exe")' install {{ item }}" # https://github.com/microsoft/winget-cli/issues/1474#issuecomment-1249701447
+  loop: "{{ winget_packages }}"
+  when: item not in winget_list.stdout
 
 # - name: Enable File and Printer Sharing
 #   ansible.windows.win_command: netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
