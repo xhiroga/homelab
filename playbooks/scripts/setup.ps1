@@ -47,6 +47,7 @@ Write-Host "Before:"
 
 $config = Get-Content $configPath -Raw
 $config = $config -replace '#\s*PubkeyAuthentication yes', 'PubkeyAuthentication yes'
+$config = $config -replace '#\s*LogLevel INFO', 'LogLevel VERBOSE'
 Set-Content $configPath -Value $config
 Write-Host "After:"
 (Get-Content $configPath) | Select-String "PubkeyAuthentication"
