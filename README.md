@@ -4,10 +4,10 @@
 
 ## Prerequisites
 
-Install [Poetory](https://python-poetry.org/).
+Install rye.
 
 ```shell
-poetry install
+rye sync
 ```
 
 ### Windows

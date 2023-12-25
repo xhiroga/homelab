@@ -1,18 +1,23 @@
-[tool.poetry]
+[project]
 name = "homelab"
 version = "0.1.0"
-description = ""
-authors = ["Hiroaki Ogasawara <13391129+xhiroga@users.noreply.github.com>"]
-
-[tool.poetry.dependencies]
-python = "^3.9"
-ansible = "^5.7.0"
-molecule = "3.5.2" # 3.6.0 and 3.6.1 has bug of `molecule login`
-molecule-docker = "^1.1.0"
-pywinrm = "^0.4.3"
-
-[tool.poetry.dev-dependencies]
+description = "Add your description here"
+dependencies = [
+    "ansible>=6.7.0",
+    "molecule>=4.0.4",
+    "molecule-docker>=2.1.0",
+    "pywinrm>=0.4.3",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = []
+
+[tool.hatch.metadata]
+allow-direct-references = true

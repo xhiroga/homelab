@@ -1,13 +1,13 @@
 all: test;
 
 converge:
-	poetry run molecule converge
+	rye run molecule converge
 
 destroy:
-	poetry run molecule destroy
+	rye run molecule destroy
 
 login:
-	poetry run molecule login
+	rye run molecule login
 
 test:
-	poetry run molecule test
+	rye run molecule test

@@ -91,7 +91,7 @@ make -C .. install
 make wsl
 ```
 
-## Windows VM
+## Windows (VM)
 
 - `Get-NetIPAddress` in PowerShell
 - Set TCP/IPv4 Properties as
@@ -103,7 +103,14 @@ make wsl
     - Preferred DNS server: `192.168.100.1`
 - [Windows ホストのセットアップ — Ansible Documentation](https://docs.ansible.com/ansible/2.9_ja/user_guide/windows_setup.html#id3)
   - Microsoft Store > App Installer(Winget)
-  - Configure OpenSSH Server with [setup.ps1](./scripts/setup.ps1) and [setup.sh](./scripts/setup.sh)
+  - Configure OpenSSH Server
+
+    ```powershell
+    # Run as Administrator
+    $OutputEncoding = New-Object -typename System.Text.UTF8Encoding
+    Set-ExecutionPolicy RemoteSigned
+    .\scripts\setup.ps1 -githubUsername "xhiroga"
+    ```
 
 ### Debug SSH connection
 
@@ -152,7 +159,7 @@ Notes
 - Check PyTorch deps first. Some new CUDA versions are not supported by PyTorch.
 - NVIDIA provides CUDA Driver and GPU Driver.
 
-#### Reference
+#### References
 
 - [CUDA&cuDNN環境構築のためのバージョン確認方法（Windows）](https://shift101.hatenablog.com/entry/2022/02/27/200953)
 - [Setting up and Configuring CUDA, CUDNN and PYTorch for Python Machine Learning.](https://jayanthkurup.com/setting-up-and-configuring-cuda-cudnn-and-pytorch-for-python-machine-learning/)
