@@ -4,13 +4,13 @@ docker-build:
 	docker build ./molecule/docker-image -t ghcr.io/xhiroga/ansible-role-proxmox
 
 converge: docker-build;
-	poetry run molecule converge
+	rye run molecule converge
 
 destroy:
-	poetry run molecule destroy
+	rye run molecule destroy
 
 login:
-	poetry run molecule login
+	rye run molecule login
 
 test: docker-build;
-	poetry run molecule test
+	rye run molecule test

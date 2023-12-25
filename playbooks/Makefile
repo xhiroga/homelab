@@ -3,20 +3,20 @@ install_ssh_config:
 	ln -f ssh_config ~/.ssh/config.d/homelab_ssh_config
 
 macos:
-	poetry run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K\
+	rye run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K\
 		-e "dotfiles_make_install_params=$${DOTFILES_MAKE_INSTALL_PARAMS}"
 
 rtx1210:
-	poetry run ansible-playbook rtx1210.yml -i inventories/$${ENV:-prod} -K
+	rye run ansible-playbook rtx1210.yml -i inventories/$${ENV:-prod} -K
 
 proxmox:
-	poetry run ansible-playbook proxmox.yml -i inventories/$${ENV:-prod} -K
+	rye run ansible-playbook proxmox.yml -i inventories/$${ENV:-prod} -K
 
 diskstation:
-	poetry run ansible-playbook diskstation.yml -i inventories/$${ENV:-prod} -K
+	rye run ansible-playbook diskstation.yml -i inventories/$${ENV:-prod} -K
 
 ubuntu_dev:
-	poetry run ansible-playbook ubuntu_dev.yml -i inventories/$${ENV:-prod} -K
+	rye run ansible-playbook ubuntu_dev.yml -i inventories/$${ENV:-prod} -K
 
 win_gpu:
 	# [Preforking issue on OSX (10.13) when attempting to connect to windows server via WinRM · Issue #34056 · ansible/ansible](https://github.com/ansible/ansible/issues/34056)
@@ -32,5 +32,5 @@ win_vm:
 	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES rye run ansible-playbook win_vm.yml -i inventories/$${ENV:-prod} --ssh-common-args '-F ssh_config'
 
 wsl:
-	poetry run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K\
+	rye run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K\
 		-e "dotfiles_make_install_params=$${DOTFILES_MAKE_INSTALL_PARAMS}"
