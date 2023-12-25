@@ -3,6 +3,7 @@ ansible_shell_type: powershell
 
 winget_packages:
   - "AgileBits.1Password"
+  - "Discord.Discord"
   - "GitHub.GitHubDesktop"
   - "Git.Git"
   - "Microsoft.VisualStudioCode"
