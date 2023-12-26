@@ -7,4 +7,5 @@ winget_packages:
   - "GitHub.GitHubDesktop"
   - "Git.Git"
   - "Microsoft.VisualStudioCode"
+  - "OBSProject.OBSStudio"
   - "Valve.Steam"
