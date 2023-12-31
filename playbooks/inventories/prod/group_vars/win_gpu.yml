@@ -7,5 +7,6 @@ winget_packages:
   - "GitHub.GitHubDesktop"
   - "Git.Git"
   - "Microsoft.VisualStudioCode"
+  - "Obsidian.Obsidian"
   - "OBSProject.OBSStudio"
   - "Valve.Steam"
