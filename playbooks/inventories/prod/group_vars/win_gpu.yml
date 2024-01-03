@@ -3,10 +3,12 @@ ansible_shell_type: powershell
 
 winget_packages:
   - "AgileBits.1Password"
+  - "Anaconda.Miniconda3"
   # - "Discord.Discord" # Not works on 2023-12-25
   - "GitHub.GitHubDesktop"
   - "Git.Git"
   - "Microsoft.VisualStudioCode"
   - "Obsidian.Obsidian"
   - "OBSProject.OBSStudio"
+  - "Sysinternals Suite"
   - "Valve.Steam"

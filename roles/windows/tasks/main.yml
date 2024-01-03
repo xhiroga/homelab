@@ -26,6 +26,8 @@
       value: AllowDevelopmentWithoutDevLicense
       data: 1
       type: dword
+    # TODO: エクスプローラーのプライバシー設定（最近使用したファイル・頻繁に使用されるフォルダーの非表示）
+    # TODO: タスクバーのタスクビュー、ウィジェット、チャットの非表示化
 
 - name: List winget packages
   # ansible.windows.win_shell: win-get list
