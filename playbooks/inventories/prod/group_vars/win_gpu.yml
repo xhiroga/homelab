@@ -7,6 +7,8 @@ winget_packages:
   # - "Discord.Discord" # Not works on 2023-12-25
   - "GitHub.GitHubDesktop"
   - "Git.Git"
+  - "GitHub.GitLFS"
+  # - "Google.JapaneseIME"
   - "Microsoft.VisualStudioCode"
   - "Obsidian.Obsidian"
   - "OBSProject.OBSStudio"
