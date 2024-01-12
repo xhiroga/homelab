@@ -12,5 +12,6 @@ winget_packages:
   - "Microsoft.VisualStudioCode"
   - "Obsidian.Obsidian"
   - "OBSProject.OBSStudio"
+  - "SlackTechnologies.Slack"
   - "Sysinternals Suite"
   - "Valve.Steam"
