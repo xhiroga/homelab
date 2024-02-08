@@ -4,7 +4,9 @@ ansible_shell_type: powershell
 winget_packages:
   - "AgileBits.1Password"
   - "Anaconda.Miniconda3"
+  - "DBBrowserForSQLite.DBBrowserForSQLite"
   # - "Discord.Discord" # Not works on 2023-12-25
+  # - "Docker.DockerDesktop" # You must log out and log back in for the group membership changes to take effect.
   - "GitHub.GitHubDesktop"
   - "Git.Git"
   - "GitHub.GitLFS"
