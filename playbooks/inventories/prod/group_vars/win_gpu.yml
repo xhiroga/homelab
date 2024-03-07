@@ -14,6 +14,8 @@ winget_packages:
   - "Microsoft.VisualStudioCode"
   - "Obsidian.Obsidian"
   - "OBSProject.OBSStudio"
+  - "OpenJS.NodeJS"
   - "SlackTechnologies.Slack"
   - "Sysinternals Suite"
   - "Valve.Steam"
+  - "9PMMSR1CGPWG" # HEIF Image Extensions
