@@ -6,6 +6,7 @@ winget_packages:
   - "Audacity.Audacity"
   - "Anaconda.Miniconda3"
   - "DBBrowserForSQLite.DBBrowserForSQLite"
+  - "DevToys"
   # - "Discord.Discord" # Not works on 2023-12-25
   # - "Docker.DockerDesktop" # You must log out and log back in for the group membership changes to take effect.
   - "GitHub.GitHubDesktop"
@@ -19,4 +20,5 @@ winget_packages:
   - "SlackTechnologies.Slack"
   - "Sysinternals Suite"
   - "Valve.Steam"
+  - "VideoLAN.VLC"
   - "9PMMSR1CGPWG" # HEIF Image Extensions
