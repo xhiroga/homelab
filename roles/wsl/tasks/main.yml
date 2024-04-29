@@ -14,3 +14,28 @@
 
 - name: Make sure that your user has write permission
   ansible.builtin.shell: chmod u+w /usr/local/share/man
+
+- name: Install build-essential
+  ansible.builtin.apt:
+    name:
+      - build-essential
+    state: present
+  become: yes
+
+- name: Install pkg-config, libxml2 and libxml2-dev
+  ansible.builtin.apt:
+    name:
+      - pkg-config
+      # LIBXML2
+      - libxml2
+      - libxml2-dev
+      # freetype2
+      - libfreetype6
+      - libfreetype6-dev
+      # FONTCONFIG
+      - fontconfig
+      - libfontconfig1-dev
+      # ANT
+      - ant
+    state: present
+  become: yes
