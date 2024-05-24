@@ -19,6 +19,7 @@ winget_packages:
   - "OpenJS.NodeJS"
   - "SlackTechnologies.Slack"
   - "Sysinternals Suite"
+  - "Unity.UnityHub"
   - "Valve.Steam"
   - "VideoLAN.VLC"
   - "9PMMSR1CGPWG" # HEIF Image Extensions
