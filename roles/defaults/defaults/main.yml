@@ -39,12 +39,9 @@ com_apple_symbolichotkeys_AppleSymbolicHotKeys:
   # Disable "Search word in terminal man page index"
   124: "<dict><key>enabled</key><false/><key>value</key><dict><key>parameters</key><array><integer>65535</integer><integer>26</integer><integer>262144</integer></array><key>type</key><string>standard</string></dict></dict>"
 
-com_apple_driver_AppleBluetoothMultitouch_trackpad_Clicking: true
-
-com_apple_driver_AppleBluetoothMultitouch_trackpad_Dragging: true
-
-# Double tap to drag
-com_apple_AppleMultitouchTrackpad_Dragging: 1
+# Tap to click
+com_apple_AppleMultitouchTrackpad_Clicking: 1
+com_apple_driver_AppleBluetoothMultitouch_trackpad_Clicking: 1
 
 com_apple_HIToolbox_AppleDictationAutoEnable: 0
 

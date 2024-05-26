@@ -6,18 +6,32 @@
 
     defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool {{ NSGlobalDomain_NSAutomaticSpellingCorrectionEnabled }}
 
-    # Trackpad: enable tap to click for this user and for the login screen
-    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -bool {{ com_apple_driver_AppleBluetoothMultitouch_trackpad_Clicking }}
-    defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int {{ com_apple_mouse_tapBehavior }}
-    defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int {{ com_apple_mouse_tapBehavior }}
+    # Tap to click
+    defaults write com.apple.AppleMultitouchTrackpad Clicking -int {{ com_apple_AppleMultitouchTrackpad_Clicking }}
+    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int {{ com_apple_driver_AppleBluetoothMultitouch_trackpad_Clicking }}
 
-    # Trackpad: enable dragging
-    defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -bool {{ com_apple_driver_AppleBluetoothMultitouch_trackpad_Dragging }}
-    defaults write com.apple.AppleMultitouchTrackpad Dragging -bool {{ com_apple_driver_AppleBluetoothMultitouch_trackpad_Dragging }}
+    # MANUALLY CONFIGURATION RECOMMENDED!
+    # Use trackpad for dragging / Three Finger Drag
+    # defaults write com.apple.AppleMultitouchTrackpad Dragging -int 0
+    # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerDrag -int 1
+    # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+    # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerTapGesture -int 0
+    # defaults write com.apple.AppleMultitouchTrackpad TrackpadThreeFingerVertSwipeGesture -int 0
 
+    # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Dragging -int 0
+    # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerDrag -int 1
+    # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerHorizSwipeGesture -int 0
+    # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerTapGesture -int 0
+    # defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad TrackpadThreeFingerVertSwipeGesture -int 0
+    
     # Set a blazingly fast keyboard repeat rate
     defaults write NSGlobalDomain InitialKeyRepeat -int {{ NSGlobalDomain_InitialKeyRepeat }}
     defaults write NSGlobalDomain KeyRepeat -int {{ NSGlobalDomain_KeyRepeat }}
+
+    # LOOKS NOT WORKING...
+    # Trackpad: enable tap to click for this user and for the login screen
+    # defaults -currentHost write NSGlobalDomain com.apple.mouse.tapBehavior -int {{ com_apple_mouse_tapBehavior }}
+    # defaults write NSGlobalDomain com.apple.mouse.tapBehavior -int {{ com_apple_mouse_tapBehavior }}
 
 - name: com.apple.controlcenter
   ansible.builtin.shell: |
@@ -72,11 +86,6 @@
 - name: Enable keyboard shortcut
   # https://apple.stackexchange.com/questions/405937/how-can-i-enable-keyboard-shortcut-preference-after-modifying-it-through-defaul
   ansible.builtin.shell: /System/Library/PrivateFrameworks/SystemAdministration.framework/Resources/activateSettings -u
-
-- name: com.apple.AppleMultitouchTrackpad
-  ansible.builtin.shell: |
-    defaults write com.apple.AppleMultitouchTrackpad Dragging {{ com_apple_AppleMultitouchTrackpad_Dragging }}
-    defaults write com.apple.AppleBluetoothMultitouch Dragging {{ com_apple_AppleMultitouchTrackpad_Dragging }}
 
 - name: com.apple.HIToolbox
   ansible.builtin.shell: |
