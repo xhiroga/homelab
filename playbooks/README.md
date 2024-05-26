@@ -22,7 +22,7 @@ export GIT_GHQ_ROOT=~/.ghq
 
 ```shell
 ssh -T git@github.com
-export DOTFILES_MAKE_INSTALL_PARAMS="{\"GIT_USER_NAME\":\"${GIT_USER_NAME}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL}\",\"GIT_GHQ_ROOT\":\"${GIT_GHQ_ROOT}\"}"
+export DOTFILES_MAKE_INSTALL_PARAMS="{\"GIT_USER_NAME\":\"${GIT_USER_NAME:-$(git config --get user.name)}\",\"GIT_USER_EMAIL\":\"${GIT_USER_EMAIL-$(git config --get user.email)}\",\"GIT_GHQ_ROOT\":\"${GIT_GHQ_ROOT:-$(git config --get ghq.root )}\"}"
 ```
 
 ### from collection
@@ -42,13 +42,13 @@ Role dependencies are not installed automatically. See [How to install ansible g
 
 ```shell
 make -C .. install
+ln -s ../roles ./roles
 make macos
 ```
 
 ### References and Inspirations
 
 - [geerlingguy/mac-dev-playbook: Mac setup and configuration via Ansible.](https://github.com/geerlingguy/mac-dev-playbook)
-
 
 ## YAMAHA RTX1210
 

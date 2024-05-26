@@ -10,4 +10,3 @@
       become: true
     - role: defaults
     - role: dotfiles
-    - role: dev

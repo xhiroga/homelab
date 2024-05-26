@@ -2,14 +2,17 @@
 name = "homelab"
 version = "0.1.0"
 description = "Add your description here"
+authors = [
+    { name = "Hiroaki Ogasawara", email = "13391129+xhiroga@users.noreply.github.com" }
+]
 dependencies = [
-    "ansible>=6.7.0",
-    "molecule>=4.0.4",
+    "ansible>=9.6.0",
+    "molecule>=24.2.1",
     "molecule-docker>=2.1.0",
     "pywinrm>=0.4.3",
 ]
 readme = "README.md"
-requires-python = ">= 3.8"
+requires-python = ">= 3.12"
 
 [build-system]
 requires = ["hatchling"]
@@ -21,3 +24,6 @@ dev-dependencies = []
 
 [tool.hatch.metadata]
 allow-direct-references = true
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/homelab"]

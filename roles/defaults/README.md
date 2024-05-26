@@ -30,7 +30,6 @@ References and Inspirations
 ---
 
 - [archlinux - Window Maker](https://wiki.archlinux.jp/index.php/Window_Maker) - Use GNUstep inside.
- - https://macos-defaults.com/dock/orientation.html#set-to-right
- - https://github.com/mathiasbynens/dotfiles/blob/master/.macos
- - https://github.com/hedlund/dotinit/blob/9262d38c61ddf5f852615919030e15f526f2c2f7/mac/setup-macos.sh
-
+- https://macos-defaults.com/dock/orientation.html#set-to-right
+- https://github.com/mathiasbynens/dotfiles/blob/master/.macos
+- https://github.com/hedlund/dotinit/blob/9262d38c61ddf5f852615919030e15f526f2c2f7/mac/setup-macos.sh

@@ -1,7 +1,6 @@
 # dev
 
-hiroga[https://github.com/xhiroga]'s development environment.
-
+[hiroga](https://github.com/xhiroga)'s development environment.
 
 ## References and inspirations
 

@@ -19,12 +19,6 @@
     defaults write NSGlobalDomain InitialKeyRepeat -int {{ NSGlobalDomain_InitialKeyRepeat }}
     defaults write NSGlobalDomain KeyRepeat -int {{ NSGlobalDomain_KeyRepeat }}
 
-    # Touch bar show Control Strip
-    defaults write com.apple.touchbar.agent PresentationModeGlobal -string fullControlStrip
-
-    # No Siri in touch bar
-    defaults write com.apple.controlstrip FullCustomized '("com.apple.system.group.brightness","com.apple.system.mission-control","com.apple.system.launchpad","com.apple.system.group.keyboard-brightness","com.apple.system.group.media","com.apple.system.group.volume")'
-
 - name: com.apple.controlcenter
   ansible.builtin.shell: |
     defaults write com.apple.controlcenter "NSStatusItem Visible Battery" {{ com_apple_controlcenter_nsstatusitem_visible_battery }}
@@ -36,7 +30,7 @@
 
 - name: com.apple.dock
   ansible.builtin.shell: |
-    defaults write com.apple.dock autohide - bool {{ com_apple_dock_autohide }}
+    defaults write com.apple.dock autohide -bool {{ com_apple_dock_autohide }}
 
     # Don’t automatically rearrange Spaces based on most recent use
     defaults write com.apple.dock mru-spaces -bool {{ com_apple_dock_mru_spaces }}
@@ -87,7 +81,3 @@
 - name: com.apple.HIToolbox
   ansible.builtin.shell: |
     defaults write com.apple.HIToolbox AppleDictationAutoEnable {{ com_apple_HIToolbox_AppleDictationAutoEnable }}
-
-- name: com.apple.Safari
-  ansible.builtin.shell: |
-    defaults write com.apple.Safari ShowDevelopMenu {{ com_apple_Safari_ShowDevelopMenu }}
