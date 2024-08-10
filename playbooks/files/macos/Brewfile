@@ -38,9 +38,12 @@ brew "gomplate"
 brew "graphviz"
 brew "gnupg"
 brew "hdf5" # tensorflow dependency
+brew "libpcap" # FreeRTOS simulation
 brew "mecab"
 brew "mecab-ipadic"
+brew "nmap"
 brew "node"
+brew "orbstack"
 brew "openssl"  # tensorflow dependency
 brew "peco"
 brew "pnpm"
