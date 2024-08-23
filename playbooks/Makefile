@@ -3,8 +3,7 @@ install_ssh_config:
 	ln -f ssh_config ~/.ssh/config.d/homelab_ssh_config
 
 macos:
-	rye run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K\
-		-e "dotfiles_make_install_params=$${DOTFILES_MAKE_INSTALL_PARAMS}"
+	rye run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K
 
 rtx1210:
 	rye run ansible-playbook rtx1210.yml -i inventories/$${ENV:-prod} -K
@@ -32,5 +31,4 @@ win_vm:
 	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES rye run ansible-playbook win_vm.yml -i inventories/$${ENV:-prod} --ssh-common-args '-F ssh_config'
 
 wsl:
-	rye run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K\
-		-e "dotfiles_make_install_params=$${DOTFILES_MAKE_INSTALL_PARAMS}"
+	rye run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K

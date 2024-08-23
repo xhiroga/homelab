@@ -11,4 +11,3 @@
   ansible.builtin.make:
     chdir: "{{ dotfiles_repo_local_destination }}"
     target: install
-    params: "{{ dotfiles_make_install_params }}"
