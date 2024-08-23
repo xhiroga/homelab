@@ -4,13 +4,13 @@ docker-build:
 	docker build ./molecule/docker-image -t xhiroga-ansible-role-dev
 
 converge: docker-build;
-	rye run molecule converge
+	uv run molecule converge
 
 destroy:
-	rye run molecule destroy
+	uv run molecule destroy
 
 login:
-	rye run molecule login
+	uv run molecule login
 
 test: docker-build;
-	rye run molecule test
+	uv run molecule test

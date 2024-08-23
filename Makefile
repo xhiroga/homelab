@@ -1,8 +1,8 @@
 .PHONY:
 
 install: playbooks/roles;
-	rye run ansible-galaxy role install -r requirements.yml
-	rye run ansible-galaxy collection install -r requirements.yml
+	uv run ansible-galaxy role install -r requirements.yml
+	uv run ansible-galaxy collection install -r requirements.yml
 
 playbooks/roles:
 	ln -s ./roles ./playbooks/roles

@@ -4,13 +4,16 @@
 
 ## Prerequisites
 
-Install rye.
+Install [uv](https://github.com/astral-sh/uv)
+
+## Install
 
 ```shell
-rye sync
+uv sync
+make install
 ```
 
 ## References and Inspirations
 
-- [khuedoan/homelab: Small and energy efficient self-hosting infrastructure, fully automated from empty disk to operating services.](https://github.com/khuedoan/homelab)
+- [khuedoan/homelab](https://github.com/khuedoan/homelab)
 - [Launching a Windows VM in Proxmox](https://www.youtube.com/watch?v=eyNlGAzf-L4)
