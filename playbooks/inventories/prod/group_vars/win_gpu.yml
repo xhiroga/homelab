@@ -5,6 +5,8 @@ winget_packages:
   - "AgileBits.1Password"
   - "Audacity.Audacity"
   - "Anaconda.Miniconda3"
+  - "clsid2.mc-hc"
+  - "Daum.PotPlayer"
   - "DBBrowserForSQLite.DBBrowserForSQLite"
   - "DevToys"
   # - "Discord.Discord" # Not works on 2023-12-25
@@ -13,6 +15,7 @@ winget_packages:
   - "Git.Git"
   - "GitHub.GitLFS"
   # - "Google.JapaneseIME"
+  - "MediaArea.MediaInfo.GUI"
   - "Microsoft.VisualStudioCode"
   - "Obsidian.Obsidian"
   - "OBSProject.OBSStudio"
