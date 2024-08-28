@@ -8,6 +8,6 @@
   failed_when: false # because if local modification exist, it fails.
 
 - name: Install dotfiles
-  ansible.builtin.make:
+  community.general.make:
     chdir: "{{ dotfiles_repo_local_destination }}"
     target: install

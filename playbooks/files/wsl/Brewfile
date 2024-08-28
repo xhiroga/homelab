@@ -1,2 +1,3 @@
 brew "gh"
+brew "gomplate"
 brew "uv"

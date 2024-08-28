@@ -9,4 +9,4 @@
     - role: wsl
     - role: geerlingguy.mac.homebrew
       become: true
-    # - role: dotfiles
+    - role: dotfiles
