@@ -13,6 +13,7 @@ winget_packages:
   - "DigitalScholar.Zotero"
   - "Discord.Discord"
   # - "Docker.DockerDesktop" # You must log out and log back in for the group membership changes to take effect.
+  - "ezwinports.make"
   - "Git.Git"
   - "GitHub.GitHubDesktop"
   - "GitHub.GitLFS"
