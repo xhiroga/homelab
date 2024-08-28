@@ -1,13 +1,19 @@
 ---
+- name: Ensure dotfiles does not include CR(\r).
+  ansible.builtin.git_config:
+    name: core.autocrlf
+    scope: global
+    value: 'false'
+
 - name: Ensure dotfiles repository is cloned locally.
   ansible.builtin.git:
     repo: "{{ dotfiles_repo }}"
     dest: "{{ dotfiles_repo_local_destination }}"
     update: true
     version: "{{ dotfiles_repo_version }}"
-  failed_when: false # because if local modification exist, it fails.
+  ignore_errors: true # because if local modification exist, it fails.
 
-- name: Install dotfiles
+- name: Install dotfiles.
   community.general.make:
     chdir: "{{ dotfiles_repo_local_destination }}"
     target: install
