@@ -3,8 +3,9 @@ ansible_shell_type: powershell
 
 winget_packages:
   - "AgileBits.1Password"
-  - "Audacity.Audacity"
   - "Anaconda.Miniconda3"
+  - "astral-sh.uv"
+  - "Audacity.Audacity"
   - "clsid2.mc-hc"
   - "Daum.PotPlayer"
   - "DBBrowserForSQLite.DBBrowserForSQLite"
