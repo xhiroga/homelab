@@ -9,20 +9,49 @@ winget_packages:
   - "Daum.PotPlayer"
   - "DBBrowserForSQLite.DBBrowserForSQLite"
   - "DevToys"
-  # - "Discord.Discord" # Not works on 2023-12-25
+  - "DigitalScholar.Zotero"
+  - "Discord.Discord"
   # - "Docker.DockerDesktop" # You must log out and log back in for the group membership changes to take effect.
-  - "GitHub.GitHubDesktop"
   - "Git.Git"
+  - "GitHub.GitHubDesktop"
   - "GitHub.GitLFS"
   # - "Google.JapaneseIME"
   - "MediaArea.MediaInfo.GUI"
+  - "Microsoft.PowerToys"
   - "Microsoft.VisualStudioCode"
   - "Obsidian.Obsidian"
   - "OBSProject.OBSStudio"
+  - "Ollama.Ollama"
   - "OpenJS.NodeJS"
   - "SlackTechnologies.Slack"
   - "Sysinternals Suite"
+  - "tailscale.tailscale"
   - "Unity.UnityHub"
   - "Valve.Steam"
   - "VideoLAN.VLC"
   - "9PMMSR1CGPWG" # HEIF Image Extensions
+
+# dumped from HIROGA-RTX4090
+win_path_user_elements:
+  - 'C:\Users\hiroga\AppData\Local\Microsoft\WindowsApps'
+  - 'C:\Users\hiroga\AppData\Local\Microsoft\WinGet\Links'
+  - 'C:\Users\hiroga\AppData\Local\GitHubDesktop\bin'
+  - 'C:\Users\hiroga\AppData\Local\Programs\Microsoft VS Code\bin'
+  - 'C:\Users\hiroga\AppData\Local\Programs\Ollama'
+  - 'C:\Users\hiroga\AppData\Roaming\npm'
+  - 'C:\Users\hiroga\AppData\Local\Microsoft\WinGet\Packages\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe'  # uv
+
+win_path_machine_elements:
+  - '%SystemRoot%\system32'
+  - '%SystemRoot%'
+  - '%SystemRoot%\system32\Wbem'
+  - '%SystemRoot%\system32\WindowsPowerShell\v1.0\'
+  - '%SystemRoot%\system32\OpenSSH\'
+  - 'C:\Program Files\Docker\Docker\resources\bin'
+  - 'C:\Program Files\Git LFS'
+  - 'C:\Program Files\nodejs\'
+  - 'C:\Program Files\Tailscale\'
+  - 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1\bin'
+  - 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.1\libnvvp'
+  - 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\bin'
+  - 'C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\libnvvp'

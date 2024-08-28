@@ -30,6 +30,15 @@
     # TODO: タスクバーのタスクビュー、ウィジェット、チャットの非表示化
     # TODO: Disable Window Snap <https://atmarkit.itmedia.co.jp/ait/articles/1904/18/news027.html>
 
+# - name: Enable File and Printer Sharing
+#   ansible.windows.win_command: netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+
+# - name: Enable Network Discovery
+#   ansible.windows.win_command: netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes
+
+# - name: Restart Explorer
+#   ansible.windows.win_shell: stop-process -name explorer -force
+
 - name: List winget packages
   # ansible.windows.win_shell: win-get list
   ansible.windows.win_shell: Invoke-Expression "& '$(Join-Path (Get-AppxPackage Microsoft.DesktopAppInstaller).InstallLocation "winget.exe")' list" # https://github.com/microsoft/winget-cli/issues/1474#issuecomment-1249701447
@@ -43,11 +52,14 @@
   loop: "{{ winget_packages }}"
   when: item not in winget_list.stdout
 
-# - name: Enable File and Printer Sharing
-#   ansible.windows.win_command: netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
+- name: Ensure user variables for hiroga
+  ansible.windows.win_path:
+    elements: "{{ win_path_user_elements }}"
+    name: 'Path'
+    scope: user
 
-# - name: Enable Network Discovery
-#   ansible.windows.win_command: netsh advfirewall firewall set rule group="Network Discovery" new enable=Yes
-
-# - name: Restart Explorer
-#   ansible.windows.win_shell: stop-process -name explorer -force
+- name: Ensure machine variables
+  ansible.windows.win_path:
+    elements: "{{ win_path_machine_elements }}"
+    name: 'Path'
+    scope: machine
