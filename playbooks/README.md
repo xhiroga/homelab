@@ -2,16 +2,15 @@
 
 Configuration for bare-metal machines.
 
+## Prerequisites
+
+1. [Connected to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
+2. Clone This repository
+
 ## macOS
 
 > [!NOTE]
 > This macOS playbooks assumes that the control node and the target host are the same macOS system.
-
-### Prerequisites
-
-1. [Install Homebrew](https://docs.brew.sh/Installation).
-2. [Connected to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
-3. Clone This repository
 
 ### Run
 
@@ -77,21 +76,32 @@ make diskstation
 > [!NOTE]
 > This WSL playbooks assumes that the control node and the target host are the same WSL system.
 
-### Prerequisites
+### Run from Local Repository
 
 ```powershell
-winget install -e --id Git.Git
-wsl --install
+# wsl --install
+wsl
 ```
-
-1. [Connected to GitHub with SSH](https://docs.github.com/en/authentication/connecting-to-github-with-ssh).
-2. Clone This repository
-
-### Run from Local Repository
 
 ```shell
 make -C .. install
 make wsl
+```
+
+## Windows
+
+### Prerequisites
+
+### Run from Local Repository
+
+```powershell
+# wsl --install
+wsl
+```
+
+```shell
+make -C .. install
+make win_gpu
 ```
 
 ## Windows (VM)
