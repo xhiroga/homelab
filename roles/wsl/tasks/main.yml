@@ -20,7 +20,7 @@
     name:
       - build-essential
     state: present
-  become: yes
+  become: true
 
 - name: Install pkg-config, libxml2 and libxml2-dev
   ansible.builtin.apt:
@@ -38,4 +38,4 @@
       # ANT
       - ant
     state: present
-  become: yes
+  become: true

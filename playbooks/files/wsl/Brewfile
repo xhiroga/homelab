@@ -1,2 +1,2 @@
 brew "gh"
-brew "ghq"
+brew "uv"

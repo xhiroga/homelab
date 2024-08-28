@@ -7,7 +7,6 @@
       command: "uname -m"
   roles:
     - role: wsl
-    # Taking forever...
     - role: geerlingguy.mac.homebrew
-      becore: true
+      become: true
     # - role: dotfiles
