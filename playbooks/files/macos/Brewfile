@@ -50,6 +50,7 @@ brew "pre-commit"
 # Linux ps command can not be imported to OSX, https://apple.stackexchange.com/questions/187783/can-i-use-gnu-ps-on-os-x
 brew "psgrep"
 brew "pstree"
+brew "rustup"
 brew "shellcheck"
 brew "swig" # gymnasium[box2d] dependency
 brew "telnet"
