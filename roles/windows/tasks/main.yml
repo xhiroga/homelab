@@ -26,7 +26,12 @@
       value: AllowDevelopmentWithoutDevLicense
       data: 1
       type: dword
-    # TODO: エクスプローラーのプライバシー設定（最近使用したファイル・頻繁に使用されるフォルダーの非表示）
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShowFrequent
+      value: HideFileExt
+      data: 0
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShowRecent
+      value: HideFileExt
+      data: 0
     # TODO: タスクバーのタスクビュー、ウィジェット、チャットの非表示化
     # TODO: Disable Window Snap <https://atmarkit.itmedia.co.jp/ait/articles/1904/18/news027.html>
 
