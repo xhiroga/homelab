@@ -1,3 +1,6 @@
+brew "awscli"
 brew "gh"
+brew "git"
 brew "gomplate"
+brew "openssh"
 brew "uv"
