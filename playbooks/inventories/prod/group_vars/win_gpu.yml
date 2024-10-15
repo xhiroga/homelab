@@ -28,6 +28,7 @@ winget_packages:
   - "SlackTechnologies.Slack"
   - "Sysinternals Suite"
   - "tailscale.tailscale"
+  - "Toggl.TogglTrack"
   - "Unity.UnityHub"
   - "Valve.Steam"
   - "VideoLAN.VLC"
