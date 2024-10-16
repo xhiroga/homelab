@@ -1,6 +1,7 @@
-.PHONY:
+.PHONY: install
 
-install: playbooks/roles;
+install: playbooks/roles
+	uv sync
 	uv run ansible-galaxy role install -r requirements.yml
 	uv run ansible-galaxy collection install -r requirements.yml
 

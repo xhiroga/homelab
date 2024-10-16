@@ -85,7 +85,6 @@ wsl
 ```
 
 ```shell
-make -C .. install
 make wsl
 ```
 
@@ -101,7 +100,6 @@ wsl
 ```
 
 ```shell
-make -C .. install
 make win_gpu
 ```
 
