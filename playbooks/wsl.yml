@@ -8,3 +8,8 @@
   roles:
     - role: wsl
     - role: dotfiles
+    # NOTE:
+    # 2024-10-16以降はWindowsにcloneしたdotfilesとWLS2のdotfilesを別々に管理する。
+    # 改行コードの違いから、`: command not found`が発生するため。
+    # 以前の設定は次の通り。
+    # dotfiles_repo_local_destination: "/mnt/c/Users/hiroga/Documents/GitHub/dotfiles"
