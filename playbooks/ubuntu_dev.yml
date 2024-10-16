@@ -5,7 +5,6 @@
     - qemu_guest_agent
     - netplan
     - ubuntu_dev
-    - homebrew
     - onepassword
     - { role: ngetchell.vscode, become: yes }
     - {

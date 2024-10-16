@@ -1,3 +1,2 @@
 ---
 dotfiles_repo_local_destination: "/mnt/c/Users/hiroga/Documents/GitHub/dotfiles"
-homebrew_brewfile_dir: "files/wsl"

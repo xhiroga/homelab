@@ -81,6 +81,7 @@ make diskstation
 ```powershell
 # wsl --install
 wsl
+# Install Homebrew manually.
 ```
 
 ```shell

@@ -1,9 +1,0 @@
----
-- name: Verify
-  hosts: all
-  gather_facts: false
-  tasks:
-  - name: Try to install package from Homebrew
-    homebrew:
-      name: hello
-      path: '/home/linuxbrew/.linuxbrew/bin:/home/linuxbrew/.linuxbrew/sbin'
