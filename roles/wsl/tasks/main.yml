@@ -23,3 +23,8 @@
       - ant
     state: present
   become: true
+
+- name: Install from Brewfile
+  ansible.builtin.shell: brew bundle --file={{ item }}
+  with_items:
+    - "{{ homebrew_brewfile_dir }}/Brewfile"
