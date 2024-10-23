@@ -21,6 +21,8 @@
       - libfontconfig1-dev
       # ANT
       - ant
+      # Development tools
+      - git-lfs
     state: present
   become: true
 
@@ -28,3 +30,6 @@
   ansible.builtin.shell: brew bundle --file={{ item }}
   with_items:
     - "{{ homebrew_brewfile_dir }}/Brewfile"
+
+# TODO: ボリュームをマウントする。
+# https://claude.ai/chat/9e9cfd8e-925e-4c82-86d6-f731beb36c41
