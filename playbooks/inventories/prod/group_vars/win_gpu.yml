@@ -18,6 +18,7 @@ winget_packages:
   - "GitHub.GitHubDesktop"
   - "GitHub.GitLFS"
   # - "Google.JapaneseIME"
+  - "HermannSchinagl.LinkShellExtension"
   - "MediaArea.MediaInfo.GUI"
   - "Microsoft.PowerToys"
   - "Microsoft.VisualStudioCode"
