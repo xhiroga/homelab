@@ -35,6 +35,7 @@
     # TODO: タスクバーのタスクビュー、ウィジェット、チャットの非表示化
     # TODO: Disable Window Snap <https://atmarkit.itmedia.co.jp/ait/articles/1904/18/news027.html>
     # TODO: https://qiita.com/Oscer/items/132a8153cc5dcf0fad47
+    # TODO: LongPathEnabled
 
 # - name: Enable File and Printer Sharing
 #   ansible.windows.win_command: netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
