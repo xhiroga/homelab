@@ -23,7 +23,6 @@
       - ant
       # Development tools
       - git-lfs
-      - moreutils
     state: present
   become: true
 
