@@ -22,6 +22,7 @@
       # ANT
       - ant
       # Development tools
+      - clang
       - git-lfs
     state: present
   become: true
