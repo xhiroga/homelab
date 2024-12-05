@@ -1,4 +1,5 @@
 brew "awscli"
+brew "direnv"
 brew "gcc"
 brew "gh"
 brew "gibo"
