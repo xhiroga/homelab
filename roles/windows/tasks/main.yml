@@ -71,3 +71,5 @@
     elements: "{{ win_path_machine_elements }}"
     name: 'Path'
     scope: machine
+
+# git config --global --add --bool push.autoSetupRemote true
