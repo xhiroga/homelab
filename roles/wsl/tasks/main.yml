@@ -1,4 +1,15 @@
 ---
+# https://learn.microsoft.com/ja-jp/windows/wsl/wsl-config
+# After copying wsl.conf, you need to restart WSL.
+- name: Copy wsl.conf
+  copy:
+    src: wsl.conf
+    dest: /etc/wsl.conf
+    owner: root
+    group: root
+    mode: '0644'
+  become: true
+
 - name: Install build-essential
   ansible.builtin.apt:
     name:
@@ -24,8 +35,15 @@
       # Development tools
       - clang
       - git-lfs
+      - openssh-server
     state: present
   become: true
+
+- name: Enable and start openssh-server
+  systemd:
+    name: ssh
+    state: started
+    enabled: true
 
 - name: Add ppa:deadsnakes/ppa
   ansible.builtin.apt_repository:
