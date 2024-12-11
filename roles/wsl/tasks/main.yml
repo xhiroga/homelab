@@ -6,11 +6,6 @@
     state: present
   become: true
 
-- name: Add ppa:deadsnakes/ppa
-  ansible.builtin.apt_repository:
-    repo: ppa:deadsnakes/ppa
-  become: true
-
 - name: Install pkg-config, libxml2 and libxml2-dev
   ansible.builtin.apt:
     name:
@@ -29,6 +24,17 @@
       # Development tools
       - clang
       - git-lfs
+    state: present
+  become: true
+
+- name: Add ppa:deadsnakes/ppa
+  ansible.builtin.apt_repository:
+    repo: ppa:deadsnakes/ppa
+  become: true
+
+- name: Install Python
+  ansible.builtin.apt:
+    name:
       - python3.8
       - python3.8-venv
       - python3.9
