@@ -26,6 +26,7 @@ winget_packages:
   - "OBSProject.OBSStudio"
   - "Ollama.Ollama"
   - "OpenJS.NodeJS"
+  - "RustDesk.RustDesk"
   - "SlackTechnologies.Slack"
   - "Sysinternals Suite"
   - "tailscale.tailscale"
