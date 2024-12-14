@@ -17,10 +17,10 @@ diskstation:
 ubuntu_dev:
 	uv run ansible-playbook ubuntu_dev.yml -i inventories/$${ENV:-prod} -K
 
-win_gpu:
+windows:
 	# [Preforking issue on OSX (10.13) when attempting to connect to windows server via WinRM · Issue #34056 · ansible/ansible](https://github.com/ansible/ansible/issues/34056)
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible win_gpu -i inventories/$${ENV:-prod} -m win_ping --ssh-common-args '-F ssh_config'
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible-playbook win_gpu.yml -i inventories/$${ENV:-prod}
+	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible windows -i inventories/$${ENV:-prod} -m win_ping --ssh-common-args '-F ssh_config'
+	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible-playbook windows.yml -i inventories/$${ENV:-prod}
 
 win_vm_gpu:
 	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible win_vm_gpu -i inventories/$${ENV:-prod} -m win_ping --ssh-common-args '-F ssh_config'

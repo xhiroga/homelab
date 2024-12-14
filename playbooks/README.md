@@ -100,7 +100,8 @@ wsl
 ```
 
 ```shell
-make win_gpu
+make winrm
+make windows
 ```
 
 ## Windows (VM)

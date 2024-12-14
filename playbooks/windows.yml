@@ -1,5 +1,5 @@
 #!/bin/sh ansible-playbook
 ---
-- hosts: win_gpu
+- hosts: windows
   roles:
     - windows
