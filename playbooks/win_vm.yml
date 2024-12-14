@@ -1,5 +1,0 @@
-#!/bin/sh ansible-playbook
----
-- hosts: win
-  roles:
-    - windows

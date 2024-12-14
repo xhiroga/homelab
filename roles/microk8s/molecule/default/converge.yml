@@ -1,7 +1,0 @@
----
-- name: Converge
-  hosts: all
-  tasks:
-    - name: "Include microk8s"
-      include_role:
-        name: "microk8s"
