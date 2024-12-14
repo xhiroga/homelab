@@ -22,13 +22,5 @@ windows:
 	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible windows -i inventories/$${ENV:-prod} -m win_ping --ssh-common-args '-F ssh_config'
 	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible-playbook windows.yml -i inventories/$${ENV:-prod}
 
-win_vm_gpu:
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible win_vm_gpu -i inventories/$${ENV:-prod} -m win_ping --ssh-common-args '-F ssh_config'
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible-playbook win_vm_gpu.yml -i inventories/$${ENV:-prod} --ssh-common-args '-F ssh_config'
-
-win_vm:
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible win_vm -i inventories/$${ENV:-prod} -m win_ping --ssh-common-args '-F ssh_config'
-	OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES uv run ansible-playbook win_vm.yml -i inventories/$${ENV:-prod} --ssh-common-args '-F ssh_config'
-
 wsl:
 	uv run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K
