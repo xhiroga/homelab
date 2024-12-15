@@ -8,6 +8,11 @@ Host ds218play
     User hiroga
     IdentityFile ~/.ssh/id_ed25519
 
+Host hiroga-rtx4090-wsl
+    HostName hiroga-rtx4090
+    User hiroga
+    Port 2222
+
 Host HIROGA-RTX4090
     HostName 192.168.100.9
     User hiroga
