@@ -51,6 +51,24 @@
     mode: '0644'
   become: true
 
+- name: Ensure .ssh directory exists
+  file:
+    path: "~/.ssh"
+    state: directory
+    mode: '0700'
+
+- name: Fetch GitHub public keys
+  uri:
+    url: "{{ github_keys_url }}"
+    return_content: true
+  register: github_keys
+
+- name: Set authorized_keys with GitHub keys only
+  copy:
+    content: "{{ github_keys.content }}"
+    dest: "~/.ssh/authorized_keys"
+    mode: '0600'
+
 - name: Enable and start openssh-server
   systemd:
     name: ssh
