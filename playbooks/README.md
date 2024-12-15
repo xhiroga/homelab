@@ -92,15 +92,44 @@ make wsl
 
 ### Prerequisites
 
+OpenSSH Serverのセットアップは次の通り手動で行う。`winrm`を用いてAnsibleで設定する案もあったが、`hosts`にユーザー名やパスワードを記載する必要があり、Vaultの導入などが必要になること、そもそもSSHは初回に設定するのみであること等から、手動の方針とした。
+
+```powershell
+# !!! Run PowerShell as Administrator !!!
+# 「OpenSSH for Windows の 2024 年 10 月の更新について」にある通り、sshd起動時のチェックが厳格になったため、サービス開始に先立ってファイルの設定を行う。
+# https://jpwinsup.github.io/blog/2024/11/12/OpenSSH/OpenSSH_update_oct_2024/
+
+# https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement
+# Windowsのsshdは、管理者ユーザーグループのユーザーのsshでは authorized_keys の代わりに administrators_authorized_keys を参照する
+$keysUrl = "https://github.com/xhiroga.keys"
+$authorizedKeysPath = "C:\ProgramData\ssh\administrators_authorized_keys"
+
+Invoke-RestMethod -Uri $keysUrl | Add-Content -Path $authorizedKeysPath -Force
+icacls.exe $authorizedKeysPath /inheritance:r /grant "*S-1-5-32-544:F" /grant "SYSTEM:F"
+
+Get-Acl "C:\ProgramData\ssh\administrators_authorized_keys" | Format-List *
+# GUIで確認するとユーザーに書き込み権限が付与されてしまうため不可
+
+# https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse
+# Start the sshd service
+Start-Service sshd
+Set-Service -Name sshd -StartupType 'Automatic'
+Get-Service -Name sshd
+
+if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyContinue | Select-Object Name, Enabled)) {
+    Write-Output "Firewall Rule 'OpenSSH-Server-In-TCP' does not exist, creating it..."
+    New-NetFirewallRule -Name 'OpenSSH-Server-In-TCP' -DisplayName 'OpenSSH Server (sshd)' -Enabled True -Direction Inbound -Protocol TCP -Action Allow -LocalPort 22
+} else {
+    Write-Output "Firewall rule 'OpenSSH-Server-In-TCP' has been created and exists."
+}
+```
+
+設定後、`wsl`から疎通確認する。
+
 ### Run from Local Repository
 
 ```powershell
-# wsl --install
 wsl
-```
-
-```shell
-make winrm
 make windows
 ```
 

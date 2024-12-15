@@ -3,3 +3,4 @@
 - hosts: windows
   roles:
     - windows
+  gather_facts: false

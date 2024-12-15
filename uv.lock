@@ -230,7 +230,6 @@ dependencies = [
     { name = "ansible" },
     { name = "molecule" },
     { name = "molecule-docker" },
-    { name = "pywinrm" },
 ]
 
 [package.metadata]
@@ -238,7 +237,6 @@ requires-dist = [
     { name = "ansible", specifier = ">=11.1.0" },
     { name = "molecule", specifier = ">=24.12.0" },
     { name = "molecule-docker", specifier = ">=2.1.0" },
-    { name = "pywinrm", specifier = ">=0.5.0" },
 ]
 
 [[package]]
@@ -413,19 +411,6 @@ wheels = [
 ]
 
 [[package]]
-name = "pyspnego"
-version = "0.11.2"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "cryptography" },
-    { name = "sspilib", marker = "sys_platform == 'win32'" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/6b/f8/53f1fc851dab776a183ffc9f29ebde244fbb467f5237f3ea809519fc4b2e/pyspnego-0.11.2.tar.gz", hash = "sha256:994388d308fb06e4498365ce78d222bf4f3570b6df4ec95738431f61510c971b", size = 225954 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/57/ea/b3c1438839d8724beff7b31ec42b9d041265dc9ca27ccb54477d442bfbcf/pyspnego-0.11.2-py3-none-any.whl", hash = "sha256:74abc1fb51e59360eb5c5c9086e5962174f1072c7a50cf6da0bda9a4bcfdfbd4", size = 130529 },
-]
-
-[[package]]
 name = "pywin32"
 version = "308"
 source = { registry = "https://pypi.org/simple" }
@@ -433,20 +418,6 @@ wheels = [
     { url = "https://files.pythonhosted.org/packages/a9/a4/aa562d8935e3df5e49c161b427a3a2efad2ed4e9cf81c3de636f1fdddfd0/pywin32-308-cp313-cp313-win32.whl", hash = "sha256:1c44539a37a5b7b21d02ab34e6a4d314e0788f1690d65b48e9b0b89f31abbbed", size = 5938579 },
     { url = "https://files.pythonhosted.org/packages/c7/50/b0efb8bb66210da67a53ab95fd7a98826a97ee21f1d22949863e6d588b22/pywin32-308-cp313-cp313-win_amd64.whl", hash = "sha256:fd380990e792eaf6827fcb7e187b2b4b1cede0585e3d0c9e84201ec27b9905e4", size = 6542056 },
     { url = "https://files.pythonhosted.org/packages/26/df/2b63e3e4f2df0224f8aaf6d131f54fe4e8c96400eb9df563e2aae2e1a1f9/pywin32-308-cp313-cp313-win_arm64.whl", hash = "sha256:ef313c46d4c18dfb82a2431e3051ac8f112ccee1a34f29c263c583c568db63cd", size = 7974986 },
-]
-
-[[package]]
-name = "pywinrm"
-version = "0.5.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "requests" },
-    { name = "requests-ntlm" },
-    { name = "xmltodict" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/5a/2f/d835c342c4b11e28beaccef74982e7669986c84bf19654c39f53c8b8243c/pywinrm-0.5.0.tar.gz", hash = "sha256:5428eb1e494af7954546cd4ff15c9ef1a30a75e05b25a39fd606cef22201e9f1", size = 40875 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/0c/45/4340320145c225387f40ce412de1b209d991c322032e4922cc0a9935fd31/pywinrm-0.5.0-py3-none-any.whl", hash = "sha256:c267046d281de613fc7c8a528cdd261564d9b99bdb7c2926221eff3263b700c8", size = 48182 },
 ]
 
 [[package]]
@@ -492,20 +463,6 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/63/70/2bf7780ad2d390a8d301ad0b550f1581eadbd9a20f896afe06353c2a2913/requests-2.32.3.tar.gz", hash = "sha256:55365417734eb18255590a9ff9eb97e9e1da868d4ccd6402399eaf68af20a760", size = 131218 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/f9/9b/335f9764261e915ed497fcdeb11df5dfd6f7bf257d4a6a2a686d80da4d54/requests-2.32.3-py3-none-any.whl", hash = "sha256:70761cfe03c773ceb22aa2f671b4757976145175cdfca038c02654d061d6dcc6", size = 64928 },
-]
-
-[[package]]
-name = "requests-ntlm"
-version = "1.3.0"
-source = { registry = "https://pypi.org/simple" }
-dependencies = [
-    { name = "cryptography" },
-    { name = "pyspnego" },
-    { name = "requests" },
-]
-sdist = { url = "https://files.pythonhosted.org/packages/15/74/5d4e1815107e9d78c44c3ad04740b00efd1189e5a9ec11e5275b60864e54/requests_ntlm-1.3.0.tar.gz", hash = "sha256:b29cc2462623dffdf9b88c43e180ccb735b4007228a542220e882c58ae56c668", size = 16112 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/9e/5d/836b97537a390cf811b0488490c389c5a614f0a93acb23f347bd37a2d914/requests_ntlm-1.3.0-py3-none-any.whl", hash = "sha256:4c7534a7d0e482bb0928531d621be4b2c74ace437e88c5a357ceb7452d25a510", size = 6577 },
 ]
 
 [[package]]
@@ -577,17 +534,6 @@ wheels = [
 ]
 
 [[package]]
-name = "sspilib"
-version = "0.2.0"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/36/48/8d634ac9aa5404b77f2d66b5a354751b7bbbf2be2947328fe895034cb750/sspilib-0.2.0.tar.gz", hash = "sha256:4d6cd4290ca82f40705efeb5e9107f7abcd5e647cb201a3d04371305938615b8", size = 55815 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/bc/9c/8784d3afe27c2f68620ea60fa2b6347100694db35193ba42714bdf23f882/sspilib-0.2.0-cp313-cp313-win32.whl", hash = "sha256:b9044d6020aa88d512e7557694fe734a243801f9a6874e1c214451eebe493d92", size = 483600 },
-    { url = "https://files.pythonhosted.org/packages/49/ad/40f898075c913c75060c17c9cc6d6b86e8f83b6f5e1e017627b07ff53fcd/sspilib-0.2.0-cp313-cp313-win_amd64.whl", hash = "sha256:c39a698491f43618efca8776a40fb7201d08c415c507f899f0df5ada15abefaa", size = 563678 },
-    { url = "https://files.pythonhosted.org/packages/dd/84/3232ee82e33e426cd9e2011111a3136e5715428f0331a6739930b530333a/sspilib-0.2.0-cp313-cp313-win_arm64.whl", hash = "sha256:863b7b214517b09367511c0ef931370f0386ed2c7c5613092bf9b106114c4a0e", size = 469030 },
-]
-
-[[package]]
 name = "subprocess-tee"
 version = "0.4.2"
 source = { registry = "https://pypi.org/simple" }
@@ -615,13 +561,4 @@ dependencies = [
 sdist = { url = "https://files.pythonhosted.org/packages/41/ab/b3a52228538ccb983653c446c1656eddf1d5303b9cb8b9aef6a91299f862/wcmatch-10.0.tar.gz", hash = "sha256:e72f0de09bba6a04e0de70937b0cf06e55f36f37b3deb422dfaf854b867b840a", size = 115578 }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/ab/df/4ee467ab39cc1de4b852c212c1ed3becfec2e486a51ac1ce0091f85f38d7/wcmatch-10.0-py3-none-any.whl", hash = "sha256:0dd927072d03c0a6527a20d2e6ad5ba8d0380e60870c383bc533b71744df7b7a", size = 39347 },
-]
-
-[[package]]
-name = "xmltodict"
-version = "0.14.2"
-source = { registry = "https://pypi.org/simple" }
-sdist = { url = "https://files.pythonhosted.org/packages/50/05/51dcca9a9bf5e1bce52582683ce50980bcadbc4fa5143b9f2b19ab99958f/xmltodict-0.14.2.tar.gz", hash = "sha256:201e7c28bb210e374999d1dde6382923ab0ed1a8a5faeece48ab525b7810a553", size = 51942 }
-wheels = [
-    { url = "https://files.pythonhosted.org/packages/d6/45/fc303eb433e8a2a271739c98e953728422fa61a3c1f36077a49e395c972e/xmltodict-0.14.2-py2.py3-none-any.whl", hash = "sha256:20cc7d723ed729276e808f26fb6b3599f786cbc37e06c65e192ba77c40f20aac", size = 9981 },
 ]
