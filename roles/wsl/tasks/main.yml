@@ -3,7 +3,7 @@
 # After copying wsl.conf, you need to restart WSL.
 - name: Copy wsl.conf
   copy:
-    src: wsl.conf
+    src: etc/wsl.conf
     dest: /etc/wsl.conf
     owner: root
     group: root
@@ -37,6 +37,18 @@
       - git-lfs
       - openssh-server
     state: present
+  become: true
+
+- name: Generate SSH host keys
+  command: ssh-keygen -A
+
+- name: Copy sshd_config
+  copy:
+    src: etc/ssh/sshd_config
+    dest: /etc/ssh/sshd_config
+    owner: root
+    group: root
+    mode: '0644'
   become: true
 
 - name: Enable and start openssh-server

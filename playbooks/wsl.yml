@@ -2,6 +2,7 @@
 ---
 - name: Configure WSL
   hosts: 'wsl'
+  gather_facts: false
   pre_tasks:
     - name: Check kernel type
       command: "uname -m"
