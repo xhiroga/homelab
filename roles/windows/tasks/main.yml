@@ -37,9 +37,10 @@
     # TODO: https://qiita.com/Oscer/items/132a8153cc5dcf0fad47
     # TODO: LongPathEnabled
     # TODO: Use Unicode UTF-8 https://qiita.com/misohagi/items/e26c589506a69261fe04
-    - key: HKLM:\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo
+    - key: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo
       value: Enabled
       data: 1
+      type: dword
 
 # - name: Enable File and Printer Sharing
 #   ansible.windows.win_command: netsh advfirewall firewall set rule group="File and Printer Sharing" new enable=Yes
