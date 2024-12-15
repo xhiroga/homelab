@@ -79,6 +79,9 @@ make diskstation
 ### Run from Local Repository
 
 ```powershell
+# https://learn.microsoft.com/ja-jp/windows/wsl/wsl-config#wslconfig
+Copy-Item -Path ./files/windows/.wslconfig -Destination "$env:USERPROFILE\.wslconfig"
+
 # wsl --install
 wsl
 # Install Homebrew manually.
@@ -105,10 +108,14 @@ $keysUrl = "https://github.com/xhiroga.keys"
 $authorizedKeysPath = "C:\ProgramData\ssh\administrators_authorized_keys"
 
 Invoke-RestMethod -Uri $keysUrl | Add-Content -Path $authorizedKeysPath -Force
-icacls.exe $authorizedKeysPath /inheritance:r /grant "*S-1-5-32-544:F" /grant "SYSTEM:F"
+Get-Content "C:\ProgramData\ssh\administrators_authorized_keys"
 
+icacls.exe $authorizedKeysPath /inheritance:r /grant "*S-1-5-32-544:F" /grant "SYSTEM:F"
 Get-Acl "C:\ProgramData\ssh\administrators_authorized_keys" | Format-List *
 # GUIで確認するとユーザーに書き込み権限が付与されてしまうため不可
+
+# https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh-server-configuration
+New-ItemProperty -Path "HKLM:\SOFTWARE\OpenSSH" -Name DefaultShell -Value "C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe" -PropertyType String -Force
 
 # https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_install_firstuse
 # Start the sshd service
