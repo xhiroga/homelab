@@ -35,10 +35,12 @@
     # TODO: タスクバーのタスクビュー、ウィジェット、チャットの非表示化
     # TODO: Disable Window Snap <https://atmarkit.itmedia.co.jp/ait/articles/1904/18/news027.html>
     # TODO: https://qiita.com/Oscer/items/132a8153cc5dcf0fad47
-    # TODO: LongPathEnabled
-    # TODO: Use Unicode UTF-8 https://qiita.com/misohagi/items/e26c589506a69261fe04
     - key: HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Sudo
       value: Enabled
+      data: 1
+      type: dword
+    - key: HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem
+      value: LongPathEnabled
       data: 1
       type: dword
 
