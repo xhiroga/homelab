@@ -1,0 +1,22 @@
+[core]
+	# true: チェックアウト時にCR+LFに変換される。WindowsでチェックアウトしたRepoをWSLで編集する際に全てが差分扱いされるため避ける
+	# input: コミット時にLFに変換される。しかしWindowsの設定ファイルも扱うため、LFへの誤変換を避けたい
+	# false: 変換を行わない。現代のエディタならWindowsでもLFを扱えるため、この設定が最適
+	autocrlf = false
+
+	# xhiroga/homelab では roles ディレクトリをシンボリックリンクとして扱うため
+	symlinks = true
+[credential "https://huggingface.co"]
+	provider = generic
+[credential]
+	helper = store
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[push]
+	autoSetupRemote = true
+[user]
+    name = {{ user_name | default("Hiroaki Ogasawara") }}
+    email = {{ user_email | default("13391129+xhiroga@users.noreply.github.com") }}
