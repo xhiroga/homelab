@@ -154,13 +154,6 @@ make windows
   - Microsoft Store > App Installer(Winget)
   - Configure OpenSSH Server
 
-    ```powershell
-    # Run as Administrator
-    $OutputEncoding = New-Object -typename System.Text.UTF8Encoding
-    Set-ExecutionPolicy RemoteSigned
-    .\scripts\setup.ps1 -githubUsername "xhiroga"
-    ```
-
 ### Debug SSH connection
 
 1. Check sshd status
