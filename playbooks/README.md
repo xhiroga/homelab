@@ -81,13 +81,13 @@ make diskstation
 ```powershell
 # https://learn.microsoft.com/ja-jp/windows/wsl/wsl-config#wslconfig
 Copy-Item -Path ./files/windows/.wslconfig -Destination "$env:USERPROFILE\.wslconfig"
-
 # wsl --install
 wsl
-# Install Homebrew manually.
 ```
 
 ```shell
+# Install Homebrew manually.
+make -C .. install
 make wsl
 ```
 
