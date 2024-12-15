@@ -76,7 +76,4 @@
     name: 'Path'
     scope: machine
 
-- name: SSH port forwarding for WSL2
-  include_tasks: wsl2-ssh-port-forward.yml
-
 # git config --global --add --bool push.autoSetupRemote true
