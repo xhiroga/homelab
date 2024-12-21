@@ -8,16 +8,27 @@ Host ds218play
     User hiroga
     IdentityFile ~/.ssh/id_ed25519
 
-Host hiroga-rtx4090-wsl
+Host hiroga-rtx4090.home
+    HostName 192.168.100.10
+    User hiroga
+    IdentityFile ~/.ssh/id_ed25519
+
+Host wsl.hiroga-rtx4090.home
     HostName hiroga-rtx4090
     User hiroga
     Port 2222
+    IdentityFile ~/.ssh/id_ed25519
 
-Host HIROGA-RTX4090
-    HostName 192.168.100.9
+Host hiroga-rtx4090.tailscale
+    HostName 100.105.179.96
     User hiroga
     IdentityFile ~/.ssh/id_ed25519
-    LogLevel VERBOSE
+
+Host wsl.hiroga-rtx4090.tailscale
+    HostName 100.105.179.96
+    User hiroga
+    Port 2222
+    IdentityFile ~/.ssh/id_ed25519
 
 Host udon
     HostName 192.168.100.110
