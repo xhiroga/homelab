@@ -12,7 +12,6 @@ brew "gnu-getopt"
 brew "grep"
 
 brew "act"
-brew "ansible"
 brew "asciinema"
 brew "aws-cdk"
 brew "awscli"
