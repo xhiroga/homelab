@@ -10,6 +10,19 @@
     mode: '0644'
   become: true
 
+- name: Install zsh
+  ansible.builtin.apt:
+    name:
+      - zsh
+    state: present
+  become: true
+
+- name: Set shell for user
+  become: true
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: /usr/bin/zsh
+
 - name: Install build-essential
   ansible.builtin.apt:
     name:
