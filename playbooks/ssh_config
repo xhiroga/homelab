@@ -3,44 +3,28 @@ Host pve
     User root
     IdentityFile ~/.ssh/id_ed25519
 
-Host ds218play
-    HostName 192.168.100.13
+# mDNS
+Host ds218play.local
     User hiroga
     IdentityFile ~/.ssh/id_ed25519
 
-Host hiroga-rtx4090.home
-    HostName 192.168.100.10
+Host hiroga-rtx4090.local
     User hiroga
     IdentityFile ~/.ssh/id_ed25519
 
-Host wsl.hiroga-rtx4090.home
+Host wsl.hiroga-rtx4090.local
+    HostName hiroga-rtx4090.local
+    User hiroga
+    Port 2222
+    IdentityFile ~/.ssh/id_ed25519
+
+# Tailscale
+Host hiroga-rtx4090
+    User hiroga
+    IdentityFile ~/.ssh/id_ed25519
+
+Host wsl.hiroga-rtx4090
     HostName hiroga-rtx4090
     User hiroga
     Port 2222
-    IdentityFile ~/.ssh/id_ed25519
-
-Host hiroga-rtx4090.tailscale
-    HostName 100.105.179.96
-    User hiroga
-    IdentityFile ~/.ssh/id_ed25519
-
-Host wsl.hiroga-rtx4090.tailscale
-    HostName 100.105.179.96
-    User hiroga
-    Port 2222
-    IdentityFile ~/.ssh/id_ed25519
-
-Host udon
-    HostName 192.168.100.110
-    User hiroga
-    IdentityFile ~/.ssh/id_ed25519
-
-Host wasabi
-    HostName 192.168.100.150
-    User hiroga
-    IdentityFile ~/.ssh/id_ed25519
-
-Host walnut
-    HostName 192.168.100.155
-    User hiroga
     IdentityFile ~/.ssh/id_ed25519

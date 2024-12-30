@@ -93,7 +93,7 @@ make wsl
 
 ## Windows
 
-### Prerequisites
+### OpenSSH Server
 
 OpenSSH Serverのセットアップは次の通り手動で行う。`winrm`を用いてAnsibleで設定する案もあったが、`hosts`にユーザー名やパスワードを記載する必要があり、Vaultの導入などが必要になること、そもそもSSHは初回に設定するのみであること等から、手動の方針とした。
 
@@ -131,7 +131,9 @@ if (!(Get-NetFirewallRule -Name "OpenSSH-Server-In-TCP" -ErrorAction SilentlyCon
 }
 ```
 
-設定後、`wsl`から疎通確認する。
+### Enable mDNS
+
+Settings > Network & Internet > Advance Sharing Settings > File and printer sharing > On
 
 ### Run from Local Repository
 
