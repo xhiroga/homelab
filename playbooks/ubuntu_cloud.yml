@@ -1,0 +1,6 @@
+#!/bin/sh ansible-playbook
+---
+- hosts: ubuntu_cloud
+  roles:
+    - ubuntu
+    - ubuntu_cloud

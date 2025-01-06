@@ -1,7 +1,0 @@
----
-- name: Install a list of packages
-  ansible.builtin.apt:
-    pkg: "{{ apt_packages }}"
-    state: present
-    update_cache: yes
-  become: true

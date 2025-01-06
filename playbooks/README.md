@@ -71,6 +71,18 @@ make diskstation
 - [Synology DiskStation で SSH 接続を公開鍵認証方式にする - Qiita](https://qiita.com/shimizumasaru/items/56474d98e723ea1b5ae3)
 - [CLI Administrator Guide for Synology NAS](https://global.download.synology.com/download/Document/Software/DeveloperGuide/Firmware/DSM/All/enu/Synology_DiskStation_Administration_CLI_Guide.pdf)
 
+## Ubuntu (Cloud)
+
+```shell
+# CLOUD=lambdalabs
+code ~/.ssh/config.d/${CLOUD}.conf
+
+# [Install Homebrew](https://brew.sh/)
+
+# TODO: 実行時に指定可能にする。インベントリを引数で渡す方法を試したが、その場合group_varsを指定するのにもう一工夫必要だった。
+make ubuntu_cloud
+```
+
 ## WSL
 
 > [!NOTE]
@@ -139,6 +151,7 @@ Settings > Network & Internet > Advance Sharing Settings > File and printer shar
 
 ```powershell
 wsl
+touch inventories/prod/group_vars/windows/local.yml
 make windows
 ```
 

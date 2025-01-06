@@ -1,4 +1,11 @@
 ---
+- name: Install a list of packages
+  ansible.builtin.apt:
+    pkg: "{{ apt_packages }}"
+    state: present
+    update_cache: yes
+  become: true
+
 # [gsettings set org.gnome.nautilus.preferences always-use-location-entry true](https://ubuntuhandbook.org/index.php/2020/05/textual-path-ubuntu-20-04-files/)
-- name: Enable textual file path entry
-  ansible.builtin.shell: gsettings set org.gnome.nautilus.preferences always-use-location-entry true
+# - name: Enable textual file path entry
+#   ansible.builtin.shell: gsettings set org.gnome.nautilus.preferences always-use-location-entry true

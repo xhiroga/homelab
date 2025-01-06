@@ -1,0 +1,10 @@
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[push]
+	autoSetupRemote = true
+[user]
+    name = {{ user_name | default("Hiroaki Ogasawara") }}
+    email = {{ user_email | default("13391129+xhiroga@users.noreply.github.com") }}

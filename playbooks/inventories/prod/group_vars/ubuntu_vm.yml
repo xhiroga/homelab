@@ -3,4 +3,3 @@ apt_packages:
   - arping
   - curl
   - git
-  - vim

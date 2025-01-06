@@ -14,8 +14,11 @@ proxmox:
 diskstation:
 	uv run ansible-playbook diskstation.yml -i inventories/$${ENV:-prod} -K
 
-ubuntu_dev:
-	uv run ansible-playbook ubuntu_dev.yml -i inventories/$${ENV:-prod} -K
+ubuntu_cloud:
+	uv run ansible-playbook ubuntu_cloud.yml -i inventories/$${ENV:-prod}
+
+ubuntu_vm:
+	uv run ansible-playbook ubuntu_vm.yml -i inventories/$${ENV:-prod} -K
 
 windows:
 	uv run ansible windows -i inventories/$${ENV:-prod} -m win_ping --ssh-common-args '-F ssh_config'

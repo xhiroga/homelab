@@ -1,7 +1,0 @@
----
-- name: Converge
-  hosts: all
-  tasks:
-    - name: "Include onepassword"
-      include_role:
-        name: "onepassword"
