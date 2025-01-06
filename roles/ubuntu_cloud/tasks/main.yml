@@ -61,4 +61,6 @@
     sudo mv pueue* /usr/local/bin
     sudo chmod +x /usr/local/bin/pueue*
 
-# TODO: Install uv
+# TODO: Use community.general.homebrew
+- name: Install uv
+  ansible.builtin.shell: curl -LsSf https://astral.sh/uv/install.sh | sh
