@@ -29,6 +29,7 @@ brew "gh"
 brew "ghostscript"  # to render python turtle
 brew "gibo"
 brew "git"
+brew "git-filter-repo"
 brew "gitleaks"
 brew "git-lfs"
 brew "go"
