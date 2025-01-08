@@ -1,6 +1,6 @@
 install_ssh_config:
 	mkdir -p ~/.ssh/config.d
-	ln -f ssh_config ~/.ssh/config.d/homelab_ssh_config
+	cp -f ssh_config ~/.ssh/config.d/homelab_ssh_config
 
 macos:
 	uv run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K
