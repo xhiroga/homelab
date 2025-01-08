@@ -3,28 +3,26 @@ Host pve
     User root
     IdentityFile ~/.ssh/id_ed25519
 
-# mDNS
-Host ds218play.local
+Host ds218play
     User hiroga
     IdentityFile ~/.ssh/id_ed25519
 
-Host hiroga-rtx4090.local
-    User hiroga
-    IdentityFile ~/.ssh/id_ed25519
+# インデントに関わらず最初にマッチしたMatchブロックが適用されるため、hostを省略しない。
+Match host ds218play localnetwork 192.168.100.0/24
+    HostName ds218play.local
+Match host ds218play
+    HostName ds218play
 
-Host wsl.hiroga-rtx4090.local
-    HostName hiroga-rtx4090.local
-    User hiroga
-    Port 2222
-    IdentityFile ~/.ssh/id_ed25519
-
-# Tailscale
 Host hiroga-rtx4090
     User hiroga
     IdentityFile ~/.ssh/id_ed25519
 
 Host wsl.hiroga-rtx4090
-    HostName hiroga-rtx4090
     User hiroga
     Port 2222
     IdentityFile ~/.ssh/id_ed25519
+
+Match host hiroga-rtx4090,wsl.hiroga-rtx4090 localnetwork 192.168.100.0/24
+    HostName hiroga-rtx4090.local
+Match host hiroga-rtx4090,wsl.hiroga-rtx4090 
+    HostName hiroga-rtx4090
