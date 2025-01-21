@@ -103,6 +103,8 @@ make -C .. install
 make wsl
 ```
 
+If required, run `WF.msc` and allow SSH port for WSL.
+
 ## Windows
 
 ### OpenSSH Server
