@@ -49,6 +49,7 @@
       - clang
       - git-lfs
       - openssh-server
+      - ffmpeg
     state: present
   become: true
 
