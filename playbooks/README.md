@@ -116,6 +116,8 @@ OpenSSH Serverのセットアップは次の通り手動で行う。`winrm`を�
 # 「OpenSSH for Windows の 2024 年 10 月の更新について」にある通り、sshd起動時のチェックが厳格になったため、サービス開始に先立ってファイルの設定を行う。
 # https://jpwinsup.github.io/blog/2024/11/12/OpenSSH/OpenSSH_update_oct_2024/
 
+Get-Acl "C:\ProgramData\ssh"  # MUST BE FAIL!!!
+
 # https://learn.microsoft.com/en-us/windows-server/administration/openssh/openssh_keymanagement
 # Windowsのsshdは、管理者ユーザーグループのユーザーのsshでは authorized_keys の代わりに administrators_authorized_keys を参照する
 $keysUrl = "https://github.com/xhiroga.keys"
