@@ -34,6 +34,7 @@
   ansible.builtin.apt:
     name:
       - pkg-config
+      - cmake
       # LIBXML2
       - libxml2
       - libxml2-dev
@@ -49,6 +50,8 @@
       - clang
       - git-lfs
       - openssh-server
+      - nmap
+      - nfs-common
       - ffmpeg
     state: present
   become: true
