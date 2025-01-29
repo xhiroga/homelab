@@ -35,6 +35,7 @@
     path: ~/.ssh/known_hosts
     name: github.com
     key: |
+      ssh-keygen -f "/root/.ssh/known_hosts" -R "github.com"
       github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAdZrFi9i01n3w4G6k6LkEQuzWo2x2mIUXwlQe6CZKNx
 
 # TODO: 要修正
@@ -56,11 +57,14 @@
 # TODO: Use community.general.homebrew
 - name: Install pueue
   ansible.builtin.shell: |
-    curl -sL -o pueue https://github.com/Nukesor/pueue/releases/download/v3.4.1/pueue-linux-aarch64
-    curl -sL -o pueued https://github.com/Nukesor/pueue/releases/download/v3.4.1/pueued-linux-aarch64
-    sudo mv pueue* /usr/local/bin
-    sudo chmod +x /usr/local/bin/pueue*
+    curl -sL -o pueue https://github.com/Nukesor/pueue/releases/download/v3.4.1/pueue-linux-x86_64
+    curl -sL -o pueued https://github.com/Nukesor/pueue/releases/download/v3.4.1/pueued-linux-x86_64
+    mv pueue* /usr/local/bin
+    chmod +x /usr/local/bin/pueue*
+    pueued -d
 
 # TODO: Use community.general.homebrew
 - name: Install uv
   ansible.builtin.shell: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# TODO: Install awscli
