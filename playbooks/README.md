@@ -19,16 +19,19 @@ make -C .. install
 make macos
 ```
 
-## YAMAHA RTX1210
+## YAMAHA RTX1300
 
 ### Prerequisites
 
 ```rtx
-login password
-administrator password
-login user {{ user }} {{ password }}
+telnet 192.168.100.1
+administrator
+console character ja.utf8
 sshd host key generate
 sshd service on
+save
+
+# Open another terminal and test SSH
 ```
 
 ### Run
