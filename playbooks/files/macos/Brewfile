@@ -65,6 +65,7 @@ brew "zlib" # tensorflow dependency
 cask "1password-cli"
 # cask "dbeaver-community"
 cask "discord"
+cask "discord@canary"
 cask "google-cloud-sdk"
 cask "google-chrome"
 # cask "google-japanese-ime"    # When using, "Cannot start conversaion engine." error occurs.
