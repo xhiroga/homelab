@@ -13,6 +13,7 @@ winget_packages:
   - "DigitalScholar.Zotero"
   - "Discord.Discord"
   # - "Docker.DockerDesktop" # You must log out and log back in for the group membership changes to take effect.
+  - "EpicGames.EpicGamesLauncher"
   - "ezwinports.make"
   - "Git.Git"
   - "GitHub.GitHubDesktop"
@@ -21,6 +22,7 @@ winget_packages:
   - "HermannSchinagl.LinkShellExtension"
   - "MediaArea.MediaInfo.GUI"
   - "Microsoft.PowerToys"
+  - "Microsoft.VisualStudio.2022.Community.Preview"
   - "Microsoft.VisualStudioCode"
   - "Obsidian.Obsidian"
   - "OBSProject.OBSStudio"

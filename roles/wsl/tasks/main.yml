@@ -53,6 +53,9 @@
       - nmap
       - nfs-common
       - ffmpeg
+      # OpenGL ES, Vulkan
+      - libegl1-mesa-dev
+      - mesa-utils
     state: present
   become: true
 
@@ -107,6 +110,51 @@
       - python3.10
       - python3.10-venv
     state: present
+  become: true
+
+- name: Download CUDA keyring DEB
+  ansible.builtin.get_url:
+    url: "https://developer.download.nvidia.com/compute/cuda/repos/wsl-ubuntu/x86_64/cuda-keyring_1.1-1_all.deb"
+    dest: "/tmp/cuda-keyring_1.1-1_all.deb"
+    mode: '0644'
+  become: true
+
+- name: Install CUDA keyring
+  ansible.builtin.apt:
+    deb: "/tmp/cuda-keyring_1.1-1_all.deb"
+    state: present
+  become: true
+
+- name: Update apt cache after adding CUDA keyring
+  ansible.builtin.apt:
+    update_cache: yes
+  become: true
+
+- name: Install CUDA Toolkit 12.4
+  ansible.builtin.apt:
+    name: cuda-toolkit-12-4
+    state: present
+
+- name: Install CUDA Toolkit 12.6
+  ansible.builtin.apt:
+    name: cuda-toolkit-12-6
+    state: present
+
+# 若干冗長なので、後でリファクタリングする。
+- name: Add oibaf PPA for latest Mesa drivers
+  ansible.builtin.apt_repository:
+    repo: ppa:oibaf/graphics-drivers
+    state: present
+  become: true
+
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: yes
+  become: true
+
+- name: Upgrade all packages
+  ansible.builtin.apt:
+    upgrade: dist
   become: true
 
 - name: Install from Brewfile
