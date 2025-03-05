@@ -54,6 +54,13 @@
     dest: "~/.gitconfig"
     mode: '0644'
 
+- name: Install nano
+  ansible.builtin.apt:
+    name:
+      - nano
+    state: present
+    update_cache: yes
+
 # TODO: Use community.general.homebrew
 - name: Install pueue
   ansible.builtin.shell: |
