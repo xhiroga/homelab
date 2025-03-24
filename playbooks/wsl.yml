@@ -1,4 +1,3 @@
-#!/bin/sh ansible-playbook
 ---
 - name: Configure WSL
   hosts: 'wsl'

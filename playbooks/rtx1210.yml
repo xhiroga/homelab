@@ -1,4 +1,3 @@
-#!/bin/sh ansible-playbook
 ---
 - hosts: rtx1210
   connection: network_cli
