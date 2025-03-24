@@ -1,7 +1,10 @@
-install_ssh_config:
-	mkdir -p ~/.ssh/config.d
-	cp -f ssh_config ~/.ssh/config.d/homelab_ssh_config
+~/.ssh/config.d:
+	mkdir -p $@
 
+~/.ssh/config.d/homelab.conf: ~/.ssh/config.d
+	cp -f homelab.conf ~/.ssh/config.d/homelab.conf
+
+# Reserved
 macos:
 	uv run ansible-playbook macos.yml -i inventories/$${ENV:-prod} -K
 
@@ -14,15 +17,16 @@ proxmox:
 diskstation:
 	uv run ansible-playbook diskstation.yml -i inventories/$${ENV:-prod} -K
 
-ubuntu_cloud:
-	uv run ansible-playbook ubuntu_cloud.yml -i inventories/$${ENV:-prod}
-
-ubuntu_vm:
-	uv run ansible-playbook ubuntu_vm.yml -i inventories/$${ENV:-prod} -K
-
 windows:
 	uv run ansible windows -i inventories/$${ENV:-prod} -m win_ping --ssh-common-args '-F ssh_config'
 	uv run ansible-playbook windows.yml -i inventories/$${ENV:-prod}
 
 wsl:
 	uv run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K
+
+# On-Demand
+ondemand_ubuntu_aarch64:
+	# NOT WORKS! questionary with command replacement or pipe fails...
+	uv run ondemand.py | xargs -I {} uv run ansible-playbook ondemand_ubuntu_aarch64.yml -i ondemand.py --limit {}
+# ubuntu_x86_64_ondemand:
+# 	@:

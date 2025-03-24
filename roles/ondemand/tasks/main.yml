@@ -1,0 +1,77 @@
+---
+- name: Copy private key to the remote server
+  copy:
+    src: ~/.ssh/id_remote_ed25519
+    dest: ~/.ssh/id_remote_ed25519
+    mode: '0600'
+
+- name: Copy public key to the remote server
+  copy:
+    src: ~/.ssh/id_remote_ed25519.pub
+    dest: ~/.ssh/id_remote_ed25519.pub
+    mode: '0644'
+
+- name: Add SSH config for GitHub
+  blockinfile:
+    path: ~/.ssh/config
+    create: yes
+    block: |
+      Host github.com
+          HostName github.com
+          User git
+          IdentityFile ~/.ssh/id_remote_ed25519
+          IdentitiesOnly yes
+    mode: '0600'
+
+# TODO: 初回は手動でfingerprintを登録してしまったので、またの機会に動作確認
+- name: Ensure known_hosts file exists
+  file:
+    path: ~/.ssh/known_hosts
+    state: touch
+    mode: '0644'
+
+- name: Add GitHub's public key to known_hosts
+  known_hosts:
+    path: ~/.ssh/known_hosts
+    name: github.com
+    key: |
+      ssh-keygen -f "/root/.ssh/known_hosts" -R "github.com"
+      github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAdZrFi9i01n3w4G6k6LkEQuzWo2x2mIUXwlQe6CZKNx
+
+# TODO: 要修正
+- name: Test SSH connection to GitHub
+  command: ssh -T git@github.com
+  register: ssh_test_output
+  ignore_errors: yes
+
+- name: Display SSH test result
+  debug:
+    msg: "{{ ssh_test_output.stdout }}"
+
+- name: Copy .gitconfig template to user home
+  ansible.builtin.template:
+    src: .gitconfig.j2
+    dest: "~/.gitconfig"
+    mode: '0644'
+
+- name: Install nano
+  ansible.builtin.apt:
+    name:
+      - nano
+    state: present
+    update_cache: yes
+
+# TODO: Use community.general.homebrew
+- name: Install pueue
+  ansible.builtin.shell: |
+    curl -sL -o pueue https://github.com/Nukesor/pueue/releases/download/v3.4.1/pueue-linux-x86_64
+    curl -sL -o pueued https://github.com/Nukesor/pueue/releases/download/v3.4.1/pueued-linux-x86_64
+    mv pueue* /usr/local/bin
+    chmod +x /usr/local/bin/pueue*
+    pueued -d
+
+# TODO: Use community.general.homebrew
+- name: Install uv
+  ansible.builtin.shell: curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# TODO: Install awscli

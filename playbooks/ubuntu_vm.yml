@@ -1,6 +1,0 @@
-#!/bin/sh ansible-playbook
----
-- hosts: ubuntu_vm
-  roles:
-    - qemu_guest_agent
-    - ubuntu
