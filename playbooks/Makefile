@@ -26,7 +26,6 @@ wsl:
 
 # On-Demand
 ubuntu_aarch64_ondemand:
-	# NOT WORKS! questionary with command replacement or pipe fails...
 	uv run ansible-playbook ondemand_ubuntu_aarch64.yml -i ondemand.py --limit $$(uv run ondemand.py | sort -d | fzf)
 
 # ubuntu_x86_64_ondemand:
