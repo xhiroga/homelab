@@ -25,8 +25,9 @@ wsl:
 	uv run ansible-playbook wsl.yml -i inventories/$${ENV:-prod} -K
 
 # On-Demand
-ondemand_ubuntu_aarch64:
+ubuntu_aarch64_ondemand:
 	# NOT WORKS! questionary with command replacement or pipe fails...
-	uv run ondemand.py | xargs -I {} uv run ansible-playbook ondemand_ubuntu_aarch64.yml -i ondemand.py --limit {}
+	uv run ansible-playbook ondemand_ubuntu_aarch64.yml -i ondemand.py --limit $$(uv run ondemand.py | sort -d | fzf)
+
 # ubuntu_x86_64_ondemand:
 # 	@:

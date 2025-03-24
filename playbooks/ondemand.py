@@ -3,7 +3,6 @@ import argparse
 import json
 import os
 
-import questionary
 from sshconf import read_ssh_config
 
 
@@ -26,17 +25,6 @@ def hostname_to_inventory(hostnames: list[str]):
     return {"all": {"hosts": hostnames}}
 
 
-def limited_hosts(hostnames: list[str]):
-    """
-    Ansible の --limit オプションの引数を動的に選択するためのユーティリティ。
-    """
-    selected_hosts: list[str] = questionary.checkbox(
-        "Select hosts:", choices=hostnames
-    ).ask()
-
-    return ",".join(selected_hosts)
-
-
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -51,17 +39,18 @@ def main():
 
     expanded = os.path.expanduser(args.ssh_config)
     hostnames = parse(expanded)
-    inventory = hostname_to_inventory(hostnames)
 
     if args.list:
-        print(json.dumps(inventory))
+        print(json.dumps(hostname_to_inventory(hostnames)))
         return
 
     if args.host:
         print(json.dumps({}))
         return
 
-    print(limited_hosts(hostnames))
+    # --limit オプションの引数を fzf などで選択するために用いる
+    # questionary や pick の採用を検討したが、いずれもコマンド置換・パイプとの相性が悪かった。
+    print("\n".join(hostnames))
 
 
 if __name__ == "__main__":
