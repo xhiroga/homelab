@@ -1,0 +1,8 @@
+---
+- name: Install Homebrew
+  ansible.builtin.shell: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+- name: Install uv
+  community.general.homebrew:
+    name: uv
+    state: present

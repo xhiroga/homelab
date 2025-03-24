@@ -28,5 +28,5 @@ wsl:
 ubuntu_aarch64_ondemand:
 	uv run ansible-playbook ondemand_ubuntu_aarch64.yml -i ondemand.py --limit $$(uv run ondemand.py | sort -d | fzf)
 
-# ubuntu_x86_64_ondemand:
-# 	@:
+ubuntu_x86_64_ondemand:
+	uv run ansible-playbook ondemand_ubuntu_x86_64.yml -i ondemand.py --limit $$(uv run ondemand.py | sort -d | fzf)
