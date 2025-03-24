@@ -1,6 +1,7 @@
 brew "awscli"
 brew "direnv"
 brew "fnm"
+brew "fzf"
 brew "gcc"
 brew "gh"
 brew "gibo"

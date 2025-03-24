@@ -25,6 +25,7 @@ brew "dprint"   # to contribute to polars
 brew "duckdb"
 brew "ffmpeg"
 brew "fnm"
+brew "fzf"
 brew "gh"
 brew "ghostscript"  # to render python turtle
 brew "gibo"
