@@ -53,25 +53,3 @@
     src: .gitconfig.j2
     dest: "~/.gitconfig"
     mode: '0644'
-
-- name: Install nano
-  ansible.builtin.apt:
-    name:
-      - nano
-    state: present
-    update_cache: yes
-
-# TODO: Use community.general.homebrew
-- name: Install pueue
-  ansible.builtin.shell: |
-    curl -sL -o pueue https://github.com/Nukesor/pueue/releases/download/v3.4.1/pueue-linux-x86_64
-    curl -sL -o pueued https://github.com/Nukesor/pueue/releases/download/v3.4.1/pueued-linux-x86_64
-    mv pueue* /usr/local/bin
-    chmod +x /usr/local/bin/pueue*
-    pueued -d
-
-# TODO: Use community.general.homebrew
-- name: Install uv
-  ansible.builtin.shell: curl -LsSf https://astral.sh/uv/install.sh | sh
-
-# TODO: Install awscli

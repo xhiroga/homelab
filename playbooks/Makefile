@@ -1,8 +1,8 @@
-~/.ssh/config.d:
-	mkdir -p $@
-
 ~/.ssh/config.d/homelab.conf: ~/.ssh/config.d
 	cp -f homelab.conf ~/.ssh/config.d/homelab.conf
+
+~/.ssh/config.d:
+	mkdir -p $@
 
 # Reserved
 macos:
