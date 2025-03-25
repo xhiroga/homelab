@@ -2,7 +2,22 @@
 - name: Install Homebrew
   ansible.builtin.shell: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
+- name: Add Homebrew shellenv to root's .bashrc
+  ansible.builtin.lineinfile:
+    path: ~/.bashrc
+    line: 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
+    state: present
+
 - name: Install uv
   community.general.homebrew:
     name: uv
+    state: present
+
+- name: apt-get update
+  ansible.builtin.apt:
+    update_cache: yes
+
+- name: Install nano
+  ansible.builtin.apt:
+    name: nano
     state: present

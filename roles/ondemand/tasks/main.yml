@@ -35,7 +35,6 @@
     path: ~/.ssh/known_hosts
     name: github.com
     key: |
-      ssh-keygen -f "/root/.ssh/known_hosts" -R "github.com"
       github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAdZrFi9i01n3w4G6k6LkEQuzWo2x2mIUXwlQe6CZKNx
 
 # TODO: 要修正
