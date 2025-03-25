@@ -8,7 +8,7 @@ from sshconf import read_ssh_config
 
 def parse(ssh_config_path: str) -> list[str]:
     """
-    ssh接続情報は ssh_config に記載されている前提だから、ansible_user や ansible_ssh_private_key_file も返さない。
+    ssh接続情報は ssh_config に記載されている前提だから、ansible_user や ansible_ssh_private_key_file は返さない。
     簡単のため _meta は返さない。
     """
     config = read_ssh_config(ssh_config_path)
