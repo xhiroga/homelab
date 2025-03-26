@@ -8,6 +8,11 @@
     line: 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
     state: present
 
+- name: Install cloudflared
+  community.general.homebrew:
+    name: cloudflared
+    state: present
+
 - name: Install uv
   community.general.homebrew:
     name: uv
