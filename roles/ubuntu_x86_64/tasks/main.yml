@@ -22,6 +22,21 @@
   ansible.builtin.apt:
     update_cache: yes
 
+# https://github.com/pytorch/pytorch/blob/main/Dockerfile を参考に、pkg-configのみ追加
+- name: Install dev-base 
+  ansible.builtin.apt:
+    name:
+      - build-essential
+      - ca-certificates
+      - ccache
+      - cmake
+      - curl
+      - git
+      - libjpeg-dev
+      - libpng-dev
+      - pkg-config
+    state: present
+
 - name: Install nano
   ansible.builtin.apt:
     name: nano
