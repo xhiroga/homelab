@@ -3,12 +3,11 @@ ansible_shell_type: powershell
 
 winget_packages:
   - "AgileBits.1Password"
-  - "Anaconda.Miniconda3"
   - "astral-sh.uv"
   - "Audacity.Audacity"
   - "clsid2.mc-hc"
+  - "Cocos.CocosDashboard"
   - "Daum.PotPlayer"
-  - "DBBrowserForSQLite.DBBrowserForSQLite"
   - "DevToys"
   - "DigitalScholar.Zotero"
   - "Discord.Discord"
@@ -32,7 +31,6 @@ winget_packages:
   - "SlackTechnologies.Slack"
   - "Sysinternals Suite"
   - "tailscale.tailscale"
-  - "Toggl.TogglTrack"
   - "Unity.UnityHub"
   - "Valve.Steam"
   - "VideoLAN.VLC"
