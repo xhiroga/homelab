@@ -68,7 +68,7 @@ cask "1password-cli"
 cask "discord"
 cask "discord@canary"
 cask "google-cloud-sdk"
-cask "google-chrome"
+# cask "google-chrome"  # It updates its own directory permission
 # cask "google-japanese-ime"    # When using, "Cannot start conversaion engine." error occurs.
 cask "imageoptim"
 cask "karabiner-elements"
