@@ -27,6 +27,7 @@ winget_packages:
   - "OBSProject.OBSStudio"
   - "Ollama.Ollama"
   - "OpenJS.NodeJS"
+  - "PlayStation.PSRemotePlay"
   - "RustDesk.RustDesk"
   - "SlackTechnologies.Slack"
   - "Sysinternals Suite"

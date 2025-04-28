@@ -64,6 +64,8 @@
       - libjavascriptcoregtk-4.0-dev
       - libsoup2.4-dev
       - libwebkit2gtk-4.0-dev
+      # open-webui
+      - libpq-dev
     state: present
   become: true
 
