@@ -28,7 +28,6 @@ winget_packages:
   - "Ollama.Ollama"
   - "OpenJS.NodeJS"
   - "PlayStation.PSRemotePlay"
-  - "RustDesk.RustDesk"
   - "SlackTechnologies.Slack"
   - "Sysinternals Suite"
   - "tailscale.tailscale"
