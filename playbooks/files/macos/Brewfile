@@ -69,7 +69,6 @@ cask "google-cloud-sdk"
 # cask "google-japanese-ime"    # When using, "Cannot start conversaion engine." error occurs.
 cask "imageoptim"
 cask "karabiner-elements"
-cask "microsoft-edge"
 cask "obs"
 cask "orbstack"
 cask "raycast"
