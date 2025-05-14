@@ -59,6 +59,7 @@ brew "wget"
 brew "xz"
 brew "yarn"
 brew "zlib" # tensorflow dependency
+brew "zsh-completions"
 
 cask "1password-cli"
 cask "chatgpt"
