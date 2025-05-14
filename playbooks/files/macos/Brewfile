@@ -61,9 +61,14 @@ brew "yarn"
 brew "zlib" # tensorflow dependency
 
 cask "1password-cli"
+cask "chatgpt"
+cask "claude"
+cask "cursor"
 # cask "dbeaver-community"
+cask "deepl"
 cask "discord"
 cask "discord@canary"
+cask "godot"
 cask "google-cloud-sdk"
 # cask "google-chrome"  # It updates its own directory permission
 # cask "google-japanese-ime"    # When using, "Cannot start conversaion engine." error occurs.
@@ -71,6 +76,7 @@ cask "imageoptim"
 cask "karabiner-elements"
 cask "obs"
 cask "orbstack"
+cask "pearcleaner"
 cask "raycast"
 cask "spotify"
 cask "wireshark"
