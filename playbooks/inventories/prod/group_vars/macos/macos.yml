@@ -1,9 +1,5 @@
 ---
 homebrew_brewfile_dir: "files/macos"
-go_packages:
-  - github.com/spf13/cobra-cli@latest
-pnpm_global_packages:
-  - "@nestjs/cli"
 com_apple_dock_autohide: false
 com_apple_dock_orientation: "bottom"
 com_apple_finder_apple_show_all_files: 1
