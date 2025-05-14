@@ -18,7 +18,7 @@ diskstation:
 	uv run ansible-playbook diskstation.yml -i inventories/$${ENV:-prod} -K
 
 windows:
-	uv run ansible windows -i inventories/$${ENV:-prod} -m win_ping --ssh-common-args '-F ssh_config'
+	uv run ansible windows -i inventories/$${ENV:-prod} -m win_ping --ssh-common-args '-F homelab.conf'
 	uv run ansible-playbook windows.yml -i inventories/$${ENV:-prod}
 
 wsl:
