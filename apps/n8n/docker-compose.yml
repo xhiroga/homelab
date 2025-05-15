@@ -31,5 +31,23 @@ services:
       - n8n_data:/home/node/.n8n
       - ./local-files:/files
 
+  sync:
+    image: alpine
+    restart: always
+    volumes:
+      - n8n_data:/data:ro
+      - ${SYNC_DIR}:/sync
+    entrypoint: >
+      sh -c '
+        command -v rsync >/dev/null 2>&1 || apk add --no-cache rsync
+        while true; do
+          echo "[sync] $(date -Iseconds)"
+          rsync -a --delete /data/ /sync/ && echo "[sync] done";
+          sleep ${SYNC_INTERVAL:-86400};
+        done
+      '
+    depends_on:
+      - n8n
+
 volumes:
   n8n_data:
