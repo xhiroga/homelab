@@ -9,6 +9,10 @@
 	rebase = false
 [push]
 	autoSetupRemote = true
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[url "ssh://git@hf.co/"]
+	insteadOf = https://huggingface.co/
 [user]
     name = {{ user_name | default("Hiroaki Ogasawara") }}
     email = {{ user_email | default("13391129+xhiroga@users.noreply.github.com") }}
