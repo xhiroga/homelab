@@ -37,6 +37,11 @@
       - pkg-config
     state: present
 
+- name: Install git-lfs
+  ansible.builtin.apt:
+    name: git-lfs
+    state: present
+
 - name: Install nano
   ansible.builtin.apt:
     name: nano
