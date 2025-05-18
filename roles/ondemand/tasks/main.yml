@@ -1,14 +1,14 @@
 ---
 - name: Copy private key to the remote server
   copy:
-    src: ~/.ssh/id_remote_ed25519
-    dest: ~/.ssh/id_remote_ed25519
+    src: ~/.ssh/id_ed25519_dev
+    dest: ~/.ssh/id_ed25519
     mode: '0600'
 
 - name: Copy public key to the remote server
   copy:
-    src: ~/.ssh/id_remote_ed25519.pub
-    dest: ~/.ssh/id_remote_ed25519.pub
+    src: ~/.ssh/id_ed25519_dev.pub
+    dest: ~/.ssh/id_ed25519.pub
     mode: '0644'
 
 - name: Add SSH config for GitHub
@@ -19,7 +19,7 @@
       Host github.com
           HostName github.com
           User git
-          IdentityFile ~/.ssh/id_remote_ed25519
+          IdentityFile ~/.ssh/id_ed25519
           IdentitiesOnly yes
     mode: '0600'
 
