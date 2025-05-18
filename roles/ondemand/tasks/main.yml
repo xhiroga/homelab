@@ -23,21 +23,22 @@
           IdentitiesOnly yes
     mode: '0600'
 
-# TODO: 初回は手動でfingerprintを登録してしまったので、またの機会に動作確認
 - name: Ensure known_hosts file exists
   file:
     path: ~/.ssh/known_hosts
     state: touch
     mode: '0644'
 
+# https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
+# https://huggingface.co/docs/hub/en/security-git-ssh
 - name: Add GitHub's public key to known_hosts
   known_hosts:
     path: ~/.ssh/known_hosts
     name: github.com
     key: |
-      github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAdZrFi9i01n3w4G6k6LkEQuzWo2x2mIUXwlQe6CZKNx
+      github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+      hf.co ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJjhgtT9FOQrsVSarIoPVI1jFMh3VSHdKfdqp/O776s
 
-# TODO: 要修正
 - name: Test SSH connection to GitHub
   command: ssh -T git@github.com
   register: ssh_test_output
