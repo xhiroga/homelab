@@ -30,14 +30,18 @@
     mode: '0644'
 
 # https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/githubs-ssh-key-fingerprints
-# https://huggingface.co/docs/hub/en/security-git-ssh
 - name: Add GitHub's public key to known_hosts
   known_hosts:
     path: ~/.ssh/known_hosts
     name: github.com
-    key: |
-      github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
-      hf.co ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJjhgtT9FOQrsVSarIoPVI1jFMh3VSHdKfdqp/O776s
+    key: github.com ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOMqqnkVzrm0SdG6UOoqKLsabgH5C9okWi0dh2l9GKJl
+
+# https://huggingface.co/docs/hub/en/security-git-ssh
+- name: Add HuggingFace's public key to known_hosts
+  known_hosts:
+    path: ~/.ssh/known_hosts
+    name: hf.co
+    key: hf.co ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJjhgtT9FOQrsVSarIoPVI1jFMh3VSHdKfdqp/O776s
 
 - name: Test SSH connection to GitHub
   command: ssh -T git@github.com
