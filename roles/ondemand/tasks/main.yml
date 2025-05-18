@@ -21,6 +21,12 @@
           User git
           IdentityFile ~/.ssh/id_ed25519
           IdentitiesOnly yes
+
+      Host hf.co
+          HostName hf.co
+          User git
+          IdentityFile ~/.ssh/id_ed25519
+          IdentitiesOnly yes
     mode: '0600'
 
 - name: Ensure known_hosts file exists
@@ -51,6 +57,11 @@
 - name: Display SSH test result
   debug:
     msg: "{{ ssh_test_output.stdout }}"
+
+- name: Test SSH connection to HuggingFace
+  command: ssh -T git@hf.com
+  register: ssh_test_output
+  # ssh will succeed.
 
 - name: Copy .gitconfig template to user home
   ansible.builtin.template:
