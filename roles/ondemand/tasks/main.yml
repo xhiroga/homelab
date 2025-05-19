@@ -49,19 +49,14 @@
     name: hf.co
     key: hf.co ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAINJjhgtT9FOQrsVSarIoPVI1jFMh3VSHdKfdqp/O776s
 
-- name: Test SSH connection to GitHub
+- name: Test SSH to GitHub
   command: ssh -T git@github.com
   register: ssh_test_output
   ignore_errors: yes
 
-- name: Display SSH test result
-  debug:
-    msg: "{{ ssh_test_output.stdout }}"
-
-- name: Test SSH connection to HuggingFace
-  command: ssh -T git@hf.com
-  register: ssh_test_output
-  # ssh will succeed.
+- name: Test SSH to HuggingFace
+  command: ssh -T git@hf.co
+  # SSH to HuggingFace will succeed.
 
 - name: Copy .gitconfig template to user home
   ansible.builtin.template:
