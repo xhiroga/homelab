@@ -46,3 +46,8 @@
   ansible.builtin.apt:
     name: nano
     state: present
+
+- name: Install rsync
+  ansible.builtin.apt:
+    name: rsync
+    state: present
