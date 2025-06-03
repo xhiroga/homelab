@@ -33,19 +33,35 @@ services:
     image: alpine
     restart: always
     volumes:
-      - open-webui:/data:ro
+      - open-webui:/_data
       - ${SYNC_DIR}:/sync
     entrypoint: >
       sh -c '
-        command -v rsync >/dev/null 2>&1 || apk add --no-cache rsync
         while true; do
           echo "[sync] $(date -Iseconds)"
-          rsync -a --delete /data/ /sync/ && echo "[sync] done";
+          rm -rf /sync/open-webui_data.tar.gz
+          tar -czf /sync/open-webui_data.tar.gz -C /_data .
+          echo "[sync] done"
           sleep ${SYNC_INTERVAL:-86400};
         done
       '
     depends_on:
       - open-webui
+
+  restore:
+    image: alpine
+    profiles:
+      - "restore"
+    volumes:
+      - open-webui:/_data
+      - ${SYNC_DIR}:/sync
+    entrypoint: >
+      sh -c '
+        echo "[restore]"
+        rm -rf /_data/*
+        tar -xzf /sync/open-webui_data.tar.gz -C /_data --overwrite
+        echo "[restore] done"
+      '
 
 volumes:
   ollama: {}

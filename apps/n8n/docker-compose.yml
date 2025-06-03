@@ -21,19 +21,35 @@ services:
     image: alpine
     restart: always
     volumes:
-      - n8n_data:/data:ro
+      - n8n_data:/_data # Mounting with _data:ro prevents writing after restoration
       - ${SYNC_DIR}:/sync
     entrypoint: >
       sh -c '
-        command -v rsync >/dev/null 2>&1 || apk add --no-cache rsync
         while true; do
           echo "[sync] $(date -Iseconds)"
-          rsync -a --delete /data/ /sync/ && echo "[sync] done";
+          rm -rf /sync/n8n_data.tar.gz
+          tar -czf /sync/n8n_data.tar.gz -C /_data .
+          echo "[sync] done"
           sleep ${SYNC_INTERVAL:-86400};
         done
       '
     depends_on:
       - n8n
+
+  restore:
+    image: alpine
+    profiles:
+      - "restore"
+    volumes:
+      - n8n_data:/_data
+      - ${SYNC_DIR}:/sync
+    entrypoint: >
+      sh -c '
+        echo "[restore]"
+        rm -rf /_data/*
+        tar -xzf /sync/n8n_data.tar.gz -C /_data --overwrite
+        echo "[restore] done"
+      '
 
 volumes:
   n8n_data:
