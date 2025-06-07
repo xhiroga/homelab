@@ -3,11 +3,12 @@ services:
     image: docker.n8n.io/n8nio/n8n
     restart: always
     ports:
-      - "${HOST_PORT:-5678}:5678"
+      - "${HOST_PORT:-5678}:${HOST_PORT:-5678}"
     labels: []
     environment:
-      # - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
-      - N8N_PORT=5678
+      - N8N_HOST=${HOST}
+      # # Due to the redirect URL, HOST_PORT = must be a port number known to n8n.
+      - N8N_PORT=${HOST_PORT:-5678}
       - N8N_PROTOCOL=http
       - N8N_SECURE_COOKIE=false
       - NODE_ENV=production
