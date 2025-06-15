@@ -67,6 +67,8 @@
       # open-webui
       - libpq-dev
       - libomp-dev
+      # Utilities
+      - ncdu
     state: present
   become: true
 
