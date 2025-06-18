@@ -68,6 +68,7 @@
       - libpq-dev
       - libomp-dev
       # Utilities
+      - graphviz
       - ncdu
     state: present
   become: true
