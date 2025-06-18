@@ -25,7 +25,6 @@ winget_packages:
   - "Microsoft.VisualStudioCode"
   - "Obsidian.Obsidian"
   - "OBSProject.OBSStudio"
-  - "Ollama.Ollama"
   - "OpenJS.NodeJS"
   - "PlayStation.PSRemotePlay"
   - "SlackTechnologies.Slack"
@@ -42,7 +41,6 @@ win_path_user_elements:
   - 'C:\Users\hiroga\AppData\Local\Microsoft\WinGet\Links'
   - 'C:\Users\hiroga\AppData\Local\GitHubDesktop\bin'
   - 'C:\Users\hiroga\AppData\Local\Programs\Microsoft VS Code\bin'
-  - 'C:\Users\hiroga\AppData\Local\Programs\Ollama'
   - 'C:\Users\hiroga\AppData\Roaming\npm'
   - 'C:\Users\hiroga\AppData\Local\Microsoft\WinGet\Packages\astral-sh.uv_Microsoft.Winget.Source_8wekyb3d8bbwe'  # uv
 
