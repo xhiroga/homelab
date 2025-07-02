@@ -1,5 +1,6 @@
 [wsl2]
 
+memory=96GB
 networkingMode=mirrored
 
 [experimental]

@@ -36,6 +36,7 @@ brew "gomplate"
 brew "graphviz"
 brew "gnupg"
 brew "hdf5" # tensorflow dependency
+brew "jq"
 brew "libpcap" # FreeRTOS simulation
 brew "mecab"
 brew "mecab-ipadic"
