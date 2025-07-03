@@ -1,9 +1,10 @@
 ---
 - hosts: all
-  vars:
-    # Since hosts are specified by dynamic inventory, write directly in the Playbook
-    # python3-apt required for ansible.builtin.apt is built for Python 3.10
-    ansible_python_interpreter: "/usr/bin/python3.10"
+  # vars:
+  #   # Since hosts are specified by dynamic inventory, write directly in the Playbook
+  #   # python3-apt required for ansible.builtin.apt is built for Python 3.10
+  #   # However, vast.ai has python3.12 installed, so we need to use that
+  #   ansible_python_interpreter: "/usr/bin/python3.10"
   roles:
     - ondemand
     - ubuntu_x86_64
