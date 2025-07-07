@@ -1,4 +1,37 @@
 ---
+# The default Python may not be compatible with `python3-apt`.
+# Specifically, in RunPod, when a specific Python version (e.g., 3.11) is installed and provided for Ubuntu 22.04, `python3-apt` is only accessible from python3.10.
+# Since this Playbook is referenced dynamically, `ansible_python_interpreter` also needs to be specified dynamically.
+- name: Bootstrap python3-apt and find compatible Python interpreter
+  ansible.builtin.raw: |
+    # Ensure python3-apt is installed
+    export DEBIAN_FRONTEND=noninteractive
+    apt-get update -qq
+    apt-get install -y python3-apt
+    
+    # Find all Python 3 interpreters (python3 comes first naturally)
+    PYTHON_INTERPRETERS=$(find /usr/bin -name "python3*" -type f -executable | sort)
+    
+    # Test each Python interpreter to find one that can import apt_pkg
+    WORKING_PYTHON="/usr/bin/python3"
+    for python_bin in $PYTHON_INTERPRETERS; do
+      if $python_bin -c "import apt_pkg" 2>/dev/null; then
+        WORKING_PYTHON="$python_bin"
+        break
+      fi
+    done
+    
+    echo "DETECTED_PYTHON=$WORKING_PYTHON"
+  register: python_detection
+  changed_when: false
+
+- name: Set ansible_python_interpreter to compatible Python
+  ansible.builtin.set_fact:
+    ansible_python_interpreter: "{{ python_detection.stdout_lines | select('match', '^DETECTED_PYTHON=') | first | regex_replace('^DETECTED_PYTHON=', '') }}"
+
+- name: Gather facts with correct Python interpreter
+  ansible.builtin.setup:
+
 - name: Install Homebrew
   ansible.builtin.shell: NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
