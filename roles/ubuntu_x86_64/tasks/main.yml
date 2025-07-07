@@ -41,22 +41,12 @@
     line: 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
     state: present
 
-- name: Install cloudflared
-  community.general.homebrew:
-    name: cloudflared
-    state: present
-
-- name: Install uv
-  community.general.homebrew:
-    name: uv
-    state: present
-
 - name: apt-get update
   ansible.builtin.apt:
     update_cache: yes
 
 # https://github.com/pytorch/pytorch/blob/main/Dockerfile を参考に、pkg-configのみ追加
-- name: Install dev-base 
+- name: Install dev-base
   ansible.builtin.apt:
     name:
       - build-essential
@@ -70,17 +60,18 @@
       - pkg-config
     state: present
 
-- name: Install git-lfs
+- name: Install Utilities from apt
   ansible.builtin.apt:
-    name: git-lfs
+    name:
+      - git-lfs
+      - rsync
+      - tmux
     state: present
 
-- name: Install nano
-  ansible.builtin.apt:
-    name: nano
-    state: present
-
-- name: Install rsync
-  ansible.builtin.apt:
-    name: rsync
+- name: Install Utilities from Homebrew
+  community.general.homebrew:
+    name:
+      - cloudflared
+      - node  # nodejs in apt is too old...
+      - uv
     state: present
