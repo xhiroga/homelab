@@ -64,6 +64,7 @@
   ansible.builtin.apt:
     name:
       - git-lfs
+      - python3-dev
       - rsync
       - tmux
     state: present
