@@ -1,4 +1,15 @@
 ---
+# Check if we need sudo for apt operations
+- name: Check if sudo is needed for apt
+  ansible.builtin.command: apt-get update --dry-run
+  register: apt_check
+  failed_when: false
+  changed_when: false
+
+- name: Set apt privilege requirement
+  ansible.builtin.set_fact:
+    apt_needs_sudo: "{{ apt_check.rc != 0 }}"
+
 # The default Python may not be compatible with `python3-apt`.
 # Specifically, in RunPod, when a specific Python version (e.g., 3.11) is installed and provided for Ubuntu 22.04, `python3-apt` is only accessible from python3.10.
 # Since this Playbook is referenced dynamically, `ansible_python_interpreter` also needs to be specified dynamically.
@@ -6,8 +17,8 @@
   ansible.builtin.raw: |
     # Ensure python3-apt is installed
     export DEBIAN_FRONTEND=noninteractive
-    apt-get update -qq
-    apt-get install -y python3-apt
+    {% if apt_needs_sudo %}sudo {% endif %}apt-get update -qq
+    {% if apt_needs_sudo %}sudo {% endif %}apt-get install -y python3-apt
     
     # Find all Python 3 interpreters (python3 comes first naturally)
     PYTHON_INTERPRETERS=$(find /usr/bin -name "python3*" -type f -executable | sort)
@@ -44,6 +55,7 @@
 - name: apt-get update
   ansible.builtin.apt:
     update_cache: yes
+  become: "{{ apt_needs_sudo }}"
 
 # https://github.com/pytorch/pytorch/blob/main/Dockerfile を参考に、pkg-configのみ追加
 - name: Install dev-base
@@ -59,6 +71,7 @@
       - libpng-dev
       - pkg-config
     state: present
+  become: "{{ apt_needs_sudo }}"
 
 - name: Install Utilities from apt
   ansible.builtin.apt:
@@ -68,6 +81,7 @@
       - rsync
       - tmux
     state: present
+  become: "{{ apt_needs_sudo }}"
 
 - name: Install Utilities from Homebrew
   community.general.homebrew:
