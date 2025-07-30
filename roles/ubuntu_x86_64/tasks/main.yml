@@ -1,6 +1,12 @@
 ---
 # Check if we need sudo for apt operations
-- name: Check if sudo is needed for apt
+- name: Check if sudo command exists
+  ansible.builtin.command: which sudo
+  register: sudo_check
+  failed_when: false
+  changed_when: false
+
+- name: Check if we can run apt without sudo
   ansible.builtin.command: apt-get update --dry-run
   register: apt_check
   failed_when: false
@@ -8,7 +14,7 @@
 
 - name: Set apt privilege requirement
   ansible.builtin.set_fact:
-    apt_needs_sudo: "{{ apt_check.rc != 0 }}"
+    apt_needs_sudo: "{{ (sudo_check.rc == 0) and (apt_check.rc != 0) }}"
 
 # The default Python may not be compatible with `python3-apt`.
 # Specifically, in RunPod, when a specific Python version (e.g., 3.11) is installed and provided for Ubuntu 22.04, `python3-apt` is only accessible from python3.10.
@@ -51,6 +57,7 @@
     path: ~/.bashrc
     line: 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"'
     state: present
+
 
 - name: apt-get update
   ansible.builtin.apt:
