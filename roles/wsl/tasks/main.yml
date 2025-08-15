@@ -67,6 +67,8 @@
       # open-webui
       - libpq-dev
       - libomp-dev
+      # NeRF, Gaussian Splatting
+      - colmap
       # Utilities
       - graphviz
       - ncdu
