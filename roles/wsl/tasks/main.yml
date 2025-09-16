@@ -69,6 +69,9 @@
       - libomp-dev
       # NeRF, Gaussian Splatting
       - colmap
+      # Lip2Speech
+      - libportaudio2
+      - portaudio19-dev
       # Utilities
       - graphviz
       - ncdu
