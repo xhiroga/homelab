@@ -96,4 +96,5 @@
       - cloudflared
       - node  # nodejs in apt is too old...
       - uv
+      - zellij
     state: present
