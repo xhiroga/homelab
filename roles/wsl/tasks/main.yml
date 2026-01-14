@@ -75,6 +75,7 @@
       # Utilities
       - graphviz
       - ncdu
+      - smbclient
     state: present
   become: true
 
