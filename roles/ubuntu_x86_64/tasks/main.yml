@@ -86,7 +86,6 @@
       - git-lfs
       - python3-dev
       - rsync
-      - tmux
     state: present
   become: "{{ apt_needs_sudo }}"
 
@@ -95,5 +94,7 @@
     name:
       - cloudflared
       - node  # nodejs in apt is too old...
+      - pnpm
       - uv
+      - zellij
     state: present
