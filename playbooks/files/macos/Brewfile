@@ -12,7 +12,6 @@ brew "grep"
 
 brew "act"
 brew "asciinema"
-brew "aws-cdk"
 brew "awscli"
 brew "azure-cli"
 brew "bash"
