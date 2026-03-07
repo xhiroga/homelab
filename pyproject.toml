@@ -1,0 +1,10 @@
+[project]
+name = "homelab"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "molecule>=26.3.0",
+    "molecule-docker>=2.1.0",
+]
