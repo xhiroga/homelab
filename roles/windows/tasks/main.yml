@@ -39,14 +39,14 @@
       datatype: dword
 
     # Ensure "Show Frequent Items" is disabled
-    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShowFrequent
-      value: HideFileExt
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer
+      value: ShowFrequent
       data: 0
       datatype: dword
 
     # Ensure "Show Recent Items" is disabled
-    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\ShowRecent
-      value: HideFileExt
+    - key: HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer
+      value: ShowRecent
       data: 0
       datatype: dword
 
@@ -66,18 +66,47 @@
   ansible.builtin.template:
     src: .gitconfig.j2
     dest: "~/.gitconfig"
-    mode: '0644'
 
-- name: List installed winget packages
+- name: Get list of installed winget package IDs
+  # winget list outputs a fixed-width table where Name column can contain spaces,
+  # so we parse column positions from the header line to extract Id accurately.
   ansible.windows.win_shell: |
-    Invoke-Expression "& '$(Join-Path (Get-AppxPackage Microsoft.DesktopAppInstaller).InstallLocation "winget.exe")' list"
-  register: winget_list
+    $exe = Join-Path (Get-AppxPackage Microsoft.DesktopAppInstaller).InstallLocation "winget.exe"
+    $output = & $exe list --accept-source-agreements 2>$null
+    $headerLine = $output | Where-Object { $_ -match '^Name\s+Id\s+Version' }
+    if ($headerLine) {
+      $idStart = $headerLine.IndexOf('Id')
+      $verStart = $headerLine.IndexOf('Version')
+      $output | ForEach-Object {
+        if ($_.Length -ge $verStart) {
+          $_.Substring($idStart, $verStart - $idStart).Trim()
+        }
+      }
+    }
+  register: winget_installed
+  changed_when: false
 
-- name: Install required packages using winget
+- name: Install missing winget packages
   ansible.windows.win_shell: |
-    Invoke-Expression "& '$(Join-Path (Get-AppxPackage Microsoft.DesktopAppInstaller).InstallLocation "winget.exe")' install {{ item }}"
+    $exe = Join-Path (Get-AppxPackage Microsoft.DesktopAppInstaller).InstallLocation "winget.exe"
+    & $exe install --id "{{ item }}" --exact --accept-source-agreements --accept-package-agreements
+    exit $LASTEXITCODE
+  register: winget_install
   loop: "{{ winget_packages }}"
-  when: item not in winget_list.stdout
+  when: item not in winget_installed.stdout_lines
+  changed_when: winget_install.rc == 0 and 'already installed' not in winget_install.stdout
+  failed_when: winget_install.rc != 0 and 'already installed' not in winget_install.stdout
+
+- name: Configure firewall rules
+  community.windows.win_firewall_rule:
+    name: "{{ item.name }}"
+    localport: "{{ item.localport }}"
+    protocol: "{{ item.protocol }}"
+    direction: in
+    action: allow
+    state: present
+    enabled: true
+  loop: "{{ win_firewall_rules }}"
 
 - name: Ensure user-specific PATH variables
   ansible.windows.win_path:
