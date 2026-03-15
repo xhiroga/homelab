@@ -97,6 +97,17 @@
   changed_when: winget_install.rc == 0 and 'already installed' not in winget_install.stdout
   failed_when: winget_install.rc != 0 and 'already installed' not in winget_install.stdout
 
+# Microsoft.OpenSSH.Preview をインストールすると sshd バイナリが更新されるが、
+# サービスが古いバイナリを掴んだままになるため再起動が必要。
+- name: Restart sshd to pick up updated OpenSSH binary
+  ansible.windows.win_service:
+    name: sshd
+    state: restarted
+  when: >
+    winget_install.results is defined and
+    winget_install.results | selectattr('item', 'equalto', 'Microsoft.OpenSSH.Preview')
+    | selectattr('changed', 'equalto', true) | list | length > 0
+
 - name: Configure firewall rules
   community.windows.win_firewall_rule:
     name: "{{ item.name }}"
